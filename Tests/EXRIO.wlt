@@ -5,7 +5,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-  StringQ[EXRIO`$EXRIOVersion] && EXRIO`$EXRIOVersion === "2.0.5",
+  StringQ[EXRIO`$EXRIOVersion] && EXRIO`$EXRIOVersion === "2.0.7",
   True,
   TestID -> "exrio-version-check"
 ]

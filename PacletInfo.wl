@@ -1,8 +1,8 @@
 PacletObject[
   <|
     "Name" -> "EXRIO",
-    "Version" -> "2.0.5",
-    "BuildNumber" -> "5",
+    "Version" -> "2.0.7",
+    "BuildNumber" -> "7",
     "WolframVersion" -> "13.0+",
     "Creator" -> "Flip Phillips <flip@flipphillips.com>",
     "Description" -> "High-performance Wolfram Language paclet for OpenEXR multi-part/multi-channel I/O, Cryptomatte decoding, camera reconstruction, and screen-space differential geometry grounded in ecological optics.",

@@ -232,6 +232,7 @@ $KnownPassSpecs = <|
   "A" -> <|"Type" -> "Scalar"|>,
   "Z" -> <|"Type" -> "Scalar"|>,
   "sampleCount" -> <|"Type" -> "Scalar"|>,
+  "roughness" -> <|"Type" -> "Scalar"|>,
   "P" -> <|"Type" -> "Vector3"|>,
   "Po" -> <|"Type" -> "Vector3"|>,
   "Nn" -> <|"Type" -> "Vector3"|>,
@@ -255,6 +256,10 @@ hasPassQ[channelNames_, "Z"] :=
 
 hasPassQ[channelNames_, "sampleCount"] :=
   KeyExistsQ[channelNames, "default"] && MemberQ[channelNames["default"], "sampleCount"];
+
+hasPassQ[channelNames_, "roughness"] :=
+  (KeyExistsQ[channelNames, "default"] && MemberQ[channelNames["default"], "roughness"]) ||
+  (KeyExistsQ[channelNames, "roughness"] && (MemberQ[channelNames["roughness"], "roughness"] || MemberQ[channelNames["roughness"], "z"] || MemberQ[channelNames["roughness"], "Z"]));
 
 hasPassQ[channelNames_, pass : "albedo" | "diffuse" | "specular"] :=
   KeyExistsQ[channelNames, pass] && (SubsetQ[channelNames[pass], {"r", "g", "b"}] || SubsetQ[channelNames[pass], {"R", "G", "B"}]);
@@ -299,10 +304,10 @@ extractPass[data_Association, indexAssoc_Association, passName_String] := Module
       positions = idx /@ {"R", "G", "B"};
       arr = sliceChannels[data[group], positions];
       <|"Type" -> "Color", "Data" -> NumericArray[arr, "Real32"]|>,
-    "A" | "Z" | "sampleCount",
-      group = "default";
+    "A" | "Z" | "sampleCount" | "roughness",
+      group = If[KeyExistsQ[indexAssoc, "roughness"], "roughness", "default"];
       idx = indexAssoc[group];
-      positions = {idx[passName]};
+      positions = {If[KeyExistsQ[idx, passName], idx[passName], First[Values[idx]]]};
       arr = sliceChannels[data[group], positions];
       <|"Type" -> "Scalar", "Data" -> NumericArray[arr, "Real32"]|>,
     "albedo" | "diffuse" | "specular" | "denoised",

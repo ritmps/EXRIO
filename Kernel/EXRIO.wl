@@ -20,6 +20,9 @@ BeginPackage["EXRIO`", {
   "ImageMetrics`"
 }];
 
+$EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
+$EXRIOVersion = "2.0.4";
+
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
 CryptomatteObjectMask::usage = "CryptomatteObjectMask[exr, name] builds a soft mask image for a named cryptomatte object.";

@@ -1,0 +1,7 @@
+*.exr
+*.wxf
+*.wlnet
+.DS_Store
+*.swp
+*~
+.agent-scratch/

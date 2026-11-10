@@ -83,3 +83,10 @@
   - `Normal[exr]` $\to$ Returns the raw underlying association.
 * **Formatting Hygiene**:
   - Always ensure every text, code, JSON, and script file ends with a trailing newline `\n` (POSIX standard).
+
+## Paclet Version Management (Maj.Min.Build)
+
+* **Strict Version Invariant**: Whenever you modify and commit this paclet, you MUST increment the build number (Major.Minor.Build) in `version.json` and `PacletInfo.wl`.
+* The `.githooks/pre-commit` hook automatically manages this upon `git commit` (updating `version.json`, `PacletInfo.wl`, and `$EXRIOVersion`).
+* To manually bump the build number: run `python3 .githooks/pre-commit --bump`.
+

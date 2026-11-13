@@ -21,7 +21,7 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.0.7";
+$EXRIOVersion = "2.0.9";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
@@ -227,6 +227,8 @@ $KnownPassSpecs = <|
   "denoised" -> <|"Type" -> "Color"|>,
   "albedo" -> <|"Type" -> "Color"|>,
   "diffuse" -> <|"Type" -> "Color"|>,
+  "diffuse_irrad" -> <|"Type" -> "Color"|>,
+  "recon_beauty" -> <|"Type" -> "Color"|>,
   "specular" -> <|"Type" -> "Color"|>,
   "diffuse.direct" -> <|"Type" -> "Color"|>,
   "diffuse.indirect" -> <|"Type" -> "Color"|>,
@@ -243,6 +245,11 @@ $KnownPassSpecs = <|
   "dPdu" -> <|"Type" -> "Vector3"|>,
   "dPdv" -> <|"Type" -> "Vector3"|>
 |>;
+
+hasPassQ[channelNames_, pass_String] /; KeyExistsQ[channelNames, pass] &&
+  With[{spec = Lookup[$KnownPassSpecs, pass, <|"Type" -> "Color"|>], chs = channelNames[pass]},
+    If[spec["Type"] === "Scalar", MemberQ[chs, "Channel1"], SubsetQ[chs, {"Channel1", "Channel2", "Channel3"}]]
+  ] := True;
 
 hasPassQ[channelNames_, "beauty"] :=
   (KeyExistsQ[channelNames, "default"] && SubsetQ[channelNames["default"], {"R", "G", "B"}]) ||
@@ -268,25 +275,33 @@ hasPassQ[channelNames_, pass : "albedo" | "diffuse" | "specular"] :=
   KeyExistsQ[channelNames, pass] && (SubsetQ[channelNames[pass], {"r", "g", "b"}] || SubsetQ[channelNames[pass], {"R", "G", "B"}]);
 
 hasPassQ[channelNames_, "diffuse.direct"] :=
-  KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"direct.diffuse.r", "direct.diffuse.g", "direct.diffuse.b"}];
+  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"direct.diffuse.r", "direct.diffuse.g", "direct.diffuse.b"}]) ||
+  (KeyExistsQ[channelNames, "diffuse"] && SubsetQ[channelNames["diffuse"], {"direct.Channel1", "direct.Channel2", "direct.Channel3"}]);
 
 hasPassQ[channelNames_, "diffuse.indirect"] :=
-  KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"indirect.diffuse.r", "indirect.diffuse.g", "indirect.diffuse.b"}];
+  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"indirect.diffuse.r", "indirect.diffuse.g", "indirect.diffuse.b"}]) ||
+  (KeyExistsQ[channelNames, "diffuse"] && SubsetQ[channelNames["diffuse"], {"indirect.Channel1", "indirect.Channel2", "indirect.Channel3"}]);
 
 hasPassQ[channelNames_, "specular.direct"] :=
-  KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"direct.specular.r", "direct.specular.g", "direct.specular.b"}];
+  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"direct.specular.r", "direct.specular.g", "direct.specular.b"}]) ||
+  (KeyExistsQ[channelNames, "specular"] && SubsetQ[channelNames["specular"], {"direct.Channel1", "direct.Channel2", "direct.Channel3"}]);
 
 hasPassQ[channelNames_, "specular.indirect"] :=
-  KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"indirect.specular.r", "indirect.specular.g", "indirect.specular.b"}];
+  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"indirect.specular.r", "indirect.specular.g", "indirect.specular.b"}]) ||
+  (KeyExistsQ[channelNames, "specular"] && SubsetQ[channelNames["specular"], {"indirect.Channel1", "indirect.Channel2", "indirect.Channel3"}]);
 
 hasPassQ[channelNames_, pass : "P" | "Po" | "dPdu" | "dPdv"] :=
   KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], (pass <> "." <> # & /@ {"x", "y", "z"})];
 
 hasPassQ[channelNames_, "Nn"] :=
-  KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"Nn.x", "Nn.y", "Nn.z"}];
+  (KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"Nn.x", "Nn.y", "Nn.z"}]) ||
+  (KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"Nn.Channel1", "Nn.Channel2", "Nn.Channel3"}]) ||
+  (KeyExistsQ[channelNames, "geometry.Nn"] && SubsetQ[channelNames["geometry.Nn"], {"Channel1", "Channel2", "Channel3"}]) ||
+  (KeyExistsQ[channelNames, "Nn"] && SubsetQ[channelNames["Nn"], {"Channel1", "Channel2", "Channel3"}]);
 
 hasPassQ[channelNames_, "NL"] :=
-  KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"NL.r", "NL.g", "NL.b"}];
+  (KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"NL.r", "NL.g", "NL.b"}]) ||
+  (KeyExistsQ[channelNames, "NL"] && SubsetQ[channelNames["NL"], {"Channel1", "Channel2", "Channel3"}]);
 
 hasPassQ[channelNames_, _] := False;
 
@@ -304,35 +319,65 @@ extractPass[data_Association, indexAssoc_Association, passName_String] := Module
         If[KeyExistsQ[indexAssoc, "beauty"], "beauty", "default"]
       ];
       idx = indexAssoc[group];
-      positions = idx /@ {"R", "G", "B"};
+      positions = idx /@ (If[SubsetQ[Keys[idx], {"R", "G", "B"}], {"R", "G", "B"}, {"Channel1", "Channel2", "Channel3"}]);
       arr = sliceChannels[data[group], positions];
       <|"Type" -> "Color", "Data" -> NumericArray[arr, "Real32"]|>,
     "A" | "Z" | "sampleCount" | "roughness",
-      group = If[KeyExistsQ[indexAssoc, "roughness"], "roughness", "default"];
+      group = If[KeyExistsQ[indexAssoc, passName], passName, "default"];
       idx = indexAssoc[group];
       positions = {If[KeyExistsQ[idx, passName], idx[passName], First[Values[idx]]]};
       arr = sliceChannels[data[group], positions];
       <|"Type" -> "Scalar", "Data" -> NumericArray[arr, "Real32"]|>,
-    "albedo" | "diffuse" | "specular" | "denoised",
+    "albedo" | "diffuse" | "diffuse_irrad" | "recon_beauty" | "specular" | "denoised",
       group = passName;
       idx = indexAssoc[group];
-      positions = idx /@ (If[SubsetQ[Keys[idx], {"R", "G", "B"}], {"R", "G", "B"}, {"r", "g", "b"}]);
+      positions = idx /@ Which[
+        SubsetQ[Keys[idx], {"R", "G", "B"}], {"R", "G", "B"},
+        SubsetQ[Keys[idx], {"r", "g", "b"}], {"r", "g", "b"},
+        True, {"Channel1", "Channel2", "Channel3"}
+      ];
       arr = sliceChannels[data[group], positions];
       <|"Type" -> "Color", "Data" -> NumericArray[arr, "Real32"]|>,
     "diffuse.direct" | "diffuse.indirect" | "specular.direct" | "specular.indirect",
-      group = "lighting";
-      idx = indexAssoc[group];
-      positions = With[{parts = StringSplit[passName, "."]},
-        idx /@ (parts[[2]] <> "." <> parts[[1]] <> "." <> # & /@ {"r", "g", "b"})
+      With[{parts = StringSplit[passName, "."]},
+        Which[
+          KeyExistsQ[indexAssoc, parts[[1]]] && SubsetQ[Keys[indexAssoc[parts[[1]]]], (parts[[2]] <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"})],
+            group = parts[[1]];
+            idx = indexAssoc[group];
+            positions = idx /@ (parts[[2]] <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}),
+          KeyExistsQ[indexAssoc, passName] && SubsetQ[Keys[indexAssoc[passName]], {"Channel1", "Channel2", "Channel3"}],
+            group = passName;
+            idx = indexAssoc[group];
+            positions = idx /@ {"Channel1", "Channel2", "Channel3"},
+          True,
+            group = "lighting";
+            idx = indexAssoc[group];
+            positions = idx /@ (parts[[2]] <> "." <> parts[[1]] <> "." <> # & /@ {"r", "g", "b"})
+        ]
       ];
       arr = sliceChannels[data[group], positions];
       <|"Type" -> "Color", "Data" -> NumericArray[arr, "Real32"]|>,
     "P" | "Po" | "Nn" | "NL" | "dPdu" | "dPdv",
-      group = "geometry";
-      idx = indexAssoc[group];
-      positions = If[passName === "NL",
-        idx /@ {"NL.r", "NL.g", "NL.b"},
-        idx /@ (passName <> "." <> # & /@ {"x", "y", "z"})
+      Which[
+        KeyExistsQ[indexAssoc, "geometry"] && SubsetQ[Keys[indexAssoc["geometry"]], (passName <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"})],
+          group = "geometry";
+          idx = indexAssoc[group];
+          positions = idx /@ (passName <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}),
+        KeyExistsQ[indexAssoc, "geometry." <> passName] && SubsetQ[Keys[indexAssoc["geometry." <> passName]], {"Channel1", "Channel2", "Channel3"}],
+          group = "geometry." <> passName;
+          idx = indexAssoc[group];
+          positions = idx /@ {"Channel1", "Channel2", "Channel3"},
+        KeyExistsQ[indexAssoc, passName] && SubsetQ[Keys[indexAssoc[passName]], {"Channel1", "Channel2", "Channel3"}],
+          group = passName;
+          idx = indexAssoc[group];
+          positions = idx /@ {"Channel1", "Channel2", "Channel3"},
+        True,
+          group = "geometry";
+          idx = indexAssoc[group];
+          positions = If[passName === "NL",
+            idx /@ {"NL.r", "NL.g", "NL.b"},
+            idx /@ (passName <> "." <> # & /@ {"x", "y", "z"})
+          ]
       ];
       arr = sliceChannels[data[group], positions];
       If[passName === "Nn" && SubsetQ[Keys[idx], {"P.x", "P.y", "P.z"}],
@@ -457,18 +502,54 @@ Options[WriteEXR] = {};
 WriteEXR[file_String, exr_?isEXRDataQ, opts : OptionsPattern[]] :=
   WriteEXR[file, Normal[exr], opts];
 
-WriteEXR[file_String, assoc_Association, opts : OptionsPattern[]] := Module[{passes = Lookup[assoc, "Passes", <||>], exportAssoc = <||>},
+WriteEXR[file_String, assoc_Association, opts : OptionsPattern[]] := Module[{
+  passes = Lookup[assoc, "Passes", <||>],
+  meta = Lookup[assoc, "Metadata", <||>],
+  modelInfo, exrAttrs = <||>,
+  exportAssoc = <||>, outFile = ExpandFileName[file], outDir
+},
   KeyValueMap[
     Function[{name, pass},
-      Module[{arr = Normal[Lookup[pass, "Data", None]]},
-        If[ArrayQ[arr],
+      Module[{raw = Lookup[pass, "Data", None], arr},
+        If[MatchQ[raw, _NumericArray] || ArrayQ[raw],
+          arr = If[MatchQ[raw, _NumericArray] && NumericArrayType[raw] === "Real32",
+            raw,
+            NumericArray[Normal[raw], "Real32"]
+          ];
           exportAssoc[name] = arr;
         ]
       ]
     ],
     passes
   ];
-  Export[file, exportAssoc, "EXR"]
+  If[AssociationQ[meta],
+    If[StringQ[Lookup[meta, "Provenance", None]],
+      exrAttrs["lpe_provenance"] = meta["Provenance"];
+    ];
+    modelInfo = Lookup[meta, "Model", <||>];
+    If[AssociationQ[modelInfo] && Length[modelInfo] > 0,
+      If[StringQ[Lookup[modelInfo, "PacletVersion", None]],
+        exrAttrs["lpe_version"] = modelInfo["PacletVersion"];
+      ];
+      If[StringQ[Lookup[modelInfo, "Source", None]],
+        exrAttrs["lpe_model_source"] = modelInfo["Source"];
+      ];
+      If[StringQ[Lookup[modelInfo, "Path", None]],
+        exrAttrs["lpe_model_path"] = modelInfo["Path"];
+      ];
+      If[DateObjectQ[Lookup[modelInfo, "Date", None]],
+        exrAttrs["lpe_model_date"] = DateString[modelInfo["Date"], "ISODateTime"];
+      ];
+    ];
+  ];
+  outDir = DirectoryName[outFile];
+  If[StringLength[outDir] > 0 && !DirectoryQ[outDir],
+    CreateDirectory[outDir, CreateIntermediateDirectories -> True]
+  ];
+  If[Length[exrAttrs] > 0,
+    Export[outFile, exportAssoc, "OpenEXR", "Attributes" -> exrAttrs],
+    Export[outFile, exportAssoc, "OpenEXR"]
+  ]
 ];
 
 End[];

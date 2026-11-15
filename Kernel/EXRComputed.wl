@@ -22,33 +22,17 @@ isEXRDataQ[expr_] := MatchQ[expr, _[ _Association ]] && MatchQ[Head[expr], _Symb
 unwrapEXR[expr_] := If[isEXRDataQ[expr], First[expr], expr]
 wrapEXR[orig_, newAssoc_] := If[isEXRDataQ[orig], Head[orig][newAssoc], newAssoc]
 
-safeNormalize[v_] :=
-  Module[{u = N @ Flatten @ {v}},
-    If[Length[u] == 3 && VectorQ[u, NumericQ],
-      With[{n = Norm[u]},
-        If[n > 0.,
-          u / n
-          ,
-          {0., 0., 1.}
-        ]
-      ]
-      ,
-      {0., 0., 1.}
-    ]
-  ]
+safeNormalizeField[arr_] := Module[{f = Developer`ToPackedArray[N[arr]], mag, valid, out},
+  mag = Sqrt[Total[f^2, {3}]];
+  valid = UnitStep[mag - 10^-12];
+  out = (f * valid) / (mag + (1.0 - valid));
+  out[[All, All, 3]] = out[[All, All, 3]] + (1.0 - valid);
+  out
+];
 
-safeDivide[num_, den_] :=
-  MapThread[
-    If[Abs[#2] > 10^-8,
-      #1 / #2
-      ,
-      0.0
-    ]&
-    ,
-    {num, den}
-    ,
-    2
-  ]
+safeDivide[num_, den_] := Module[{valid = UnitStep[Abs[den] - 10^-8]},
+  (num * valid) / (den + (1.0 - valid))
+];
 
 objectMaskFromLabels[passes_Association] :=
   Module[{labels},
@@ -61,12 +45,14 @@ objectMaskFromLabels[passes_Association] :=
 
 computeCurvatureCore[p_, n_, dpdu_, dpdv_, mask_] :=
   Module[{px, nx, pu, pv, nu, nv, e, f, g, l, m, nCoeff, detI, w11, w12,
-     w21, w22, trW, detW, disc, sqrtDisc, k1, k2, h, k, shapeIndex, curvedness,
-     contrast, ux, vx, uy, vy, detJ, pux, pvx, puy, pvy, pxDeriv, pyDeriv,
-     nxDeriv, nyDeriv, a11, b11, a12, b12, normSq11, normSq12, useFirst1,
-     a1, b1, v1Raw, e1, e2x, e2y, e2z, e2, mask3D, k1Vec, k2Vec},
+     w21, w22, trW, detW, disc, sqrtDisc, k1, k2, h, k, diffK, validK,
+     shapeIndex, curvedness, contrast, ux, vx, uy, vy, detJ, pux, pvx,
+     puy, pvy, pxDeriv, pyDeriv, nxDeriv, nyDeriv, a11, b11, a12, b12,
+     normSq11, normSq12, useFirst1, a1, b1, v1Raw, e1, e2x, e2y, e2z, e2,
+     k1Vec, k2Vec, logCurvedness, parabolic, slant, tiltNorm, tiltX, tiltY, tilt,
+     unitWithValid, v1, m1, puProj, v2, m2, pvProj, v3, m3, xBasis, xProj, v4, m4, rem},
     px = GaussianFilter[p, 1.0];
-    nx = Map[safeNormalize, GaussianFilter[n, 1.0], {2}];
+    nx = safeNormalizeField[GaussianFilter[n, 1.0]];
     pxDeriv = DerivativeFilter[px, {1, 0}];
     pyDeriv = DerivativeFilter[px, {0, 1}];
     nxDeriv = DerivativeFilter[nx, {1, 0}];
@@ -92,30 +78,8 @@ computeCurvatureCore[p_, n_, dpdu_, dpdv_, mask_] :=
       uy = safeDivide[g * puy - f * pvy, detI];
       vy = safeDivide[-f * puy + e * pvy, detI];
       detJ = ux * vy - uy * vx;
-      nu =
-        MapThread[
-          If[Abs[#3] > 10^-8,
-            (#1 * #2 - #4 * #5) / #3
-            ,
-            {0., 0., 0.}
-          ]&
-          ,
-          {vy, nxDeriv, detJ, vx, nyDeriv}
-          ,
-          2
-        ];
-      nv =
-        MapThread[
-          If[Abs[#3] > 10^-8,
-            (-#1 * #2 + #4 * #5) / #3
-            ,
-            {0., 0., 0.}
-          ]&
-          ,
-          {uy, nxDeriv, detJ, ux, nyDeriv}
-          ,
-          2
-        ];
+      nu = safeDivide[vy * nxDeriv - vx * nyDeriv, detJ];
+      nv = safeDivide[-uy * nxDeriv + ux * nyDeriv, detJ];
     ];
     e = Total[pu * pu, {3}];
     f = Total[pu * pv, {3}];
@@ -130,26 +94,18 @@ computeCurvatureCore[p_, n_, dpdu_, dpdv_, mask_] :=
     w22 = safeDivide[-f * m + e * nCoeff, detI];
     trW = w11 + w22;
     detW = w11 * w22 - w12 * w21;
-    disc = trW^2 - 4 detW;
-    sqrtDisc = Sqrt[Map[Max[#, 0.]&, disc, {2}]];
+    disc = trW^2 - 4.0 * detW;
+    sqrtDisc = Sqrt[Ramp[disc]];
     k1 = 0.5 * (trW + sqrtDisc) * mask;
     k2 = 0.5 * (trW - sqrtDisc) * mask;
     h = 0.5 * trW * mask;
     k = detW * mask;
-    shapeIndex =
-      MapThread[
-          If[#1 > 10^-8,
-            -(2.0 / Pi) ArcTan[#2 / #1]
-            ,
-            0.0
-          ]&
-          ,
-          {k1 - k2, k1 + k2}
-          ,
-          2
-        ] * mask;
+
+    diffK = k1 - k2;
+    validK = UnitStep[diffK - 10^-8];
+    shapeIndex = -(2.0 / Pi) * ArcTan[(k1 + k2) * validK / (diffK + (1.0 - validK))] * mask;
     curvedness = Sqrt[0.5 * (k1^2 + k2^2)] * mask;
-    contrast = (k1 - k2) * mask;
+    contrast = diffK * mask;
 
     a11 = w12;
     b11 = k1 - w11;
@@ -157,49 +113,36 @@ computeCurvatureCore[p_, n_, dpdu_, dpdv_, mask_] :=
     b12 = w21;
     normSq11 = a11^2 + b11^2;
     normSq12 = a12^2 + b12^2;
-    useFirst1 = MapThread[If[#1 >= #2, 1.0, 0.0]&, {normSq11, normSq12}, 2];
+    useFirst1 = UnitStep[normSq11 - normSq12];
     a1 = useFirst1 * a11 + (1.0 - useFirst1) * a12;
     b1 = useFirst1 * b11 + (1.0 - useFirst1) * b12;
     v1Raw = a1 * pu + b1 * pv;
 
-    e1 =
-      MapThread[
-        Module[{v = #1, nVec = #2, puVec = #3, pvVec = #4, vNorm, pProj, pNorm},
-          vNorm = Norm[v];
-          If[vNorm > 10^-8,
-            v / vNorm
-            ,
-            pProj = puVec - (puVec . nVec) * nVec;
-            pNorm = Norm[pProj];
-            If[pNorm > 10^-8,
-              pProj / pNorm
-              ,
-              pProj = pvVec - (pvVec . nVec) * nVec;
-              pNorm = Norm[pProj];
-              If[pNorm > 10^-8,
-                pProj / pNorm
-                ,
-                pProj = {1.0, 0.0, 0.0} - nVec[[1]] * nVec;
-                pNorm = Norm[pProj];
-                If[pNorm > 10^-8, pProj / pNorm, {1.0, 0.0, 0.0}]
-              ]
-            ]
-          ]
-        ]&
-        ,
-        {v1Raw, nx, pu, pv}
-        ,
-        2
-      ];
+    unitWithValid[vec_] := Module[{mag = Sqrt[Total[vec^2, {3}]], val},
+      val = UnitStep[mag - 10^-8];
+      {(vec * val) / (mag + (1.0 - val)), val}
+    ];
+
+    {v1, m1} = unitWithValid[v1Raw];
+    rem = 1.0 - m1;
+    puProj = pu - Total[pu * nx, {3}] * nx;
+    {v2, m2} = unitWithValid[puProj];
+    pvProj = pv - Total[pv * nx, {3}] * nx;
+    {v3, m3} = unitWithValid[pvProj];
+    xBasis = ConstantArray[{1.0, 0.0, 0.0}, Take[Dimensions[nx], 2]];
+    xProj = xBasis - nx[[All, All, 1]] * nx;
+    {v4, m4} = unitWithValid[xProj];
+
+    e1 = v1 * m1 +
+      rem * (v2 * m2 + (1.0 - m2) * (v3 * m3 + (1.0 - m3) * (v4 * m4 + (1.0 - m4) * xBasis)));
 
     e2x = nx[[All, All, 2]] * e1[[All, All, 3]] - nx[[All, All, 3]] * e1[[All, All, 2]];
     e2y = nx[[All, All, 3]] * e1[[All, All, 1]] - nx[[All, All, 1]] * e1[[All, All, 3]];
     e2z = nx[[All, All, 1]] * e1[[All, All, 2]] - nx[[All, All, 2]] * e1[[All, All, 1]];
-    e2 = MapThread[List, {e2x, e2y, e2z}, 2];
+    e2 = Transpose[{e2x, e2y, e2z}, {3, 1, 2}];
 
-    mask3D = MapThread[ConstantArray[#1, 3]&, {mask}, 2];
-    k1Vec = e1 * mask3D;
-    k2Vec = e2 * mask3D;
+    k1Vec = e1 * mask;
+    k2Vec = e2 * mask;
 
     logCurvedness = Log[1.0 + curvedness] * mask;
     parabolic = UnitStep[0.05 - Abs[k]] * mask;
@@ -208,7 +151,7 @@ computeCurvatureCore[p_, n_, dpdu_, dpdv_, mask_] :=
     tiltNorm = Sqrt[nx[[All, All, 1]]^2 + nx[[All, All, 2]]^2 + 10^-8];
     tiltX = (nx[[All, All, 1]] / tiltNorm) * mask;
     tiltY = (nx[[All, All, 2]] / tiltNorm) * mask;
-    tilt = MapThread[List, {tiltX, tiltY}, 2];
+    tilt = Transpose[{tiltX, tiltY}, {3, 1, 2}];
 
     <|"k1" -> k1, "k2" -> k2, "H" -> h, "K" -> k, "ShapeIndex" -> shapeIndex,
        "Curvedness" -> curvedness, "LogCurvedness" -> logCurvedness,

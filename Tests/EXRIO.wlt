@@ -5,13 +5,13 @@ VerificationTest[
 ]
 
 VerificationTest[
-  StringQ[EXRIO`$EXRIOVersion] && EXRIO`$EXRIOVersion === "2.0.9",
+  StringQ[EXRIO`$EXRIOVersion] && EXRIO`$EXRIOVersion === "2.1.10",
   True,
   TestID -> "exrio-version-check"
 ]
 
 VerificationTest[
-  sample = "/home/flip/renders/procedural_dataset/scene_031_view_000.exr";
+  sample = "/home/flip/renders/ecological_scenes_usd/ecological_scene_201_view_000.exr";
   FileExistsQ[sample],
   True,
   TestID -> "exrio-sample-exists"

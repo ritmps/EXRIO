@@ -5,7 +5,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-  sample = "/home/flip/renders/procedural_dataset/scene_031_view_000.exr";
+  sample = "/home/flip/renders/ecological_scenes_usd/ecological_scene_201_view_000.exr";
   exr = EXRIO`ReadEXR[sample, "ComputeDerivedPasses" -> True];
   MemberQ[exr["Passes"], "ShapeIndex"],
   True,

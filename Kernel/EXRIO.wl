@@ -2,12 +2,12 @@
 
 Module[{dir = DirectoryName[$InputFileName]},
   If[StringQ[dir] && dir =!= "",
-    Get[FileNameJoin[{dir, "EXRCryptomatte.wl"}]];
-    Get[FileNameJoin[{dir, "EXRComputed.wl"}]];
-    Get[FileNameJoin[{dir, "EXRBoxes.wl"}]];
-    Get[FileNameJoin[{dir, "EXRPreview.wl"}]];
-    Get[FileNameJoin[{dir, "EXRCamera.wl"}]];
-    Get[FileNameJoin[{dir, "ImageMetrics.wl"}]];
+    If[!MemberQ[$Packages, "EXRCryptomatte`"], Get[FileNameJoin[{dir, "EXRCryptomatte.wl"}]]];
+    If[!MemberQ[$Packages, "EXRComputed`"], Get[FileNameJoin[{dir, "EXRComputed.wl"}]]];
+    If[!MemberQ[$Packages, "EXRBoxes`"], Get[FileNameJoin[{dir, "EXRBoxes.wl"}]]];
+    If[!MemberQ[$Packages, "EXRPreview`"], Get[FileNameJoin[{dir, "EXRPreview.wl"}]]];
+    If[!MemberQ[$Packages, "EXRCamera`"], Get[FileNameJoin[{dir, "EXRCamera.wl"}]]];
+    If[!MemberQ[$Packages, "ImageMetrics`"], Get[FileNameJoin[{dir, "ImageMetrics.wl"}]]];
   ]
 ];
 
@@ -21,7 +21,7 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.0.9";
+$EXRIOVersion = "2.1.10";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
@@ -80,16 +80,6 @@ CryptomatteLabelImage[exr : _Association | _?isEXRDataQ] :=
     Image @ Colorize[seg["SegmentationMap"]]
   ];
 
-findEXRTool[name_String] := Module[{p},
-  p = Which[
-    FileExistsQ[FileNameJoin[{"/usr", "bin", name}]], FileNameJoin[{"/usr", "bin", name}],
-    FileExistsQ[FileNameJoin[{"/usr", "local", "bin", name}]], FileNameJoin[{"/usr", "local", "bin", name}],
-    FileExistsQ[FileNameJoin[{"/opt", "homebrew", "bin", name}]], FileNameJoin[{"/opt", "homebrew", "bin", name}],
-    True, name
-  ];
-  p
-];
-
 readBinaryEXRHeaderAttributes[path_String] := Module[{
   stream, magic, byte, name, type, size, startPos, endPos, attrs = <||>
 },
@@ -117,7 +107,7 @@ readBinaryEXRHeaderAttributes[path_String] := Module[{
     If[byte === EndOfFile, Break[]];
 
     size = BinaryRead[stream, "UnsignedInteger32", ByteOrdering -> -1];
-    If[size === EndOfFile, Break[]];
+    If[size === EndOfFile || !IntegerQ[size], Break[]];
 
     startPos = StreamPosition[stream];
     endPos = startPos + size;
@@ -157,36 +147,6 @@ readBinaryEXRHeaderAttributes[path_String] := Module[{
   attrs
 ];
 
-getEXRHeaderText[path_String] :=
-  Quiet @ Check[RunProcess[{findEXRTool["exrheader"], path}, "StandardOutput"], ""];
-
-parseSciNumberString[str_String] := Module[{normalized, val},
-  normalized = StringReplace[StringTrim[str], 
-    RegularExpression["(?i)e\\+?(-?)0*(\\d+)"] :> "*^$1$2"
-  ];
-  val = Quiet @ Check[ToExpression @ normalized, Missing["NotANumber", str]];
-  If[NumericQ[val], val, Indeterminate]
-];
-
-parseEXRVector[headerText_String, key_String] := Module[{match, vec},
-  match = StringCases[headerText, RegularExpression["(?mi)^\\Q" <> key <> "\\E\\s*\\(type\\s+v3f\\):\\s*\\(([^\\)]*)\\)"] :> "$1"];
-  If[match === {},
-    Missing["KeyAbsent", key],
-    vec = parseSciNumberString /@ StringSplit[StringTrim @ First[match], Whitespace..];
-    If[VectorQ[vec, NumericQ], vec, {0., 0., 0.}]
-  ]
-];
-
-parseEXRMatrix[headerText_String, key_String] := Module[{match, rows, mat},
-  match = StringCases[headerText, RegularExpression["(?mis)^\\Q" <> key <> "\\E\\s*\\(type\\s+m44f\\):\\s*\\((.*?)\\)"] :> "$1"];
-  If[match === {},
-    Missing["KeyAbsent", key],
-    rows = StringSplit[StringTrim @ First[match], "\n"];
-    mat = parseSciNumberString /@ StringSplit[StringTrim[#], Whitespace..] & /@ rows;
-    If[MatrixQ[mat, NumericQ] && Det[mat] != 0, mat, IdentityMatrix[4]]
-  ]
-];
-
 parseFilenameMetadata[path_String] := Module[{base = FileBaseName[path], cases},
   base = StringDelete[base, ".crypto"];
   cases = StringCases[base, "scene_" ~~ s : DigitCharacter.. ~~ "_view_" ~~ v : DigitCharacter.. :> <|"SceneID" -> ToExpression[s], "ViewID" -> ToExpression[v]|>];
@@ -195,19 +155,18 @@ parseFilenameMetadata[path_String] := Module[{base = FileBaseName[path], cases},
   If[cases =!= {}, First[cases], <||>]
 ];
 
-buildMetadata[path_String, attrs_Association] := Module[{binAttrs, headerText, filenameMeta},
+buildMetadata[path_String, attrs_Association] := Module[{binAttrs, filenameMeta},
   binAttrs = readBinaryEXRHeaderAttributes[path];
-  headerText = getEXRHeaderText[path];
   filenameMeta = parseFilenameMetadata[path];
   <|
     "RawAttributes" -> attrs,
     "Camera" -> <|
       "FOV" -> Lookup[attrs, "Fov", Lookup[binAttrs, "fov", Missing["KeyAbsent", "Fov"]]],
-      "Eye" -> Replace[Lookup[attrs, "Cam_eye", Lookup[binAttrs, "cam_eye", Missing["KeyAbsent", "Cam_eye"]]], _Missing :> parseEXRVector[headerText, "cam_eye"]],
-      "At" -> Replace[Lookup[attrs, "Cam_at", Lookup[binAttrs, "cam_at", Missing["KeyAbsent", "Cam_at"]]], _Missing :> parseEXRVector[headerText, "cam_at"]],
-      "Up" -> Replace[Lookup[attrs, "Cam_up", Lookup[binAttrs, "cam_up", Missing["KeyAbsent", "Cam_up"]]], _Missing :> parseEXRVector[headerText, "cam_up"]],
-      "WorldToCamera" -> Lookup[binAttrs, "worldToCamera", parseEXRMatrix[headerText, "worldToCamera"]],
-      "WorldToNDC" -> Lookup[binAttrs, "worldToNDC", parseEXRMatrix[headerText, "worldToNDC"]]
+      "Eye" -> Lookup[attrs, "Cam_eye", Lookup[binAttrs, "cam_eye", Missing["KeyAbsent", "Cam_eye"]]],
+      "At" -> Lookup[attrs, "Cam_at", Lookup[binAttrs, "cam_at", Missing["KeyAbsent", "Cam_at"]]],
+      "Up" -> Lookup[attrs, "Cam_up", Lookup[binAttrs, "cam_up", Missing["KeyAbsent", "Cam_up"]]],
+      "WorldToCamera" -> Lookup[binAttrs, "worldToCamera", Missing["KeyAbsent", "worldToCamera"]],
+      "WorldToNDC" -> Lookup[binAttrs, "worldToNDC", Missing["KeyAbsent", "worldToNDC"]]
     |>,
     "Material" -> <|
       "Name" -> Lookup[attrs, "Material_name", Lookup[filenameMeta, "MaterialName", Missing["KeyAbsent", "Material_name"]]],
@@ -222,88 +181,59 @@ buildMetadata[path_String, attrs_Association] := Module[{binAttrs, headerText, f
   |>
 ];
 
+colorCandidates[name_String] := {
+  {name, {"R", "G", "B"}},
+  {name, {"r", "g", "b"}},
+  {name, {"Channel1", "Channel2", "Channel3"}}
+};
+
+lpeCandidates[group_String, sub_String] := {
+  {group, sub <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}},
+  {group <> "." <> sub, {"Channel1", "Channel2", "Channel3"}},
+  {"lighting", sub <> "." <> group <> "." <> # & /@ {"r", "g", "b"}}
+};
+
+geomCandidates[name_String] := {
+  {"geometry", name <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}},
+  {"geometry." <> name, {"Channel1", "Channel2", "Channel3"}},
+  {name, {"Channel1", "Channel2", "Channel3"}},
+  {"geometry", If[name === "NL", {"NL.r", "NL.g", "NL.b"}, name <> "." <> # & /@ {"x", "y", "z"}]}
+};
+
 $KnownPassSpecs = <|
-  "beauty" -> <|"Type" -> "Color"|>,
-  "denoised" -> <|"Type" -> "Color"|>,
-  "albedo" -> <|"Type" -> "Color"|>,
-  "diffuse" -> <|"Type" -> "Color"|>,
-  "diffuse_irrad" -> <|"Type" -> "Color"|>,
-  "recon_beauty" -> <|"Type" -> "Color"|>,
-  "specular" -> <|"Type" -> "Color"|>,
-  "diffuse.direct" -> <|"Type" -> "Color"|>,
-  "diffuse.indirect" -> <|"Type" -> "Color"|>,
-  "specular.direct" -> <|"Type" -> "Color"|>,
-  "specular.indirect" -> <|"Type" -> "Color"|>,
-  "A" -> <|"Type" -> "Scalar"|>,
-  "Z" -> <|"Type" -> "Scalar"|>,
-  "sampleCount" -> <|"Type" -> "Scalar"|>,
-  "roughness" -> <|"Type" -> "Scalar"|>,
-  "P" -> <|"Type" -> "Vector3"|>,
-  "Po" -> <|"Type" -> "Vector3"|>,
-  "Nn" -> <|"Type" -> "Vector3"|>,
-  "NL" -> <|"Type" -> "Vector3"|>,
-  "dPdu" -> <|"Type" -> "Vector3"|>,
-  "dPdv" -> <|"Type" -> "Vector3"|>
+  "beauty" -> <|"Type" -> "Color", "Candidates" -> Join[colorCandidates["denoised"], colorCandidates["beauty"], colorCandidates["default"]]|>,
+  "denoised" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["denoised"]|>,
+  "albedo" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["albedo"]|>,
+  "diffuse" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["diffuse"]|>,
+  "diffuse_irrad" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["diffuse_irrad"]|>,
+  "recon_beauty" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["recon_beauty"]|>,
+  "specular" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["specular"]|>,
+  "diffuse.direct" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["diffuse", "direct"]|>,
+  "diffuse.indirect" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["diffuse", "indirect"]|>,
+  "specular.direct" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["specular", "direct"]|>,
+  "specular.indirect" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["specular", "indirect"]|>,
+  "A" -> <|"Type" -> "Scalar", "Candidates" -> {{"A", {"Channel1"}}, {"default", {"A"}}}|>,
+  "Z" -> <|"Type" -> "Scalar", "Candidates" -> {{"Z", {"Channel1"}}, {"default", {"Z"}}}|>,
+  "sampleCount" -> <|"Type" -> "Scalar", "Candidates" -> {{"sampleCount", {"Channel1"}}, {"default", {"sampleCount"}}}|>,
+  "roughness" -> <|"Type" -> "Scalar", "Candidates" -> {{"roughness", {"Channel1"}}, {"roughness", {"roughness"}}, {"roughness", {"z"}}, {"roughness", {"Z"}}, {"default", {"roughness"}}}|>,
+  "P" -> <|"Type" -> "Vector3", "Candidates" -> geomCandidates["P"]|>,
+  "Po" -> <|"Type" -> "Vector3", "Candidates" -> geomCandidates["Po"]|>,
+  "Nn" -> <|"Type" -> "Vector3", "Candidates" -> geomCandidates["Nn"]|>,
+  "NL" -> <|"Type" -> "Vector3", "Candidates" -> geomCandidates["NL"]|>,
+  "dPdu" -> <|"Type" -> "Vector3", "Candidates" -> geomCandidates["dPdu"]|>,
+  "dPdv" -> <|"Type" -> "Vector3", "Candidates" -> geomCandidates["dPdv"]|>
 |>;
 
-hasPassQ[channelNames_, pass_String] /; KeyExistsQ[channelNames, pass] &&
-  With[{spec = Lookup[$KnownPassSpecs, pass, <|"Type" -> "Color"|>], chs = channelNames[pass]},
-    If[spec["Type"] === "Scalar", MemberQ[chs, "Channel1"], SubsetQ[chs, {"Channel1", "Channel2", "Channel3"}]]
-  ] := True;
-
-hasPassQ[channelNames_, "beauty"] :=
-  (KeyExistsQ[channelNames, "default"] && SubsetQ[channelNames["default"], {"R", "G", "B"}]) ||
-  (KeyExistsQ[channelNames, "beauty"] && SubsetQ[channelNames["beauty"], {"R", "G", "B"}]);
-
-hasPassQ[channelNames_, "denoised"] :=
-  KeyExistsQ[channelNames, "denoised"] && SubsetQ[channelNames["denoised"], {"R", "G", "B"}];
-
-hasPassQ[channelNames_, "A"] :=
-  KeyExistsQ[channelNames, "default"] && MemberQ[channelNames["default"], "A"];
-
-hasPassQ[channelNames_, "Z"] :=
-  KeyExistsQ[channelNames, "default"] && MemberQ[channelNames["default"], "Z"];
-
-hasPassQ[channelNames_, "sampleCount"] :=
-  KeyExistsQ[channelNames, "default"] && MemberQ[channelNames["default"], "sampleCount"];
-
-hasPassQ[channelNames_, "roughness"] :=
-  (KeyExistsQ[channelNames, "default"] && MemberQ[channelNames["default"], "roughness"]) ||
-  (KeyExistsQ[channelNames, "roughness"] && (MemberQ[channelNames["roughness"], "roughness"] || MemberQ[channelNames["roughness"], "z"] || MemberQ[channelNames["roughness"], "Z"]));
-
-hasPassQ[channelNames_, pass : "albedo" | "diffuse" | "specular"] :=
-  KeyExistsQ[channelNames, pass] && (SubsetQ[channelNames[pass], {"r", "g", "b"}] || SubsetQ[channelNames[pass], {"R", "G", "B"}]);
-
-hasPassQ[channelNames_, "diffuse.direct"] :=
-  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"direct.diffuse.r", "direct.diffuse.g", "direct.diffuse.b"}]) ||
-  (KeyExistsQ[channelNames, "diffuse"] && SubsetQ[channelNames["diffuse"], {"direct.Channel1", "direct.Channel2", "direct.Channel3"}]);
-
-hasPassQ[channelNames_, "diffuse.indirect"] :=
-  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"indirect.diffuse.r", "indirect.diffuse.g", "indirect.diffuse.b"}]) ||
-  (KeyExistsQ[channelNames, "diffuse"] && SubsetQ[channelNames["diffuse"], {"indirect.Channel1", "indirect.Channel2", "indirect.Channel3"}]);
-
-hasPassQ[channelNames_, "specular.direct"] :=
-  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"direct.specular.r", "direct.specular.g", "direct.specular.b"}]) ||
-  (KeyExistsQ[channelNames, "specular"] && SubsetQ[channelNames["specular"], {"direct.Channel1", "direct.Channel2", "direct.Channel3"}]);
-
-hasPassQ[channelNames_, "specular.indirect"] :=
-  (KeyExistsQ[channelNames, "lighting"] && SubsetQ[channelNames["lighting"], {"indirect.specular.r", "indirect.specular.g", "indirect.specular.b"}]) ||
-  (KeyExistsQ[channelNames, "specular"] && SubsetQ[channelNames["specular"], {"indirect.Channel1", "indirect.Channel2", "indirect.Channel3"}]);
-
-hasPassQ[channelNames_, pass : "P" | "Po" | "dPdu" | "dPdv"] :=
-  KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], (pass <> "." <> # & /@ {"x", "y", "z"})];
-
-hasPassQ[channelNames_, "Nn"] :=
-  (KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"Nn.x", "Nn.y", "Nn.z"}]) ||
-  (KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"Nn.Channel1", "Nn.Channel2", "Nn.Channel3"}]) ||
-  (KeyExistsQ[channelNames, "geometry.Nn"] && SubsetQ[channelNames["geometry.Nn"], {"Channel1", "Channel2", "Channel3"}]) ||
-  (KeyExistsQ[channelNames, "Nn"] && SubsetQ[channelNames["Nn"], {"Channel1", "Channel2", "Channel3"}]);
-
-hasPassQ[channelNames_, "NL"] :=
-  (KeyExistsQ[channelNames, "geometry"] && SubsetQ[channelNames["geometry"], {"NL.r", "NL.g", "NL.b"}]) ||
-  (KeyExistsQ[channelNames, "NL"] && SubsetQ[channelNames["NL"], {"Channel1", "Channel2", "Channel3"}]);
-
-hasPassQ[channelNames_, _] := False;
+resolvePassSpec[indexAssoc_Association, passName_String] := Module[{spec, match},
+  spec = Lookup[$KnownPassSpecs, passName, Missing["UnknownPass", passName]];
+  If[MissingQ[spec], Return[Missing["UnknownPass", passName]]];
+  match = SelectFirst[
+    spec["Candidates"],
+    KeyExistsQ[indexAssoc, #[[1]]] && SubsetQ[Keys[indexAssoc[#[[1]]]], #[[2]]] &,
+    Missing["Absent", passName]
+  ];
+  If[MissingQ[match], match, <|spec, "Group" -> match[[1]], "Channels" -> match[[2]]|>]
+];
 
 sliceChannels[array_, positions_List] :=
   If[Length[positions] == 1,
@@ -311,86 +241,21 @@ sliceChannels[array_, positions_List] :=
     Normal[array[[All, All, positions]]]
   ];
 
-extractPass[data_Association, indexAssoc_Association, passName_String] := Module[{group, idx, positions, arr},
-  Switch[passName,
-    "beauty",
-      group = If[KeyExistsQ[indexAssoc, "denoised"] && SubsetQ[Keys[indexAssoc["denoised"]], {"R", "G", "B"}],
-        "denoised",
-        If[KeyExistsQ[indexAssoc, "beauty"], "beauty", "default"]
-      ];
-      idx = indexAssoc[group];
-      positions = idx /@ (If[SubsetQ[Keys[idx], {"R", "G", "B"}], {"R", "G", "B"}, {"Channel1", "Channel2", "Channel3"}]);
-      arr = sliceChannels[data[group], positions];
-      <|"Type" -> "Color", "Data" -> NumericArray[arr, "Real32"]|>,
-    "A" | "Z" | "sampleCount" | "roughness",
-      group = If[KeyExistsQ[indexAssoc, passName], passName, "default"];
-      idx = indexAssoc[group];
-      positions = {If[KeyExistsQ[idx, passName], idx[passName], First[Values[idx]]]};
-      arr = sliceChannels[data[group], positions];
-      <|"Type" -> "Scalar", "Data" -> NumericArray[arr, "Real32"]|>,
-    "albedo" | "diffuse" | "diffuse_irrad" | "recon_beauty" | "specular" | "denoised",
-      group = passName;
-      idx = indexAssoc[group];
-      positions = idx /@ Which[
-        SubsetQ[Keys[idx], {"R", "G", "B"}], {"R", "G", "B"},
-        SubsetQ[Keys[idx], {"r", "g", "b"}], {"r", "g", "b"},
-        True, {"Channel1", "Channel2", "Channel3"}
-      ];
-      arr = sliceChannels[data[group], positions];
-      <|"Type" -> "Color", "Data" -> NumericArray[arr, "Real32"]|>,
-    "diffuse.direct" | "diffuse.indirect" | "specular.direct" | "specular.indirect",
-      With[{parts = StringSplit[passName, "."]},
-        Which[
-          KeyExistsQ[indexAssoc, parts[[1]]] && SubsetQ[Keys[indexAssoc[parts[[1]]]], (parts[[2]] <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"})],
-            group = parts[[1]];
-            idx = indexAssoc[group];
-            positions = idx /@ (parts[[2]] <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}),
-          KeyExistsQ[indexAssoc, passName] && SubsetQ[Keys[indexAssoc[passName]], {"Channel1", "Channel2", "Channel3"}],
-            group = passName;
-            idx = indexAssoc[group];
-            positions = idx /@ {"Channel1", "Channel2", "Channel3"},
-          True,
-            group = "lighting";
-            idx = indexAssoc[group];
-            positions = idx /@ (parts[[2]] <> "." <> parts[[1]] <> "." <> # & /@ {"r", "g", "b"})
-        ]
-      ];
-      arr = sliceChannels[data[group], positions];
-      <|"Type" -> "Color", "Data" -> NumericArray[arr, "Real32"]|>,
-    "P" | "Po" | "Nn" | "NL" | "dPdu" | "dPdv",
-      Which[
-        KeyExistsQ[indexAssoc, "geometry"] && SubsetQ[Keys[indexAssoc["geometry"]], (passName <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"})],
-          group = "geometry";
-          idx = indexAssoc[group];
-          positions = idx /@ (passName <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}),
-        KeyExistsQ[indexAssoc, "geometry." <> passName] && SubsetQ[Keys[indexAssoc["geometry." <> passName]], {"Channel1", "Channel2", "Channel3"}],
-          group = "geometry." <> passName;
-          idx = indexAssoc[group];
-          positions = idx /@ {"Channel1", "Channel2", "Channel3"},
-        KeyExistsQ[indexAssoc, passName] && SubsetQ[Keys[indexAssoc[passName]], {"Channel1", "Channel2", "Channel3"}],
-          group = passName;
-          idx = indexAssoc[group];
-          positions = idx /@ {"Channel1", "Channel2", "Channel3"},
-        True,
-          group = "geometry";
-          idx = indexAssoc[group];
-          positions = If[passName === "NL",
-            idx /@ {"NL.r", "NL.g", "NL.b"},
-            idx /@ (passName <> "." <> # & /@ {"x", "y", "z"})
-          ]
-      ];
-      arr = sliceChannels[data[group], positions];
-      If[passName === "Nn" && SubsetQ[Keys[idx], {"P.x", "P.y", "P.z"}],
-        Module[{pArr, signFlip},
-          pArr = sliceChannels[data[group], idx /@ {"P.x", "P.y", "P.z"}];
-          signFlip = 1.0 - 2.0 * UnitStep[Total[pArr * arr, {3}]];
-          arr = arr * Transpose[ConstantArray[signFlip, 3], {3, 1, 2}];
-        ]
-      ];
-      <|"Type" -> "Vector3", "Data" -> NumericArray[arr, "Real32"]|>,
-    _,
-      Nothing
-  ]
+extractPass[data_Association, indexAssoc_Association, passName_String] := Module[{
+  resolved, group, idx, positions, arr, pArr, signFlip
+},
+  resolved = resolvePassSpec[indexAssoc, passName];
+  If[MissingQ[resolved], Return[Nothing]];
+  group = resolved["Group"];
+  idx = indexAssoc[group];
+  positions = idx /@ resolved["Channels"];
+  arr = sliceChannels[data[group], positions];
+  If[passName === "Nn" && SubsetQ[Keys[idx], {"P.x", "P.y", "P.z"}],
+    pArr = sliceChannels[data[group], idx /@ {"P.x", "P.y", "P.z"}];
+    signFlip = 1.0 - 2.0 * UnitStep[Total[pArr * arr, {3}]];
+    arr = arr * Transpose[ConstantArray[signFlip, 3], {3, 1, 2}];
+  ];
+  <|"Type" -> resolved["Type"], "Data" -> NumericArray[arr, "Real32"]|>
 ];
 
 addDerivedPasses[exr : _Association | _?isEXRDataQ, envMap_] := Module[{
@@ -447,7 +312,8 @@ addDerivedPasses[exr : _Association | _?isEXRDataQ, envMap_] := Module[{
 Options[ReadEXR] = {
   "EnvironmentMap" -> None,
   "ComputeDerivedPasses" -> True,
-  "AttachCryptomatte" -> True
+  "AttachCryptomatte" -> True,
+  "Passes" -> All
 };
 
 ReadEXR[exr : _Association | _?isEXRDataQ, opts : OptionsPattern[]] := exr;
@@ -459,23 +325,29 @@ ReadEXR[f_File, opts : OptionsPattern[]] :=
   ReadEXR[First[f], opts];
 
 ReadEXR[file_String, opts : OptionsPattern[]] := Module[{
-  resolved = ExpandFileName[file], channelNames, data, attrs, indexAssoc, passNames, passes, exr, attachCrypto, compDerived
+  resolved = ExpandFileName[file], imported, channelNames, data, attrs,
+  indexAssoc, requestedPasses, passes, exr, attachCrypto, compDerived
 },
   If[!FileExistsQ[resolved],
     Return[Failure["FileNotFound", <|"File" -> file|>]]
   ];
 
-  channelNames = Quiet @ Import[resolved, "ChannelNames"];
-  data = Quiet @ Import[resolved, "Data"];
-  attrs = Quiet @ Check[Import[resolved, "Attributes"], <||>];
-
-  If[!AssociationQ[channelNames] || !AssociationQ[data],
-    Return[Failure["EXRImportFailed", <|"File" -> resolved, "ChannelNames" -> channelNames, "Data" -> data|>]]
+  imported = Quiet @ Import[resolved, {"OpenEXR", {"ChannelNames", "Data", "Attributes"}}];
+  If[!ListQ[imported] || Length[imported] =!= 3 || !AssociationQ[imported[[1]]] || !AssociationQ[imported[[2]]],
+    Return[Failure["EXRImportFailed", <|"File" -> resolved, "Imported" -> imported|>]]
   ];
+  {channelNames, data, attrs} = imported;
 
   indexAssoc = AssociationMap[AssociationThread[channelNames[#] -> Range[Length[channelNames[#]]]] &, Keys[channelNames]];
-  passNames = Select[Keys[$KnownPassSpecs], hasPassQ[channelNames, #] &];
-  passes = AssociationMap[extractPass[data, indexAssoc, #] &, passNames];
+  requestedPasses = OptionValue[ReadEXR, {opts}, "Passes"];
+  If[requestedPasses === All,
+    requestedPasses = Keys[$KnownPassSpecs],
+    requestedPasses = DeleteDuplicates @ Select[Flatten[{requestedPasses}], StringQ]
+  ];
+  passes = Select[
+    AssociationMap[extractPass[data, indexAssoc, #] &, requestedPasses],
+    AssociationQ
+  ];
 
   exr = <|
     "File" -> resolved,

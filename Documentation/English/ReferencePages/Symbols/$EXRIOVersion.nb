@@ -1,0 +1,150 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5307,        141]
+NotebookOptionsPosition[      3034,         96]
+NotebookOutlinePosition[      3668,        116]
+CellTagsIndexPosition[      3625,        113]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"5e4245e5-8432-41b4-8161-39906c861965"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"93b9a6d8-cd17-479f-90cd-9e81cce4ba88"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"182daead-a481-464f-85b7-3d366541ad19"],
+
+Cell["EXRIO`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"f42ac222-d354-4dfd-acb5-f94a2d2353b0"],
+
+Cell["EXRIO/ref/$EXRIOVersion", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"4d3875ae-b333-4c67-bbf1-c63d86812d22"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["$EXRIOVersion", "ObjectName",ExpressionUUID->"be02f2a8-a299-449c-919c-5651dc4eec45"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["$EXRIOVersion", "UsageSymbol"], " ", 
+  RowBox[{
+  "$EXRIOVersion", " ", "is", " ", "the", " ", "version", " ", "string", " ", 
+   "of", " ", 
+   RowBox[{"EXRIO", "."}]}]}]], "Usage",ExpressionUUID->"723e4dba-c935-4387-\
+8d7f-0a49724ca1de"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"1be53557-6b38-4e90-a16f-2976cc62a53b"],
+
+Cell["Details and options for $EXRIOVersion.", "NotesText",ExpressionUUID->"c0087420-9276-4aec-8993-19418f904959"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"b2391731-b5a6-49d5-ae90-085156866c44"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"fb493802-20ad-4e5c-9c22-d9bd98a63c0e"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"9b07170a-e427-4d53-adc9-971afb5769a2"],
+
+Cell["Check the loaded EXRIO paclet version:", "ExampleText",ExpressionUUID->"37cf0cff-f6bd-4b90-852c-3d502967b3ca"],
+
+Cell[BoxData["$EXRIOVersion"], "Input",ExpressionUUID->"a28f0dea-8e09-4c61-8132-08c85c33023d"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"62279f98-eb53-4e94-9bf4-adf0afd858ca"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ReadEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["EXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AddComputedPass", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PreviewEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
+"3ccfb975-9411-49da-b1fc-cbdc4487aec7"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRIO`", "type" -> "Symbol", "paclet" -> "EXRIO", "language" -> 
+    "en", "title" -> "$EXRIOVersion", "windowtitle" -> "$EXRIOVersion", "uri" -> 
+    "EXRIO/ref/$EXRIOVersion", "summary" -> 
+    "$EXRIOVersion is the version string of EXRIO.", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"5e4245e5-8432-41b4-8161-39906c861965"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"93b9a6d8-cd17-479f-90cd-9e81cce4ba88"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"182daead-a481-464f-85b7-3d366541ad19"],
+Cell[920, 32, 110, 1, 70, "Categorization",ExpressionUUID->"f42ac222-d354-4dfd-acb5-f94a2d2353b0"],
+Cell[1033, 35, 123, 1, 70, "Categorization",ExpressionUUID->"4d3875ae-b333-4c67-bbf1-c63d86812d22"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1193, 41, 90, 0, 70, "ObjectName",ExpressionUUID->"be02f2a8-a299-449c-919c-5651dc4eec45"],
+Cell[1286, 43, 276, 7, 70, "Usage",ExpressionUUID->"723e4dba-c935-4387-8d7f-0a49724ca1de"],
+Cell[CellGroupData[{
+Cell[1587, 54, 98, 0, 70, "NotesSection",ExpressionUUID->"1be53557-6b38-4e90-a16f-2976cc62a53b"],
+Cell[1688, 56, 114, 0, 70, "NotesText",ExpressionUUID->"c0087420-9276-4aec-8993-19418f904959"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1839, 61, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"b2391731-b5a6-49d5-ae90-085156866c44"],
+Cell[CellGroupData[{
+Cell[1961, 65, 95, 0, 70, "ExampleSection",ExpressionUUID->"fb493802-20ad-4e5c-9c22-d9bd98a63c0e"],
+Cell[2059, 67, 126, 1, 70, "Input",ExpressionUUID->"9b07170a-e427-4d53-adc9-971afb5769a2"],
+Cell[2188, 70, 116, 0, 70, "ExampleText",ExpressionUUID->"37cf0cff-f6bd-4b90-852c-3d502967b3ca"],
+Cell[2307, 72, 94, 0, 70, "Input",ExpressionUUID->"a28f0dea-8e09-4c61-8132-08c85c33023d"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2450, 78, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"62279f98-eb53-4e94-9bf4-adf0afd858ca"],
+Cell[2542, 80, 464, 12, 70, "SeeAlsoText",ExpressionUUID->"3ccfb975-9411-49da-b1fc-cbdc4487aec7"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

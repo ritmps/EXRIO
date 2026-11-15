@@ -1,0 +1,168 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5983,        159]
+NotebookOptionsPosition[      3682,        113]
+NotebookOutlinePosition[      4343,        134]
+CellTagsIndexPosition[      4300,        131]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"2c713bd3-95ee-4d6d-8ea7-79d59ec69d49"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"b9f66194-c7b6-49c5-a0e8-460051b3e96a"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"f373b548-867d-4d9e-9cad-c18b6232c2c5"],
+
+Cell["EXRBoxes`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"fe153fce-7b54-4544-8b48-9912829af230"],
+
+Cell["EXRIO/ref/PassToImage", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"6214325b-b428-437a-bd7b-89c87b761879"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PassToImage", "ObjectName",ExpressionUUID->"6af5ef8f-9561-4aa2-a521-5fe7b3ab353d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["PassToImage", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{"PassToImage", "[", "pass", "]"}], " ", "converts", " ", "an", " ",
+    "EXR", " ", "pass", " ", "association", " ", "to", " ", "a", " ", 
+   "Wolfram", " ", 
+   RowBox[{"Image", "."}]}]}]], "Usage",ExpressionUUID->"fe869c11-8ca3-4c5c-\
+b86e-6ab1b2b98203"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"4431007a-c027-45fb-b559-529b1cb7d21f"],
+
+Cell["Details and options for PassToImage.", "NotesText",ExpressionUUID->"68b9c33b-7b19-4c5b-9ca1-1beb782cad74"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"f8793ac7-178b-46fb-b9d9-ebbe407f7cd4"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"61be98eb-8f70-454f-bc0f-3c0da7d673e5"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"1e3f0cc5-a854-4404-8f13-58664b09e49d"],
+
+Cell["Convert a single pass association into a Wolfram Image:", "ExampleText",ExpressionUUID->"205b58d6-d270-4630-abcc-6c2e4ec6f702"],
+
+Cell[BoxData[
+ RowBox[{"PassToImage", "[", 
+  RowBox[{"exr", "[", 
+   RowBox[{"\"\<RawPasses\>\"", ",", " ", "\"\<beauty\>\""}], "]"}], 
+  "]"}]], "Input",ExpressionUUID->"4ffe4455-0b22-4b65-baab-8408bae66221"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"8e3cf615-2c7e-4961-b6a6-ab604bb7346a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ReadEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["WriteEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PreviewEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["EXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["MakeEXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AddComputedPass", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AttachCryptomatte", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeCurvature", "InlineFormula"]}]], "SeeAlsoText",ExpressionUU\
+ID->"885c6d4e-c2cc-4d6d-a290-fe95019e04f3"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRBoxes`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "PassToImage", "windowtitle" -> 
+    "PassToImage", "uri" -> "EXRIO/ref/PassToImage", "summary" -> 
+    "PassToImage[pass] converts an EXR pass association to a Wolfram Image.", 
+    "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"2c713bd3-95ee-4d6d-8ea7-79d59ec69d49"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"b9f66194-c7b6-49c5-a0e8-460051b3e96a"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"f373b548-867d-4d9e-9cad-c18b6232c2c5"],
+Cell[920, 32, 113, 1, 70, "Categorization",ExpressionUUID->"fe153fce-7b54-4544-8b48-9912829af230"],
+Cell[1036, 35, 121, 1, 70, "Categorization",ExpressionUUID->"6214325b-b428-437a-bd7b-89c87b761879"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1194, 41, 88, 0, 70, "ObjectName",ExpressionUUID->"6af5ef8f-9561-4aa2-a521-5fe7b3ab353d"],
+Cell[1285, 43, 350, 8, 70, "Usage",ExpressionUUID->"fe869c11-8ca3-4c5c-b86e-6ab1b2b98203"],
+Cell[CellGroupData[{
+Cell[1660, 55, 98, 0, 70, "NotesSection",ExpressionUUID->"4431007a-c027-45fb-b559-529b1cb7d21f"],
+Cell[1761, 57, 112, 0, 70, "NotesText",ExpressionUUID->"68b9c33b-7b19-4c5b-9ca1-1beb782cad74"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1910, 62, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"f8793ac7-178b-46fb-b9d9-ebbe407f7cd4"],
+Cell[CellGroupData[{
+Cell[2032, 66, 95, 0, 70, "ExampleSection",ExpressionUUID->"61be98eb-8f70-454f-bc0f-3c0da7d673e5"],
+Cell[2130, 68, 126, 1, 70, "Input",ExpressionUUID->"1e3f0cc5-a854-4404-8f13-58664b09e49d"],
+Cell[2259, 71, 133, 0, 70, "ExampleText",ExpressionUUID->"205b58d6-d270-4630-abcc-6c2e4ec6f702"],
+Cell[2395, 73, 210, 4, 70, "Input",ExpressionUUID->"4ffe4455-0b22-4b65-baab-8408bae66221"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2654, 83, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"8e3cf615-2c7e-4961-b6a6-ab604bb7346a"],
+Cell[2746, 85, 908, 24, 70, "SeeAlsoText",ExpressionUUID->"885c6d4e-c2cc-4d6d-a290-fe95019e04f3"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

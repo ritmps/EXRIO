@@ -1,0 +1,241 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      9046,        232]
+NotebookOptionsPosition[      6104,        179]
+NotebookOutlinePosition[      6919,        202]
+CellTagsIndexPosition[      6876,        199]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"ce3f577e-0550-4d1a-9031-d5fc12af173d"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"5f0fd756-09b9-41fe-91fd-3d9fb4383a19"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"ef80f21d-a814-4831-badb-1b20f37c3c3f"],
+
+Cell["EXRIO`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"4d78dbdb-363f-4d0c-b657-1ac0c0a09a0b"],
+
+Cell["EXRIO/ref/AddComputedPass", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"86389e80-a8bb-4c12-9571-98a6499f632c"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["AddComputedPass", "ObjectName",ExpressionUUID->"63d5fdb9-97b0-4565-a2db-2ab1314edd33"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["AddComputedPass", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"AddComputedPass", "[", 
+     RowBox[{
+     "exr", ",", " ", "name", ",", " ", "arrayOrFn", ",", " ", "opts"}], 
+     "]"}], " ", "stores", " ", "an", " ", "ad"}], "-", 
+   RowBox[{"hoc", " ", "computed", " ", "pass", " ", "under", " ", 
+    RowBox[{"\"\<Computed\>\"", "[", "name", "]"}], " ", "in", " ", "an", " ",
+     "EXRData", " ", 
+    RowBox[{"container", ".", "\n", 
+     RowBox[{
+      RowBox[{"AddComputedPass", "[", 
+       RowBox[{
+        RowBox[{"name", " ", "->", " ", "fn"}], ",", " ", "opts"}], "]"}], "[",
+       "exr", "]"}]}], " ", "is", " ", "the", " ", "operator", " ", "form", " ",
+     "for", " ", "pipeline", " ", 
+    RowBox[{"composition", "."}]}]}]}]], "Usage",ExpressionUUID->"8692be96-\
+74ad-42de-acf6-4c845ff59f16"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"dc81d8e4-e06f-4924-8e37-ba3ebeffa8b8"],
+
+Cell["The following options can be given:", "NotesText",ExpressionUUID->"21bc1f2f-2775-46c3-8ad9-e2b9337b1608"],
+
+Cell[BoxData[GridBox[{
+   {
+    StyleBox["Option",
+     FontWeight->"Bold"], 
+    StyleBox[
+     RowBox[{"Default", " ", "Value"}],
+     FontWeight->"Bold"]},
+   {
+    StyleBox["Type", "InlineFormula"], 
+    StyleBox["Automatic", "InlineFormula"]}
+  },
+  GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True, {False}}},
+  
+  GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{0.8}}}]], "TableText",Expr\
+essionUUID->"3e78e05a-37e7-46c3-b8ea-29fce962d30e"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"0db570af-2ed4-4a82-b8c6-94874f61965b"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"e83190f3-65de-4af6-a23f-b9596714396d"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"d07cd5b2-9c50-4dcc-b5b7-3a10f4e8f940"],
+
+Cell["\<\
+Attach an ad-hoc scalar pass in pipeline operator form (auto-infers \
+\"Scalar\" type):\
+\>", "ExampleText",ExpressionUUID->"4a817be5-1637-4e19-aad7-d9c5925e1843"],
+
+Cell[BoxData[
+ RowBox[{"exr", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"ReadEXR", "[", 
+    RowBox[{"\"\<scene_001_view_000.exr\>\"", ",", " ", 
+     RowBox[{"\"\<ComputeDerivedPasses\>\"", " ", "->", " ", "False"}]}], 
+    "]"}], " ", "//", "\n", "  ", 
+   RowBox[{"AddComputedPass", "[", 
+    RowBox[{"\"\<AlbedoMean\>\"", " ", "->", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Total", "[", 
+         RowBox[{
+          RowBox[{"Normal", "[", 
+           RowBox[{"#", "[", 
+            RowBox[{"\"\<Data\>\"", ",", " ", "\"\<albedo\>\""}], "]"}], 
+           "]"}], ",", " ", 
+          RowBox[{"{", "3", "}"}]}], "]"}], " ", "/", " ", "3.0"}], " ", 
+       "&"}], ")"}]}], "]"}]}]}]], "Input",ExpressionUUID->"6d29b62e-b20f-\
+475d-a5ee-a067797f93b6"],
+
+Cell["Attach a 3-channel vector pass explicitly:", "ExampleText",ExpressionUUID->"612521e4-466c-4513-906c-6a0ac80bb00f"],
+
+Cell[BoxData[
+ RowBox[{"exr", " ", "=", " ", 
+  RowBox[{"AddComputedPass", "[", 
+   RowBox[{"exr", ",", " ", "\"\<FlippedNormals\>\"", ",", " ", 
+    RowBox[{"-", 
+     RowBox[{"Normal", "[", 
+      RowBox[{"exr", "[", 
+       RowBox[{"\"\<Data\>\"", ",", " ", "\"\<Nn\>\""}], "]"}], "]"}]}], ",", 
+    " ", 
+    RowBox[{"\"\<Type\>\"", " ", "->", " ", "\"\<Vector3\>\""}]}], 
+   "]"}]}]], "Input",ExpressionUUID->"50ed8b20-67e0-4143-9f3e-d407fe57dac8"],
+
+Cell["Query the ad-hoc pass like any built-in pass:", "ExampleText",ExpressionUUID->"7b1bb1c2-d949-4e13-a4ab-501bec9625bc"],
+
+Cell[BoxData[
+ RowBox[{"exr", "[", "\"\<AlbedoMean\>\"", "]"}]], "Input",ExpressionUUID->"ab512e3a-2201-4301-8e0c-ce4afb406f8f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"e8f38886-7ebe-46fe-b1b0-68576260cd7a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ReadEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["WriteEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PreviewEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["EXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["MakeEXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PassToImage", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AttachCryptomatte", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeCurvature", "InlineFormula"]}]], "SeeAlsoText",ExpressionUU\
+ID->"0e7e52b2-bd24-4d71-9658-2dab689c5421"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRIO`", "type" -> "Symbol", "paclet" -> "EXRIO", "language" -> 
+    "en", "title" -> "AddComputedPass", "windowtitle" -> "AddComputedPass", 
+    "uri" -> "EXRIO/ref/AddComputedPass", "summary" -> 
+    "AddComputedPass[exr, name, arrayOrFn, opts] stores an ad-hoc computed \
+pass under \"Computed\"[name] in an EXRData container.\nAddComputedPass[name \
+-> fn, opts][exr] is the operator form for pipeline composition.", "index" -> 
+    True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"ce3f577e-0550-4d1a-9031-d5fc12af173d"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"5f0fd756-09b9-41fe-91fd-3d9fb4383a19"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"ef80f21d-a814-4831-badb-1b20f37c3c3f"],
+Cell[920, 32, 110, 1, 70, "Categorization",ExpressionUUID->"4d78dbdb-363f-4d0c-b657-1ac0c0a09a0b"],
+Cell[1033, 35, 125, 1, 70, "Categorization",ExpressionUUID->"86389e80-a8bb-4c12-9571-98a6499f632c"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1195, 41, 92, 0, 70, "ObjectName",ExpressionUUID->"63d5fdb9-97b0-4565-a2db-2ab1314edd33"],
+Cell[1290, 43, 858, 20, 70, "Usage",ExpressionUUID->"8692be96-74ad-42de-acf6-4c845ff59f16"],
+Cell[CellGroupData[{
+Cell[2173, 67, 98, 0, 70, "NotesSection",ExpressionUUID->"dc81d8e4-e06f-4924-8e37-ba3ebeffa8b8"],
+Cell[2274, 69, 111, 0, 70, "NotesText",ExpressionUUID->"21bc1f2f-2775-46c3-8ad9-e2b9337b1608"],
+Cell[2388, 71, 466, 14, 70, "TableText",ExpressionUUID->"3e78e05a-37e7-46c3-b8ea-29fce962d30e"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2891, 90, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"0db570af-2ed4-4a82-b8c6-94874f61965b"],
+Cell[CellGroupData[{
+Cell[3013, 94, 95, 0, 70, "ExampleSection",ExpressionUUID->"e83190f3-65de-4af6-a23f-b9596714396d"],
+Cell[3111, 96, 126, 1, 70, "Input",ExpressionUUID->"d07cd5b2-9c50-4dcc-b5b7-3a10f4e8f940"],
+Cell[3240, 99, 173, 3, 70, "ExampleText",ExpressionUUID->"4a817be5-1637-4e19-aad7-d9c5925e1843"],
+Cell[3416, 104, 779, 20, 70, "Input",ExpressionUUID->"6d29b62e-b20f-475d-a5ee-a067797f93b6"],
+Cell[4198, 126, 120, 0, 70, "ExampleText",ExpressionUUID->"612521e4-466c-4513-906c-6a0ac80bb00f"],
+Cell[4321, 128, 453, 10, 70, "Input",ExpressionUUID->"50ed8b20-67e0-4143-9f3e-d407fe57dac8"],
+Cell[4777, 140, 123, 0, 70, "ExampleText",ExpressionUUID->"7b1bb1c2-d949-4e13-a4ab-501bec9625bc"],
+Cell[4903, 142, 128, 1, 70, "Input",ExpressionUUID->"ab512e3a-2201-4301-8e0c-ce4afb406f8f"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5080, 149, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"e8f38886-7ebe-46fe-b1b0-68576260cd7a"],
+Cell[5172, 151, 904, 24, 70, "SeeAlsoText",ExpressionUUID->"0e7e52b2-bd24-4d71-9658-2dab689c5421"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

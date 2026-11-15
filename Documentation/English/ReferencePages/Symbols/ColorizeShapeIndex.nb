@@ -1,0 +1,192 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      6879,        183]
+NotebookOptionsPosition[      4404,        136]
+NotebookOutlinePosition[      5139,        157]
+CellTagsIndexPosition[      5096,        154]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"169aec33-48b8-45ea-be18-50a076d78c78"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"6247a2fa-ace1-4f48-98ae-5ac002a4fd8b"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"c90dd216-a593-442c-9fba-71dafba7d3be"],
+
+Cell["EXRComputed`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"5c0a59ed-ace7-44f9-9ac6-ef7898f2c100"],
+
+Cell["EXRIO/ref/ColorizeShapeIndex", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"44f01519-2ad7-4d34-90d6-0dbadf60f836"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ColorizeShapeIndex", "ObjectName",ExpressionUUID->"52452743-b33b-44a8-8c59-6c67422c2788"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ColorizeShapeIndex", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ColorizeShapeIndex", "[", 
+     RowBox[{"shapeIndex", ",", " ", "mask", ",", " ", "opts"}], "]"}], " ", 
+    "renders", " ", "a", " ", "continuous", " ", "or", " ", "9"}], "-", 
+   RowBox[{
+   "class", " ", "discrete", " ", "Koenderink", " ", "Shape", " ", "Index", " ",
+     "color", " ", "map", " ", 
+    RowBox[{"Image", "."}]}]}]}]], "Usage",ExpressionUUID->"0ac16a54-f4cf-\
+4c5d-aba5-4a5f097bb9c0"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"2a67ba9b-e436-4fdd-805d-8bc02a879a8d"],
+
+Cell["The following options can be given:", "NotesText",ExpressionUUID->"1b8431f8-926f-4bfe-af87-b8ed1b03948c"],
+
+Cell[BoxData[GridBox[{
+   {
+    StyleBox["Option",
+     FontWeight->"Bold"], 
+    StyleBox[
+     RowBox[{"Default", " ", "Value"}],
+     FontWeight->"Bold"]},
+   {
+    StyleBox["Discrete", "InlineFormula"], 
+    StyleBox["True", "InlineFormula"]},
+   {
+    StyleBox["CurvednessModulation", "InlineFormula"], 
+    StyleBox["None", "InlineFormula"]}
+  },
+  GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True, {False}}},
+  
+  GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{0.8}}}]], "TableText",Expr\
+essionUUID->"417a0e0e-5f9f-4988-9f4b-faaf7f5b389e"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"021932cb-cd6f-4440-86f7-d2468b9de10a"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"46b0e733-c4c7-4cbd-8ace-1fb0afa5f6aa"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"42e11171-50b4-40d3-aba0-eafc13818957"],
+
+Cell["\<\
+Render a discrete 9-class Koenderink Shape Index color map Image:\
+\>", "ExampleText",ExpressionUUID->"d64db9ec-d379-445b-93b2-7a4a92877068"],
+
+Cell[BoxData[
+ RowBox[{"ColorizeShapeIndex", "[", 
+  RowBox[{
+   RowBox[{"Normal", "[", 
+    RowBox[{"exr", "[", 
+     RowBox[{"\"\<ShapeIndex\>\"", ",", " ", "\"\<Data\>\""}], "]"}], "]"}], ",",
+    " ", 
+   RowBox[{"\"\<Discrete\>\"", " ", "->", " ", "True"}]}], "]"}]], "Input",Exp\
+ressionUUID->"e8d55264-10b1-4ea8-af8d-9eb80ceb1af4"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"17316309-a29f-4c83-9905-37a82d5bebcf"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ComputeCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeScaleSpaceCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["KoenderinkShapeCategory", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeEcologicalCues", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["SampleEnvironment", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ReadEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
+"87253151-154f-4121-b1b0-bc032bd1d809"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRComputed`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "ColorizeShapeIndex", "windowtitle" -> 
+    "ColorizeShapeIndex", "uri" -> "EXRIO/ref/ColorizeShapeIndex", "summary" -> 
+    "ColorizeShapeIndex[shapeIndex, mask, opts] renders a continuous or \
+9-class discrete Koenderink Shape Index color map Image.", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"169aec33-48b8-45ea-be18-50a076d78c78"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"6247a2fa-ace1-4f48-98ae-5ac002a4fd8b"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"c90dd216-a593-442c-9fba-71dafba7d3be"],
+Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"5c0a59ed-ace7-44f9-9ac6-ef7898f2c100"],
+Cell[1039, 35, 128, 1, 70, "Categorization",ExpressionUUID->"44f01519-2ad7-4d34-90d6-0dbadf60f836"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1204, 41, 95, 0, 70, "ObjectName",ExpressionUUID->"52452743-b33b-44a8-8c59-6c67422c2788"],
+Cell[1302, 43, 518, 12, 70, "Usage",ExpressionUUID->"0ac16a54-f4cf-4c5d-aba5-4a5f097bb9c0"],
+Cell[CellGroupData[{
+Cell[1845, 59, 98, 0, 70, "NotesSection",ExpressionUUID->"2a67ba9b-e436-4fdd-805d-8bc02a879a8d"],
+Cell[1946, 61, 111, 0, 70, "NotesText",ExpressionUUID->"1b8431f8-926f-4bfe-af87-b8ed1b03948c"],
+Cell[2060, 63, 566, 17, 70, "TableText",ExpressionUUID->"417a0e0e-5f9f-4988-9f4b-faaf7f5b389e"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2663, 85, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"021932cb-cd6f-4440-86f7-d2468b9de10a"],
+Cell[CellGroupData[{
+Cell[2785, 89, 95, 0, 70, "ExampleSection",ExpressionUUID->"46b0e733-c4c7-4cbd-8ace-1fb0afa5f6aa"],
+Cell[2883, 91, 126, 1, 70, "Input",ExpressionUUID->"42e11171-50b4-40d3-aba0-eafc13818957"],
+Cell[3012, 94, 151, 2, 70, "ExampleText",ExpressionUUID->"d64db9ec-d379-445b-93b2-7a4a92877068"],
+Cell[3166, 98, 338, 8, 70, "Input",ExpressionUUID->"e8d55264-10b1-4ea8-af8d-9eb80ceb1af4"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3553, 112, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"17316309-a29f-4c83-9905-37a82d5bebcf"],
+Cell[3645, 114, 731, 18, 70, "SeeAlsoText",ExpressionUUID->"87253151-154f-4121-b1b0-bc032bd1d809"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

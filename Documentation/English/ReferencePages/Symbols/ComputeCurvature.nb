@@ -1,0 +1,191 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      7022,        182]
+NotebookOptionsPosition[      4601,        135]
+NotebookOutlinePosition[      5380,        157]
+CellTagsIndexPosition[      5337,        154]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"896e5d64-660a-4e21-b879-78508460ceb6"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"db1397db-e08e-4d47-9a31-3e8db3763cd0"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"13399bbb-57ff-4d3f-82f3-f2f26853716a"],
+
+Cell["EXRComputed`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"10b11bb2-5be1-460c-abba-e2273f394b6f"],
+
+Cell["EXRIO/ref/ComputeCurvature", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"370a88e1-43c3-4961-b2cc-6c10814b7279"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ComputeCurvature", "ObjectName",ExpressionUUID->"138dfdf8-3bb7-4d70-bcec-e4601a4716c5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ComputeCurvature", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{"ComputeCurvature", "[", 
+    RowBox[{"pImg", ",", " ", "nImg"}], "]"}], " ", "computes", " ", 
+   "differential", " ", "geometry", " ", "passes", " ", "from", " ", 
+   "position", " ", "and", " ", "normal", " ", 
+   RowBox[{"images", ".", " ", 
+    RowBox[{"ComputeCurvature", "[", "exr", "]"}]}], " ", "computes", " ", 
+   "curvature", " ", "passes", " ", "for", " ", "an", " ", "EXR", " ", 
+   RowBox[{"association", "."}]}]}]], "Usage",ExpressionUUID->"44df3046-2b20-\
+4053-8f94-9435cf2c25d7"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"5b068ea2-fcde-4e16-962d-3a829ef20da4"],
+
+Cell["Details and options for ComputeCurvature.", "NotesText",ExpressionUUID->"bfffe93f-93b8-4b60-9618-a44c41eba2f4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"85e3889d-4fa8-4edc-944b-d832af190771"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"b26cb56c-91e7-4027-b0a3-1da353365267"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"f06bfc76-c379-4b08-a536-6a8eb052449a"],
+
+Cell["\<\
+Compute Weingarten principal curvatures, Shape Index, and Log-Curvedness:\
+\>", "ExampleText",ExpressionUUID->"5c28e0bb-1ad2-4f04-8a2c-1543eedd9fee"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"exrCurv", " ", "=", " ", 
+   RowBox[{"ComputeCurvature", "[", "exr", "]"}]}], ";"}], "\n", 
+ RowBox[{"exrCurv", "[", "\"\<ShapeIndex\>\"", "]"}]}], "Input",ExpressionUUID\
+->"fbb13bd4-0368-40ba-ad92-86c7018a071c"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"63e4779c-c988-4bf3-b2b2-74bc0bcef6eb"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ReadEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["WriteEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PreviewEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["EXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["MakeEXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AddComputedPass", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PassToImage", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AttachCryptomatte", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeScaleSpaceCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["KoenderinkShapeCategory", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ColorizeShapeIndex", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeEcologicalCues", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["SampleEnvironment", "InlineFormula"]}]], "SeeAlsoText",ExpressionU\
+UID->"2475a1e1-c4f8-42b8-9597-645249fda598"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRComputed`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "ComputeCurvature", "windowtitle" -> 
+    "ComputeCurvature", "uri" -> "EXRIO/ref/ComputeCurvature", "summary" -> 
+    "ComputeCurvature[pImg, nImg] computes differential geometry passes from \
+position and normal images. ComputeCurvature[exr] computes curvature passes \
+for an EXR association.", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"896e5d64-660a-4e21-b879-78508460ceb6"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"db1397db-e08e-4d47-9a31-3e8db3763cd0"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"13399bbb-57ff-4d3f-82f3-f2f26853716a"],
+Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"10b11bb2-5be1-460c-abba-e2273f394b6f"],
+Cell[1039, 35, 126, 1, 70, "Categorization",ExpressionUUID->"370a88e1-43c3-4961-b2cc-6c10814b7279"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1202, 41, 93, 0, 70, "ObjectName",ExpressionUUID->"138dfdf8-3bb7-4d70-bcec-e4601a4716c5"],
+Cell[1298, 43, 596, 12, 70, "Usage",ExpressionUUID->"44df3046-2b20-4053-8f94-9435cf2c25d7"],
+Cell[CellGroupData[{
+Cell[1919, 59, 98, 0, 70, "NotesSection",ExpressionUUID->"5b068ea2-fcde-4e16-962d-3a829ef20da4"],
+Cell[2020, 61, 117, 0, 70, "NotesText",ExpressionUUID->"bfffe93f-93b8-4b60-9618-a44c41eba2f4"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2174, 66, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"85e3889d-4fa8-4edc-944b-d832af190771"],
+Cell[CellGroupData[{
+Cell[2296, 70, 95, 0, 70, "ExampleSection",ExpressionUUID->"b26cb56c-91e7-4027-b0a3-1da353365267"],
+Cell[2394, 72, 126, 1, 70, "Input",ExpressionUUID->"f06bfc76-c379-4b08-a536-6a8eb052449a"],
+Cell[2523, 75, 159, 2, 70, "ExampleText",ExpressionUUID->"5c28e0bb-1ad2-4f04-8a2c-1543eedd9fee"],
+Cell[2685, 79, 249, 5, 70, "Input",ExpressionUUID->"fbb13bd4-0368-40ba-ad92-86c7018a071c"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2983, 90, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"63e4779c-c988-4bf3-b2b2-74bc0bcef6eb"],
+Cell[3075, 92, 1498, 39, 70, "SeeAlsoText",ExpressionUUID->"2475a1e1-c4f8-42b8-9597-645249fda598"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

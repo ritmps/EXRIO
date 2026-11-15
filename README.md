@@ -60,6 +60,12 @@ Needs["EXRIO`"]
 (* Load EXR with on-the-fly curvature passes *)
 exr = ReadEXR["scene_001_view_000.exr", "ComputeDerivedPasses" -> True]
 
+(* Or load only specific raw passes (fastest I/O) *)
+exrFast = ReadEXR["scene_001_view_000.exr",
+  "Passes" -> {"beauty", "albedo", "diffuse"},
+  "ComputeDerivedPasses" -> False
+]
+
 (* Query passes directly as Wolfram Images *)
 beautyImg = exr["beauty"]
 albedoImg = exr["albedo"]
@@ -69,6 +75,42 @@ curvednessImg = exr["Curvedness"]
 (* Inspect camera FOV and metadata *)
 fov = exr["Metadata", "Camera", "FOV"]
 cryptoMask = CryptomatteObjectMask[exr, "/World/Props/Vase"]
+```
+
+---
+
+## `EXRData` Schema & Ad-Hoc Computed Passes
+
+`ReadEXR` returns an `EXRData[<| ... |>]` container with five top-level keys:
+
+```mathematica
+EXRData[<|
+  "File"        -> "/path/to/file.exr",
+  "Passes"      -> <| passName -> <|"Type" -> type, "Data" -> NumericArray[..., "Real32"]|>, ... |>,
+  "Computed"    -> <| passName -> <|"Type" -> type, "Data" -> NumericArray[..., "Real32"]|>, ... |>,
+  "Metadata"    -> <|"RawAttributes" -> <||>, "Camera" -> <||>, "Material" -> <||>, "FrameInfo" -> <||>|>,
+  "Cryptomatte" -> <| ... |>
+|>]
+```
+
+* `"Passes"` holds raw AOVs/LPEs extracted from the EXR file; `"Computed"` holds analytically derived passes (keeping raw vs. derived provenance distinct for `WriteEXR`).
+* Accessors (`exr["MyPass"]`, `exr["Data", "MyPass"]`, `exr["Image", "MyPass"]`, `exr["Passes"]`) merge both transparently.
+
+### Adding Ad-Hoc Computed Passes (`AddComputedPass`)
+
+Use `AddComputedPass` to attach custom derived passes to `"Computed"` in either direct or pipeline (`//`) form. Array rank automatically infers `"Scalar"` (2D) or `"Color"` (3-channel 3D), or you can specify `"Type" -> "Vector3"` explicitly:
+
+```mathematica
+(* Pipeline operator form: compute mean albedo reflectance *)
+exr = ReadEXR["scene_001_view_000.exr", "ComputeDerivedPasses" -> False] //
+  AddComputedPass["AlbedoMean" -> (Total[Normal[#["Data", "albedo"]], {3}] / 3.0 &)]
+
+(* Direct form with explicit Vector3 type *)
+exr = AddComputedPass[exr, "FlippedNormals", -Normal[exr["Data", "Nn"]], "Type" -> "Vector3"]
+
+(* Immediately queryable like any built-in pass *)
+exr["AlbedoMean"]               (* -> Wolfram Image *)
+exr["Data", "FlippedNormals"]   (* -> Real32 NumericArray *)
 ```
 
 ---

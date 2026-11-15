@@ -1,0 +1,171 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      6113,        162]
+NotebookOptionsPosition[      3784,        116]
+NotebookOutlinePosition[      4472,        137]
+CellTagsIndexPosition[      4429,        134]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"959e7677-817c-442c-af79-a92e9bfb2483"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"68458daa-31ea-4f92-a52e-b8329bf0b3d7"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"5b31a40c-453c-43a0-a1fe-9e47fcf1711c"],
+
+Cell["EXRIO`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"5297d2a1-45f5-4884-8a58-100c0603e3cb"],
+
+Cell["EXRIO/ref/WriteEXR", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"99798467-6ab9-4cd7-a281-370ebc3634b7"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["WriteEXR", "ObjectName",ExpressionUUID->"caaa1120-763a-40a0-86f8-39b437b6f9bc"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["WriteEXR", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"WriteEXR", "[", 
+     RowBox[{"file", ",", " ", "exr", ",", " ", "opts"}], "]"}], " ", 
+    "exports", " ", "an", " ", "EXRData", " ", "container", " ", "or", " ", 
+    "association", " ", "of", " ", "passes", " ", "to", " ", "a", " ", 
+    "multi"}], "-", 
+   RowBox[{"channel", " ", "OpenEXR", " ", 
+    RowBox[{"file", "."}]}]}]}]], "Usage",ExpressionUUID->"9c2019cc-e154-4d3c-\
+a3f6-08640b9e7198"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"933e147e-6816-49e9-b9ec-2e4b61972572"],
+
+Cell["Details and options for WriteEXR.", "NotesText",ExpressionUUID->"a5b331dd-83ab-4f5d-bc33-ff7e6b47b466"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"8cdb2d72-47eb-471a-a48c-58943b12789e"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"b9525474-4a64-48ce-bb64-275f6509afe3"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"caafd4ae-70db-41ce-835f-19cde3dbaddd"],
+
+Cell["Export raw passes back to a multi-channel OpenEXR file:", "ExampleText",ExpressionUUID->"14232df7-f281-4db7-aae8-64874c221ae5"],
+
+Cell[BoxData[
+ RowBox[{"WriteEXR", "[", 
+  RowBox[{"\"\<output.exr\>\"", ",", " ", "exr"}], "]"}]], "Input",ExpressionU\
+UID->"e74ce71c-1dac-4791-a435-c9f5ec8314ab"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"e1f415e7-2474-4825-88bc-b83dc28ef239"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ReadEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PreviewEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["EXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["MakeEXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AddComputedPass", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PassToImage", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AttachCryptomatte", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeCurvature", "InlineFormula"]}]], "SeeAlsoText",ExpressionUU\
+ID->"41bcabd8-57dc-4573-ae49-212471d32009"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRIO`", "type" -> "Symbol", "paclet" -> "EXRIO", "language" -> 
+    "en", "title" -> "WriteEXR", "windowtitle" -> "WriteEXR", "uri" -> 
+    "EXRIO/ref/WriteEXR", "summary" -> 
+    "WriteEXR[file, exr, opts] exports an EXRData container or association of \
+passes to a multi-channel OpenEXR file.", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"959e7677-817c-442c-af79-a92e9bfb2483"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"68458daa-31ea-4f92-a52e-b8329bf0b3d7"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"5b31a40c-453c-43a0-a1fe-9e47fcf1711c"],
+Cell[920, 32, 110, 1, 70, "Categorization",ExpressionUUID->"5297d2a1-45f5-4884-8a58-100c0603e3cb"],
+Cell[1033, 35, 118, 1, 70, "Categorization",ExpressionUUID->"99798467-6ab9-4cd7-a281-370ebc3634b7"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1188, 41, 85, 0, 70, "ObjectName",ExpressionUUID->"caaa1120-763a-40a0-86f8-39b437b6f9bc"],
+Cell[1276, 43, 506, 12, 70, "Usage",ExpressionUUID->"9c2019cc-e154-4d3c-a3f6-08640b9e7198"],
+Cell[CellGroupData[{
+Cell[1807, 59, 98, 0, 70, "NotesSection",ExpressionUUID->"933e147e-6816-49e9-b9ec-2e4b61972572"],
+Cell[1908, 61, 109, 0, 70, "NotesText",ExpressionUUID->"a5b331dd-83ab-4f5d-bc33-ff7e6b47b466"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2054, 66, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"8cdb2d72-47eb-471a-a48c-58943b12789e"],
+Cell[CellGroupData[{
+Cell[2176, 70, 95, 0, 70, "ExampleSection",ExpressionUUID->"b9525474-4a64-48ce-bb64-275f6509afe3"],
+Cell[2274, 72, 126, 1, 70, "Input",ExpressionUUID->"caafd4ae-70db-41ce-835f-19cde3dbaddd"],
+Cell[2403, 75, 133, 0, 70, "ExampleText",ExpressionUUID->"14232df7-f281-4db7-aae8-64874c221ae5"],
+Cell[2539, 77, 165, 3, 70, "Input",ExpressionUUID->"e74ce71c-1dac-4791-a435-c9f5ec8314ab"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2753, 86, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"e1f415e7-2474-4825-88bc-b83dc28ef239"],
+Cell[2845, 88, 911, 24, 70, "SeeAlsoText",ExpressionUUID->"41bcabd8-57dc-4573-ae49-212471d32009"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

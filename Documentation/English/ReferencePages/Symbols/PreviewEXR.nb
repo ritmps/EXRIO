@@ -1,0 +1,165 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5852,        156]
+NotebookOptionsPosition[      3564,        110]
+NotebookOutlinePosition[      4212,        131]
+CellTagsIndexPosition[      4169,        128]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"059f2b20-b1a8-441c-81c2-068b66cb06f4"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"72cfc5c4-8c01-40cb-983d-0f00364b2bfb"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"c21cb6dd-2392-4b43-b64e-198231959c4f"],
+
+Cell["EXRPreview`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"2f731772-6d33-4aa1-968b-1bc8a17969b5"],
+
+Cell["EXRIO/ref/PreviewEXR", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"8322d973-7aa9-4276-99e3-51f6fd0f8867"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PreviewEXR", "ObjectName",ExpressionUUID->"da28c9e5-20df-40a3-9eb9-9646cefd76fd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["PreviewEXR", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{"PreviewEXR", "[", "exr", "]"}], " ", "makes", " ", "a", " ", 
+   "preview", " ", "grid", " ", "for", " ", "available", " ", 
+   RowBox[{"passes", "."}]}]}]], "Usage",ExpressionUUID->"c6160b19-fba5-4e0f-\
+9fc8-4938efc8fb88"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"61e12b7b-ae66-481e-a2f4-f07d91cb37db"],
+
+Cell["Details and options for PreviewEXR.", "NotesText",ExpressionUUID->"3a1130ea-f2d6-495f-91b3-617d84400fd0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"f7742b88-563f-4269-b944-80c87749a38d"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"5f7b3ebd-4939-4616-99d2-0921b2e6ce82"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"0096ee12-94c8-46a5-aa81-b66ebbcc5951"],
+
+Cell["Generate a contact-sheet preview grid of available passes:", \
+"ExampleText",ExpressionUUID->"5e9b18a1-f115-4941-a78d-abd6e8104b06"],
+
+Cell[BoxData[
+ RowBox[{"PreviewEXR", "[", "exr", "]"}]], "Input",ExpressionUUID->"ba3edf0d-5e92-45be-9693-e5ce6570b500"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"5d9e36f6-870e-45a3-9dfe-e67a935431e7"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ReadEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["WriteEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["EXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["MakeEXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AddComputedPass", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PassToImage", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AttachCryptomatte", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeCurvature", "InlineFormula"]}]], "SeeAlsoText",ExpressionUU\
+ID->"cebf0163-5834-4f7e-bff2-96333878b495"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRPreview`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "PreviewEXR", "windowtitle" -> 
+    "PreviewEXR", "uri" -> "EXRIO/ref/PreviewEXR", "summary" -> 
+    "PreviewEXR[exr] makes a preview grid for available passes.", "index" -> 
+    True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"059f2b20-b1a8-441c-81c2-068b66cb06f4"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"72cfc5c4-8c01-40cb-983d-0f00364b2bfb"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"c21cb6dd-2392-4b43-b64e-198231959c4f"],
+Cell[920, 32, 115, 1, 70, "Categorization",ExpressionUUID->"2f731772-6d33-4aa1-968b-1bc8a17969b5"],
+Cell[1038, 35, 120, 1, 70, "Categorization",ExpressionUUID->"8322d973-7aa9-4276-99e3-51f6fd0f8867"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1195, 41, 87, 0, 70, "ObjectName",ExpressionUUID->"da28c9e5-20df-40a3-9eb9-9646cefd76fd"],
+Cell[1285, 43, 317, 7, 70, "Usage",ExpressionUUID->"c6160b19-fba5-4e0f-9fc8-4938efc8fb88"],
+Cell[CellGroupData[{
+Cell[1627, 54, 98, 0, 70, "NotesSection",ExpressionUUID->"61e12b7b-ae66-481e-a2f4-f07d91cb37db"],
+Cell[1728, 56, 111, 0, 70, "NotesText",ExpressionUUID->"3a1130ea-f2d6-495f-91b3-617d84400fd0"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1876, 61, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"f7742b88-563f-4269-b944-80c87749a38d"],
+Cell[CellGroupData[{
+Cell[1998, 65, 95, 0, 70, "ExampleSection",ExpressionUUID->"5f7b3ebd-4939-4616-99d2-0921b2e6ce82"],
+Cell[2096, 67, 126, 1, 70, "Input",ExpressionUUID->"0096ee12-94c8-46a5-aa81-b66ebbcc5951"],
+Cell[2225, 70, 138, 1, 70, "ExampleText",ExpressionUUID->"5e9b18a1-f115-4941-a78d-abd6e8104b06"],
+Cell[2366, 73, 120, 1, 70, "Input",ExpressionUUID->"ba3edf0d-5e92-45be-9693-e5ce6570b500"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2535, 80, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"5d9e36f6-870e-45a3-9dfe-e67a935431e7"],
+Cell[2627, 82, 909, 24, 70, "SeeAlsoText",ExpressionUUID->"cebf0163-5834-4f7e-bff2-96333878b495"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      8630,        221]
+NotebookOptionsPosition[      5812,        169]
+NotebookOutlinePosition[      6883,        195]
+CellTagsIndexPosition[      6840,        192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"673d9059-b773-43c0-8260-d034443a42b1"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"6606a380-0048-40fa-80a3-3d5fc066429d"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"cae8a64a-be78-4aa1-bfa9-0aa856fd616a"],
+
+Cell["EXRComputed`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"8c0f4892-25e0-49db-80ce-f5185bbc3c91"],
+
+Cell["EXRIO/ref/ComputeScaleSpaceCurvature", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"d448de8b-0211-4407-9b87-23491e966ae3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ComputeScaleSpaceCurvature", "ObjectName",ExpressionUUID->"1398c0ac-499c-48dd-bbff-c790f428c54a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ComputeScaleSpaceCurvature", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"ComputeScaleSpaceCurvature", "[", 
+      RowBox[{"exr", ",", " ", "sigma", ",", " ", "opts"}], "]"}], " ", 
+     "computes", " ", "Koenderink", " ", "scale"}], "-", 
+    RowBox[{"space", " ", "/", " ", "local"}], "-", 
+    RowBox[{"jet", " ", "differential", " ", "invariants", " ", 
+     RowBox[{"(", 
+      RowBox[{
+      "ShapeIndex", ",", " ", "LogCurvedness", ",", " ", 
+       "ScaleNormalizedCurvedness", ",", " ", "k1", ",", " ", "k2", ",", " ", 
+       "H", ",", " ", "K", ",", " ", "KoenderinkCategory"}], ")"}], " ", "at",
+      " ", "spatial", " ", "aperture", " ", "sigma", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"in", " ", "pixels"}], ",", " ", 
+       RowBox[{"or", " ", "list", " ", "of", " ", "scales", " ", 
+        RowBox[{"{", 
+         RowBox[{"s1", ",", " ", "s2", ",", " ", "..."}], "}"}]}]}], 
+      ")"}]}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"using", " ", "either", " ", "\"\<Method\>\""}], " ", "->", " ", 
+    RowBox[{
+     RowBox[{"\"\<WeingartenJet\>\"", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"3", "D", " ", "manifold", " ", "1"}], "-", 
+        RowBox[{"jet", " ", "on", " ", "P", " ", "and", " ", "Nn"}]}], ")"}], 
+      " ", "or", " ", "\"\<Method\>\""}], " ", "->", " ", 
+     RowBox[{"\"\<MongeJet\>\"", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "D", " ", "Gaussian", " ", "2"}], "-", 
+         RowBox[{"jet", " ", 
+          RowBox[{"J", "^", "2"}], "_sigma", " ", "on", " ", "depth", " ", 
+          "Z"}]}], ")"}], "."}]}]}]}]}]}]], "Usage",ExpressionUUID->"108cca8e-\
+c76e-4d65-a6c9-9a8cb9ccb5ad"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"21db6919-666a-4b1d-9ec6-2993dba80ee3"],
+
+Cell["The following options can be given:", "NotesText",ExpressionUUID->"7716ed86-988a-4ff1-9f7c-54a5b29f0cd2"],
+
+Cell[BoxData[GridBox[{
+   {
+    StyleBox["Option",
+     FontWeight->"Bold"], 
+    StyleBox[
+     RowBox[{"Default", " ", "Value"}],
+     FontWeight->"Bold"]},
+   {
+    StyleBox["Method", "InlineFormula"], 
+    StyleBox["WeingartenJet", "InlineFormula"]},
+   {
+    StyleBox["Mask", "InlineFormula"], 
+    StyleBox["Automatic", "InlineFormula"]},
+   {
+    StyleBox["VisualAngleDegrees", "InlineFormula"], 
+    StyleBox["None", "InlineFormula"]}
+  },
+  GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True, {False}}},
+  
+  GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{0.8}}}]], "TableText",Expr\
+essionUUID->"35367df0-fcce-46f0-8cbf-21fcde0f3be4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"244085b9-9de7-4063-9a99-abde07f6d9b1"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"446d6dbb-426f-4c60-9e21-684fda3fd6dd"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"0c9567ab-d846-47c2-980a-17c06802325e"],
+
+Cell["\<\
+Compute Koenderink scale-space Shape Index at a 4-pixel Gaussian aperture:\
+\>", "ExampleText",ExpressionUUID->"5897719e-c78a-4ef1-bda2-f0c23c52d9d8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"sc", " ", "=", " ", 
+   RowBox[{"ComputeScaleSpaceCurvature", "[", 
+    RowBox[{"exr", ",", " ", "4.0"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"ColorizeShapeIndex", "[", 
+  RowBox[{"Normal", "[", 
+   RowBox[{"sc", "[", 
+    RowBox[{"\"\<ShapeIndex\>\"", ",", " ", "\"\<Data\>\""}], "]"}], "]"}], 
+  "]"}]}], "Input",ExpressionUUID->"7cdb56bb-b910-4d63-b178-2f0c2c1b0fd5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"0d2046e0-62c5-4c50-9756-54ce6d7f29f2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ComputeCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["KoenderinkShapeCategory", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ColorizeShapeIndex", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeEcologicalCues", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["SampleEnvironment", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ReadEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
+"f5500cb0-c4d6-4ab1-99b0-4a48ee4a9abe"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRComputed`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "ComputeScaleSpaceCurvature", 
+    "windowtitle" -> "ComputeScaleSpaceCurvature", "uri" -> 
+    "EXRIO/ref/ComputeScaleSpaceCurvature", "summary" -> 
+    "ComputeScaleSpaceCurvature[exr, sigma, opts] computes Koenderink \
+scale-space / local-jet differential invariants (ShapeIndex, LogCurvedness, \
+ScaleNormalizedCurvedness, k1, k2, H, K, KoenderinkCategory) at spatial \
+aperture sigma (in pixels, or list of scales {s1, s2, ...}), using either \
+\"Method\" -> \"WeingartenJet\" (3D manifold 1-jet on P and Nn) or \"Method\" \
+-> \"MongeJet\" (2D Gaussian 2-jet J^2_sigma on depth Z).", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"673d9059-b773-43c0-8260-d034443a42b1"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"6606a380-0048-40fa-80a3-3d5fc066429d"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"cae8a64a-be78-4aa1-bfa9-0aa856fd616a"],
+Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"8c0f4892-25e0-49db-80ce-f5185bbc3c91"],
+Cell[1039, 35, 136, 1, 70, "Categorization",ExpressionUUID->"d448de8b-0211-4407-9b87-23491e966ae3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1212, 41, 103, 0, 70, "ObjectName",ExpressionUUID->"1398c0ac-499c-48dd-bbff-c790f428c54a"],
+Cell[1318, 43, 1750, 41, 70, "Usage",ExpressionUUID->"108cca8e-c76e-4d65-a6c9-9a8cb9ccb5ad"],
+Cell[CellGroupData[{
+Cell[3093, 88, 98, 0, 70, "NotesSection",ExpressionUUID->"21db6919-666a-4b1d-9ec6-2993dba80ee3"],
+Cell[3194, 90, 111, 0, 70, "NotesText",ExpressionUUID->"7716ed86-988a-4ff1-9f7c-54a5b29f0cd2"],
+Cell[3308, 92, 661, 20, 70, "TableText",ExpressionUUID->"35367df0-fcce-46f0-8cbf-21fcde0f3be4"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4006, 117, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"244085b9-9de7-4063-9a99-abde07f6d9b1"],
+Cell[CellGroupData[{
+Cell[4128, 121, 95, 0, 70, "ExampleSection",ExpressionUUID->"446d6dbb-426f-4c60-9e21-684fda3fd6dd"],
+Cell[4226, 123, 126, 1, 70, "Input",ExpressionUUID->"0c9567ab-d846-47c2-980a-17c06802325e"],
+Cell[4355, 126, 160, 2, 70, "ExampleText",ExpressionUUID->"5897719e-c78a-4ef1-bda2-f0c23c52d9d8"],
+Cell[4518, 130, 402, 9, 70, "Input",ExpressionUUID->"7cdb56bb-b910-4d63-b178-2f0c2c1b0fd5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4969, 145, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"0d2046e0-62c5-4c50-9756-54ce6d7f29f2"],
+Cell[5061, 147, 723, 18, 70, "SeeAlsoText",ExpressionUUID->"f5500cb0-c4d6-4ab1-99b0-4a48ee4a9abe"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

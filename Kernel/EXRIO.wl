@@ -21,10 +21,11 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.1.10";
+$EXRIOVersion = "2.1.11";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
+AddComputedPass::usage = "AddComputedPass[exr, name, arrayOrFn, opts] stores an ad-hoc computed pass under \"Computed\"[name] in an EXRData container.\nAddComputedPass[name -> fn, opts][exr] is the operator form for pipeline composition.";
 CryptomatteObjectMask::usage = "CryptomatteObjectMask[exr, name] builds a soft mask image for a named cryptomatte object.";
 CryptomatteObjectMasks::usage = "CryptomatteObjectMasks[exr] builds soft masks for all named cryptomatte objects.";
 CryptomatteLabelImage::usage = "CryptomatteLabelImage[exr] builds a label image from the strongest cryptomatte match per pixel.";
@@ -366,6 +367,45 @@ ReadEXR[file_String, opts : OptionsPattern[]] := Module[{
     addDerivedPasses[exr, OptionValue[ReadEXR, {opts}, "EnvironmentMap"]],
     exr
   ]
+];
+
+(* Ad-hoc computed pass insertion *)
+Options[AddComputedPass] = {"Type" -> Automatic};
+
+AddComputedPass[name_String -> arrayOrFn_, opts : OptionsPattern[]][exr : _Association | _?isEXRDataQ] :=
+  AddComputedPass[exr, name, arrayOrFn, opts];
+
+AddComputedPass[exr : _Association | _?isEXRDataQ, name_String, arrayOrFn_, opts : OptionsPattern[]] := Module[{
+  assoc = unwrapEXR[exr], val, arr, dims, passType, reqType, computed
+},
+  val = If[MatchQ[arrayOrFn, _List | _NumericArray | _Image], arrayOrFn, arrayOrFn[exr]];
+  If[ImageQ[val],
+    arr = ImageData[val, "Real32"],
+    If[MatchQ[val, _NumericArray],
+      arr = Normal[val],
+      arr = val
+    ]
+  ];
+  If[!ArrayQ[arr, _, NumericQ] || !MemberQ[{2, 3}, ArrayDepth[arr]],
+    Return[Failure["InvalidPassData", <|"Name" -> name, "Depth" -> ArrayDepth[arr]|>]]
+  ];
+  dims = Dimensions[arr];
+  reqType = OptionValue[AddComputedPass, {opts}, "Type"];
+  passType = If[reqType =!= Automatic,
+    reqType,
+    Which[
+      Length[dims] == 2, "Scalar",
+      dims[[3]] == 3, "Color",
+      True, "Vector" <> ToString[dims[[3]]]
+    ]
+  ];
+  computed = Lookup[assoc, "Computed", <||>];
+  computed[name] = <|
+    "Type" -> passType,
+    "Data" -> If[MatchQ[val, _NumericArray] && NumericArrayType[val] === "Real32", val, NumericArray[N[arr], "Real32"]]
+  |>;
+  assoc["Computed"] = computed;
+  wrapEXR[exr, assoc]
 ];
 
 (* Multi-channel OpenEXR exporter *)

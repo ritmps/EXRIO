@@ -5,7 +5,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-  StringQ[EXRIO`$EXRIOVersion] && EXRIO`$EXRIOVersion === "2.1.10",
+  StringQ[EXRIO`$EXRIOVersion] && EXRIO`$EXRIOVersion === "2.1.11",
   True,
   TestID -> "exrio-version-check"
 ]
@@ -64,4 +64,11 @@ VerificationTest[
   MatchQ[exr["Metadata", "Camera", "FOV"], _?NumericQ],
   True,
   TestID -> "exrio-camera-fov-numeric"
+]
+
+VerificationTest[
+  exr3 = exr // EXRIO`AddComputedPass["AlbedoMean" -> (Total[Normal[#["Data", "albedo"]], {3}]/3. &)];
+  {MemberQ[exr3["Passes"], "AlbedoMean"], MatchQ[exr3["AlbedoMean"], _Image], exr3["Type", "AlbedoMean"]},
+  {True, True, "Scalar"},
+  TestID -> "exrio-add-computed-pass-operator"
 ]

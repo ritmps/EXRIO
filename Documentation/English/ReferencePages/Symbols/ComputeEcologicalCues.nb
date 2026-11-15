@@ -1,0 +1,273 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      9920,        264]
+NotebookOptionsPosition[      6944,        209]
+NotebookOutlinePosition[      8170,        238]
+CellTagsIndexPosition[      8127,        235]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"7fa7dc37-ad08-46fb-8e99-572da78d10d7"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"e292b19f-fd31-4349-a20a-3ce4f79ff823"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"f9ae3da7-2574-497b-a948-2cf15db77c38"],
+
+Cell["EXRComputed`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"57e8e5df-85d1-427b-b5e3-117aec772a5b"],
+
+Cell["EXRIO/ref/ComputeEcologicalCues", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"4ea6b207-5d06-44b4-8b2c-ea24bcc5b249"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ComputeEcologicalCues", "ObjectName",ExpressionUUID->"274091fa-887e-462e-8fc4-9ecab0b2291e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ComputeEcologicalCues", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"ComputeEcologicalCues", "[", "exr", "]"}], " ", "derives", " ",
+       "Decomp", " ", "v3", " ", "Gibsonian", " ", "cue", " ", "passes", " ", 
+      "from", " ", "camera"}], "-", 
+     RowBox[{"space", " ", 
+      RowBox[{"geometry", ".", "P"}], " ", "and", " ", 
+      RowBox[{"geometry", ".", "Nn"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"no", " ", "re"}], "-", 
+        RowBox[{"render", " ", "needed"}]}], ")"}]}]}], ":", " ", 
+    RowBox[{"LogDepth", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"ordinal", "-", 
+        RowBox[{"ranking", " ", "proxy"}]}], ",", " ", 
+       RowBox[{"never", " ", "supervised", " ", "metrically"}]}], ")"}]}]}], ",",
+    " ", 
+   RowBox[{"Contour", " ", 
+    RowBox[{"(", 
+     RowBox[{"occluding", " ", "edge", " ", "owned", " ", "by", " ", "the", " ", 
+      RowBox[{"near", "/", "figure"}], " ", "side"}], ")"}]}], ",", " ", 
+   RowBox[{"TextureGradient", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+      "grad", " ", "ln", " ", "of", " ", "optical", " ", "texture", " ", 
+       "density"}], ",", " ", 
+      RowBox[{
+      "compressed", " ", "to", " ", "the", " ", "unit", " ", "disk"}]}], 
+     ")"}]}], ",", " ", 
+   RowBox[{"TexValid", " ", 
+    RowBox[{"(", 
+     RowBox[{"mask", " ", "excluding", " ", "depth", " ", "discontinuities"}],
+      ")"}]}], ",", " ", 
+   RowBox[{"Occlusion", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"screen", "-", 
+       RowBox[{"space", " ", "horizon", " ", "AO", " ", "accessibility"}]}], ",",
+       " ", 
+      RowBox[{"1", " ", "=", " ", "open"}]}], ")"}], " ", "and", " ", 
+    "RimSign", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Koenderink", " ", "contour"}], "-", 
+        RowBox[{"convexity", " ", "sign", " ", "on", " ", "owned", " ", 
+         RowBox[{"contours", ":", " ", 
+          RowBox[{
+           RowBox[{"+", "1"}], " ", 
+           RowBox[{"convex", "/", "elliptic"}]}]}]}]}], ",", " ", 
+       RowBox[{
+        RowBox[{"-", "1"}], " ", 
+        RowBox[{"concave", "/", "hyperbolic"}]}], ",", " ", 
+       RowBox[{
+        RowBox[{"0", " ", "inflection", " ", "or", " ", "off"}], "-", 
+        "contour"}]}], ")"}], "."}]}]}]}]], "Usage",ExpressionUUID->"7df1ea88-\
+49f7-4778-8eab-6d3ab3fcf4e1"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"503e066f-b747-4273-9a1d-afbf07b4c3aa"],
+
+Cell["The following options can be given:", "NotesText",ExpressionUUID->"066c72b1-8982-4dce-93e9-c4f797d5e259"],
+
+Cell[BoxData[GridBox[{
+   {
+    StyleBox["Option",
+     FontWeight->"Bold"], 
+    StyleBox[
+     RowBox[{"Default", " ", "Value"}],
+     FontWeight->"Bold"]},
+   {
+    StyleBox["DepthStepThreshold", "InlineFormula"], 
+    StyleBox["0.02", "InlineFormula"]},
+   {
+    StyleBox["StepNormalThreshold", "InlineFormula"], 
+    StyleBox["0.5", "InlineFormula"]},
+   {
+    StyleBox["AORadiusFraction", "InlineFormula"], 
+    StyleBox["0.06", "InlineFormula"]},
+   {
+    StyleBox["AODirections", "InlineFormula"], 
+    StyleBox["8", "InlineFormula"]},
+   {
+    StyleBox["AOSteps", "InlineFormula"], 
+    StyleBox[
+     RowBox[{"{", 
+      RowBox[{
+      "2", ",", " ", "4", ",", " ", "8", ",", " ", "16", ",", " ", "32"}], 
+      "}"}], "InlineFormula"]},
+   {
+    StyleBox["AOBias", "InlineFormula"], 
+    StyleBox["0.1", "InlineFormula"]},
+   {
+    StyleBox["RimCurvatureEpsilon", "InlineFormula"], 
+    StyleBox["0.02", "InlineFormula"]},
+   {
+    StyleBox["FarDepth", "InlineFormula"], 
+    StyleBox["10000.", "InlineFormula"]}
+  },
+  GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True, {False}}},
+  
+  GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{0.8}}}]], "TableText",Expr\
+essionUUID->"bff145eb-8694-47f7-814a-57b4ee9e0d51"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"421df82e-36a6-48f3-906d-b10203f10a30"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"1995368b-ce08-4c33-b65a-7b92c74129e9"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"2c745a09-9814-4e46-8676-17503589558e"],
+
+Cell["\<\
+Derive Gibsonian ecological cue passes (LogDepth, Contour, TextureGradient, \
+Occlusion, RimSign):\
+\>", "ExampleText",ExpressionUUID->"a70803e1-623d-441c-80c4-aa0aa171d5bd"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"cues", " ", "=", " ", 
+   RowBox[{"ComputeEcologicalCues", "[", "exr", "]"}]}], ";"}], "\n", 
+ RowBox[{"cues", "[", "\"\<Contour\>\"", "]"}]}], "Input",ExpressionUUID->\
+"4405e281-1f6c-4c37-95be-e5d9ab9d2173"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"4967bc81-99f3-461a-a12a-2bd53ce92ed8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ComputeCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeScaleSpaceCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["KoenderinkShapeCategory", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ColorizeShapeIndex", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["SampleEnvironment", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ReadEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
+"b45cada1-449c-441a-9642-257bf8d0eb97"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRComputed`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "ComputeEcologicalCues", "windowtitle" -> 
+    "ComputeEcologicalCues", "uri" -> "EXRIO/ref/ComputeEcologicalCues", 
+    "summary" -> 
+    "ComputeEcologicalCues[exr] derives Decomp v3 Gibsonian cue passes from \
+camera-space geometry.P and geometry.Nn (no re-render needed): LogDepth \
+(ordinal-ranking proxy, never supervised metrically), Contour (occluding edge \
+owned by the near/figure side), TextureGradient (grad ln of optical texture \
+density, compressed to the unit disk), TexValid (mask excluding depth \
+discontinuities), Occlusion (screen-space horizon AO accessibility, 1 = open) \
+and RimSign (Koenderink contour-convexity sign on owned contours: +1 \
+convex/elliptic, -1 concave/hyperbolic, 0 inflection or off-contour).", 
+    "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"7fa7dc37-ad08-46fb-8e99-572da78d10d7"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"e292b19f-fd31-4349-a20a-3ce4f79ff823"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"f9ae3da7-2574-497b-a948-2cf15db77c38"],
+Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"57e8e5df-85d1-427b-b5e3-117aec772a5b"],
+Cell[1039, 35, 131, 1, 70, "Categorization",ExpressionUUID->"4ea6b207-5d06-44b4-8b2c-ea24bcc5b249"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1207, 41, 98, 0, 70, "ObjectName",ExpressionUUID->"274091fa-887e-462e-8fc4-9ecab0b2291e"],
+Cell[1308, 43, 2439, 65, 70, "Usage",ExpressionUUID->"7df1ea88-49f7-4778-8eab-6d3ab3fcf4e1"],
+Cell[CellGroupData[{
+Cell[3772, 112, 98, 0, 70, "NotesSection",ExpressionUUID->"503e066f-b747-4273-9a1d-afbf07b4c3aa"],
+Cell[3873, 114, 111, 0, 70, "NotesText",ExpressionUUID->"066c72b1-8982-4dce-93e9-c4f797d5e259"],
+Cell[3987, 116, 1242, 39, 70, "TableText",ExpressionUUID->"bff145eb-8694-47f7-814a-57b4ee9e0d51"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5266, 160, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"421df82e-36a6-48f3-906d-b10203f10a30"],
+Cell[CellGroupData[{
+Cell[5388, 164, 95, 0, 70, "ExampleSection",ExpressionUUID->"1995368b-ce08-4c33-b65a-7b92c74129e9"],
+Cell[5486, 166, 126, 1, 70, "Input",ExpressionUUID->"2c745a09-9814-4e46-8676-17503589558e"],
+Cell[5615, 169, 184, 3, 70, "ExampleText",ExpressionUUID->"a70803e1-623d-441c-80c4-aa0aa171d5bd"],
+Cell[5802, 174, 245, 5, 70, "Input",ExpressionUUID->"4405e281-1f6c-4c37-95be-e5d9ab9d2173"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6096, 185, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"4967bc81-99f3-461a-a12a-2bd53ce92ed8"],
+Cell[6188, 187, 728, 18, 70, "SeeAlsoText",ExpressionUUID->"b45cada1-449c-441a-9642-257bf8d0eb97"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

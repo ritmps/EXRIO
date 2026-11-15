@@ -1,0 +1,192 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      6868,        183]
+NotebookOptionsPosition[      4436,        136]
+NotebookOutlinePosition[      5128,        157]
+CellTagsIndexPosition[      5085,        154]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"a89a072b-a65f-4882-a9bb-477b051e1206"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"beddd1d0-1ec5-4d97-a49a-e57b46a99a9a"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"d920e5f0-090b-4ebc-ab46-47be01b4feae"],
+
+Cell["EXRComputed`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"39317f53-1599-406e-a7f6-2bb9da7345cd"],
+
+Cell["EXRIO/ref/SampleEnvironment", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"b8e9ad48-a6b8-4b3a-8483-bf9aaa142bbf"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["SampleEnvironment", "ObjectName",ExpressionUUID->"c7e47bc2-bdfd-4d22-bda4-fe6d8154cb06"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["SampleEnvironment", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{"SampleEnvironment", "[", 
+    RowBox[{"nImg", ",", " ", "envMap"}], "]"}], " ", "samples", " ", "an", " ",
+    "environment", " ", "map", " ", "using", " ", "the", " ", "normal", " ", 
+   RowBox[{"vector", "."}]}]}]], "Usage",ExpressionUUID->"f73273e7-dd0c-4e6f-\
+85d3-33d3dc0d6820"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"a915db02-f4b7-4007-abd6-e0329197a1e4"],
+
+Cell["The following options can be given:", "NotesText",ExpressionUUID->"413b232b-67f2-4c3c-818e-1b122664da89"],
+
+Cell[BoxData[GridBox[{
+   {
+    StyleBox["Option",
+     FontWeight->"Bold"], 
+    StyleBox[
+     RowBox[{"Default", " ", "Value"}],
+     FontWeight->"Bold"]},
+   {
+    StyleBox["FlipX", "InlineFormula"], 
+    StyleBox["True", "InlineFormula"]},
+   {
+    StyleBox["FlipY", "InlineFormula"], 
+    StyleBox["False", "InlineFormula"]},
+   {
+    StyleBox["InvertDirection", "InlineFormula"], 
+    StyleBox["True", "InlineFormula"]},
+   {
+    StyleBox["Return", "InlineFormula"], 
+    StyleBox["Luminance", "InlineFormula"]}
+  },
+  GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True, {False}}},
+  
+  GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{0.8}}}]], "TableText",Expr\
+essionUUID->"8bfdc297-6b12-453a-857a-7346bba4c7ca"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"48433691-84fc-4bfe-8fb4-e83852de8d00"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"172b5767-1fb5-4baa-a8f5-abd7245b07cd"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"384e4f36-f583-404f-a68f-be110b2ab545"],
+
+Cell["\<\
+Sample an equirectangular environment map along the surface normal pass:\
+\>", "ExampleText",ExpressionUUID->"a32905e3-20fc-4ec2-bc94-cf97e1f6077c"],
+
+Cell[BoxData[
+ RowBox[{"envSample", " ", "=", " ", 
+  RowBox[{"SampleEnvironment", "[", 
+   RowBox[{
+    RowBox[{"exr", "[", "\"\<Nn\>\"", "]"}], ",", " ", "envImage", ",", " ", 
+    RowBox[{"\"\<Return\>\"", " ", "->", " ", "\"\<Luminance\>\""}]}], 
+   "]"}]}]], "Input",ExpressionUUID->"080140ee-1bc1-49d9-978b-ec1c4bc4fe44"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"ae50894a-6e8a-4838-b66b-f61cfdcb15ee"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ComputeCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeScaleSpaceCurvature", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["KoenderinkShapeCategory", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ColorizeShapeIndex", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ComputeEcologicalCues", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["ReadEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
+"4781b151-1abe-49cb-bb94-76f8fd301365"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRComputed`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "SampleEnvironment", "windowtitle" -> 
+    "SampleEnvironment", "uri" -> "EXRIO/ref/SampleEnvironment", "summary" -> 
+    "SampleEnvironment[nImg, envMap] samples an environment map using the \
+normal vector.", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"a89a072b-a65f-4882-a9bb-477b051e1206"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"beddd1d0-1ec5-4d97-a49a-e57b46a99a9a"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"d920e5f0-090b-4ebc-ab46-47be01b4feae"],
+Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"39317f53-1599-406e-a7f6-2bb9da7345cd"],
+Cell[1039, 35, 127, 1, 70, "Categorization",ExpressionUUID->"b8e9ad48-a6b8-4b3a-8483-bf9aaa142bbf"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1203, 41, 94, 0, 70, "ObjectName",ExpressionUUID->"c7e47bc2-bdfd-4d22-bda4-fe6d8154cb06"],
+Cell[1300, 43, 384, 8, 70, "Usage",ExpressionUUID->"f73273e7-dd0c-4e6f-85d3-33d3dc0d6820"],
+Cell[CellGroupData[{
+Cell[1709, 55, 98, 0, 70, "NotesSection",ExpressionUUID->"a915db02-f4b7-4007-abd6-e0329197a1e4"],
+Cell[1810, 57, 111, 0, 70, "NotesText",ExpressionUUID->"413b232b-67f2-4c3c-818e-1b122664da89"],
+Cell[1924, 59, 737, 23, 70, "TableText",ExpressionUUID->"8bfdc297-6b12-453a-857a-7346bba4c7ca"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2698, 87, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"48433691-84fc-4bfe-8fb4-e83852de8d00"],
+Cell[CellGroupData[{
+Cell[2820, 91, 95, 0, 70, "ExampleSection",ExpressionUUID->"172b5767-1fb5-4baa-a8f5-abd7245b07cd"],
+Cell[2918, 93, 126, 1, 70, "Input",ExpressionUUID->"384e4f36-f583-404f-a68f-be110b2ab545"],
+Cell[3047, 96, 158, 2, 70, "ExampleText",ExpressionUUID->"a32905e3-20fc-4ec2-bc94-cf97e1f6077c"],
+Cell[3208, 100, 327, 6, 70, "Input",ExpressionUUID->"080140ee-1bc1-49d9-978b-ec1c4bc4fe44"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3584, 112, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"ae50894a-6e8a-4838-b66b-f61cfdcb15ee"],
+Cell[3676, 114, 732, 18, 70, "SeeAlsoText",ExpressionUUID->"4781b151-1abe-49cb-bb94-76f8fd301365"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

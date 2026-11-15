@@ -1,0 +1,160 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5726,        151]
+NotebookOptionsPosition[      3363,        104]
+NotebookOutlinePosition[      4084,        126]
+CellTagsIndexPosition[      4041,        123]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"96208ef0-6693-413d-a903-6d32673545d0"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"10dd907f-653a-489c-8b6b-43fe7fc6f8ab"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"0f6ee7e0-08e1-4a60-a2bb-793ef029ab9c"],
+
+Cell["EXRComputed`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"49c9ea9a-20f8-414c-b243-c89b53b3b931"],
+
+Cell["EXRIO/ref/$KoenderinkShapeClasses", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"e8866445-7f5d-498b-bcfa-69f122caf9e3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["$KoenderinkShapeClasses", "ObjectName",ExpressionUUID->"614a99a4-de7d-42a6-a1c3-f5dc895afe02"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["$KoenderinkShapeClasses", "UsageSymbol"], " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "Canonical", " ", "9", " ", "qualitative", " ", "shape", " ", "classes", " ",
+      "of", " ", "Koenderink"}], " ", "&"}], " ", "van", " ", "Doorn", " ", 
+   RowBox[{"(", "1992", ")"}], " ", "over", " ", "S", " ", 
+   RowBox[{
+    RowBox[{"in", " ", "[", 
+     RowBox[{
+      RowBox[{"-", "1"}], ",", " ", "1"}], "]"}], "."}]}]}]], "Usage",Expressi\
+onUUID->"d1f3afad-47ba-496d-8fa2-76641d419915"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"cfd42f6c-3375-4d91-a200-2f778dc6f72c"],
+
+Cell["Details and options for $KoenderinkShapeClasses.", "NotesText",ExpressionUUID->"c371a5fb-dffa-44bd-b4df-bf1171f4f8a7"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"7a59ef0f-620c-4fdb-90af-4aa99ed6a96e"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"75d6cb73-abec-4cf4-83cd-424d0270c2b9"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"b50a7ba1-231e-4fca-aec3-e1cc6163e2ea"],
+
+Cell["\<\
+Inspect the 9 canonical Koenderink & van Doorn (1992) shape classes:\
+\>", "ExampleText",ExpressionUUID->"612333f9-86fb-4cec-80d1-2cc8225dee6d"],
+
+Cell[BoxData["$KoenderinkShapeClasses"], "Input",ExpressionUUID->"c581b8e1-41c2-43d7-8702-9a9e89f1c4d7"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"3e3d0bca-3a3b-45e9-b4af-37c7d84b4a0f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["ReadEXR", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["EXRData", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["AddComputedPass", "InlineFormula"], 
+  RowBox[{" ", 
+   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
+  StyleBox["PreviewEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
+"2f3ddff8-18c3-49ec-8fe5-52dad77d53f4"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRComputed`", "type" -> "Symbol", "paclet" -> "EXRIO", 
+    "language" -> "en", "title" -> "$KoenderinkShapeClasses", "windowtitle" -> 
+    "$KoenderinkShapeClasses", "uri" -> "EXRIO/ref/$KoenderinkShapeClasses", 
+    "summary" -> 
+    "Canonical 9 qualitative shape classes of Koenderink & van Doorn (1992) \
+over S in [-1, 1].", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"96208ef0-6693-413d-a903-6d32673545d0"],
+Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"10dd907f-653a-489c-8b6b-43fe7fc6f8ab"],
+Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"0f6ee7e0-08e1-4a60-a2bb-793ef029ab9c"],
+Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"49c9ea9a-20f8-414c-b243-c89b53b3b931"],
+Cell[1039, 35, 133, 1, 70, "Categorization",ExpressionUUID->"e8866445-7f5d-498b-bcfa-69f122caf9e3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1209, 41, 100, 0, 70, "ObjectName",ExpressionUUID->"614a99a4-de7d-42a6-a1c3-f5dc895afe02"],
+Cell[1312, 43, 521, 13, 70, "Usage",ExpressionUUID->"d1f3afad-47ba-496d-8fa2-76641d419915"],
+Cell[CellGroupData[{
+Cell[1858, 60, 98, 0, 70, "NotesSection",ExpressionUUID->"cfd42f6c-3375-4d91-a200-2f778dc6f72c"],
+Cell[1959, 62, 124, 0, 70, "NotesText",ExpressionUUID->"c371a5fb-dffa-44bd-b4df-bf1171f4f8a7"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2120, 67, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"7a59ef0f-620c-4fdb-90af-4aa99ed6a96e"],
+Cell[CellGroupData[{
+Cell[2242, 71, 95, 0, 70, "ExampleSection",ExpressionUUID->"75d6cb73-abec-4cf4-83cd-424d0270c2b9"],
+Cell[2340, 73, 126, 1, 70, "Input",ExpressionUUID->"b50a7ba1-231e-4fca-aec3-e1cc6163e2ea"],
+Cell[2469, 76, 154, 2, 70, "ExampleText",ExpressionUUID->"612333f9-86fb-4cec-80d1-2cc8225dee6d"],
+Cell[2626, 80, 104, 0, 70, "Input",ExpressionUUID->"c581b8e1-41c2-43d7-8702-9a9e89f1c4d7"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2779, 86, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"3e3d0bca-3a3b-45e9-b4af-37c7d84b4a0f"],
+Cell[2871, 88, 464, 12, 70, "SeeAlsoText",ExpressionUUID->"2f3ddff8-18c3-49ec-8fe5-52dad77d53f4"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

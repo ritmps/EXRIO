@@ -1,0 +1,987 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     34894,        978]
+NotebookOptionsPosition[     27130,        865]
+NotebookOutlinePosition[     28726,        904]
+CellTagsIndexPosition[     28683,        901]
+WindowTitle->EXRIO
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {GridBox[{
+      {
+       ItemBox[Cell[BoxData[
+         RowBox[{
+          TemplateBox[{12},
+           "Spacer1"], Cell["E X R I O GUIDE", "PacletNameCell",
+           TextAlignment->Center,ExpressionUUID->
+           "c6cd6877-a716-4f2e-96bc-f079c9005321"], 
+          TemplateBox[{8},
+           "Spacer1"]}]],
+         TextAlignment->Center,ExpressionUUID->
+         "61820a27-50d6-490e-92a1-7f40c55d2c2a"],
+        Background->LightDarkSwitched[
+          RGBColor[0.85098, 0.396078, 0]],
+        ItemSize->Full], ""}
+     },
+     GridBoxAlignment->{"Rows" -> {{Center}}},
+     GridBoxItemSize->{"Columns" -> {Full, 
+         Scaled[0.02]}, "Rows" -> {{2.5}}}], Cell[TextData[Cell[BoxData[
+     TagBox[
+      ActionMenuBox[
+       FrameBox[Cell[TextData[{
+         "URL",
+         " ",
+         Cell[BoxData[
+          GraphicsBox[
+           {GrayLevel[0.66667], Thickness[0.13], 
+            LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+           AspectRatio->1,
+           ImageSize->20,
+           PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+          "cb369687-b621-444f-b94d-763359d067f0"]
+        }],ExpressionUUID->"4c573fbd-c572-4080-a8a8-38ff68d99fca"],
+        StripOnInput->False],{
+       "\"EXRIO/guide/EXRIO\"" :> None, 
+        "\"Copy Wolfram Documentation Center URL\"" :> 
+        CopyToClipboard["EXRIO/guide/EXRIO"], Delimiter, "\"Copy web URL\"" :> 
+        Module[{DocumentationSearch`Private`nb$}, 
+          DocumentationSearch`Private`nb$ = 
+           NotebookPut[
+            Notebook[{
+              Cell[BoxData[
+                MakeBoxes[
+                 Hyperlink[
+                  "http://reference.wolfram.com/language/EXRIO/guide/EXRIO.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+              False]]; SelectionMove[
+           DocumentationSearch`Private`nb$, All, Notebook]; 
+          FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+          NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+        "\"Go to web URL\"" :> 
+        FrontEndExecute[{
+          NotebookLocate[{
+            URL[If[TrueQ[False], 
+                "http://reference.wolfram.com/system-modeler/", 
+                "http://reference.wolfram.com/language/"] <> 
+              "EXRIO/guide/EXRIO" <> ".html"], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"],
+      MouseAppearanceTag["LinkHand"]]],
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "e632893f-3db5-4e3c-9d50-a990a74fb1cc"]], "AnchorBar",
+     CacheGraphics->False,ExpressionUUID->
+     "1fd775e8-94c5-457b-b529-ca92b80f5aa4"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"66401714-c387-426b-ab04-a40f8845a6b5"],
+
+Cell[CellGroupData[{
+
+Cell["EXRIO", "GuideTitle",ExpressionUUID->"edcf3fd8-46fd-4ff4-ba69-c1cc6974cf90"],
+
+Cell["\<\
+High-performance Wolfram Language paclet for multi-channel OpenEXR I/O, \
+ad-hoc computed passes, Cryptomatte object segmentation, and screen-space \
+differential geometry.\
+\>", "GuideAbstract",ExpressionUUID->"5a1b03bd-abe8-4a0f-8b6a-2b64d964667b"],
+
+Cell["\t", "GuideDelimiterSubsection",ExpressionUUID->"666d4250-2627-4808-b57b-b2738911eee2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Functions", "GuideFunctionsSection",ExpressionUUID->"27b1eceb-5a62-45f5-b5c0-785c080c9c44"],
+
+Cell[CellGroupData[{
+
+Cell["Core Reading, Writing & Containers", "GuideFunctionsSubsection",ExpressionUUID->"a6e13269-9f3b-4c2c-9ea3-1062e4a603dd"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "badad078-6154-4747-ac60-2aa45cd5a5a0"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ReadEXR[file, opts] imports an EXR file into a structured association and \
+computes derived passes when possible."
+}], "GuideText",ExpressionUUID->"e924834e-e652-4c1a-8e8d-121d6375a5d2"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["WriteEXR"]], "paclet:EXRIO/ref/WriteEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "8906deb8-7875-420d-bb21-6c21fdcc5f6e"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "exports an EXRData container or pass association to a multi-channel OpenEXR \
+file"
+}], "GuideText",ExpressionUUID->"fb8e5a2f-2c65-4f85-82c6-896d19496e8f"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["EXRData"]], "paclet:EXRIO/ref/EXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "90f3ff2a-9d36-4dc0-8ee8-860b4183de8e"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "EXRData[assoc] represents a structured multi-pass EXR container with \
+customized summary box formatting."
+}], "GuideText",ExpressionUUID->"fb30b61f-992b-4bef-aa27-c7372483ee31"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MakeEXRData"]], "paclet:EXRIO/ref/MakeEXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "11eba36e-b255-440c-9a6e-1aaff155c76a"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "MakeEXRData[assoc] wraps a raw multi-pass EXR association into an EXRData \
+container."
+}], "GuideText",ExpressionUUID->"5a4af5bf-d919-4e36-895b-18932c86b911"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "4fbb101c-6c7d-4ba6-9d58-3605fda0ac7e"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "stores an ad-hoc computed pass under \"Computed\"[name] in an EXRData \
+container"
+}], "GuideText",ExpressionUUID->"2eb696bf-1e08-4d12-ba20-c50dd809a512"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PassToImage"]], "paclet:EXRIO/ref/PassToImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "b450bf6b-f50b-4f8b-840b-9cd8566fb8ff"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "converts an EXR pass association or array to a Wolfram Image"
+}], "GuideText",ExpressionUUID->"06a60642-8a00-42ab-8b15-8e24e1f15abb"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PreviewEXR"]], "paclet:EXRIO/ref/PreviewEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "772ba09f-4b88-4ece-8dc5-1b8ad7bb1dab"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "PreviewEXR[exr, opts] generates an interactive or static preview grid of \
+all available EXR passes."
+}], "GuideText",ExpressionUUID->"ade16639-1091-403e-b426-fc7404085e45"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cryptomatte & Segmentation", "GuideFunctionsSubsection",ExpressionUUID->"446cf753-a0bc-416e-bbac-b599158e3b45"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadCryptomatte"]], "paclet:EXRIO/ref/ReadCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "8ce5d08c-6369-401e-8cde-1b92b3d8a0de"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ReadCryptomatte[file] reads Cryptomatte sidecar data and returns an \
+association."
+}], "GuideText",ExpressionUUID->"f8d90d51-4a57-4ce5-abec-84656313a8ed"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AttachCryptomatte"]], "paclet:EXRIO/ref/AttachCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "9df18d2b-4890-4f73-a9c4-03b0b37f7ce1"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "AttachCryptomatte[exr] attaches Cryptomatte data to an EXR association when \
+possible."
+}], "GuideText",ExpressionUUID->"1fe916d5-147b-4c8a-83d6-b908138e5a11"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteMask"]], "paclet:EXRIO/ref/CryptomatteMask"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "c3ce2b11-5bb6-43a6-b940-1e9f353ae2e4"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteMask[crypto, name] returns a soft mask numeric array for a named \
+Cryptomatte object."
+}], "GuideText",ExpressionUUID->"b53b4447-bc03-40b1-84f1-4a3394329ea8"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteMasks"]], "paclet:EXRIO/ref/CryptomatteMasks"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "a9f22d1a-78d4-4d66-85ad-362f1734685b"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteMasks[crypto] returns soft mask numeric arrays for all named \
+Cryptomatte objects."
+}], "GuideText",ExpressionUUID->"79ce76d9-864e-45aa-8718-a1d39535353d"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteObjectMask"]], 
+    "paclet:EXRIO/ref/CryptomatteObjectMask"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "db9e9161-0af8-4d34-872e-0043fcce2499"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteObjectMask[exr, name, opts] builds a soft mask image for a named \
+Cryptomatte object."
+}], "GuideText",ExpressionUUID->"83314274-df89-427e-a4cc-1dd74fbb3bf5"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteObjectMasks"]], 
+    "paclet:EXRIO/ref/CryptomatteObjectMasks"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "3fa206ae-f1c7-489c-bc5d-21f34b46fb14"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteObjectMasks[exr, opts] builds an association of soft mask images \
+for all named Cryptomatte objects."
+}], "GuideText",ExpressionUUID->"1627d0e5-8c24-4a49-8519-a00936effc81"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteSegmentationMap"]], 
+    "paclet:EXRIO/ref/CryptomatteSegmentationMap"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "785f2c7e-f51c-4af2-bcba-6b1c48284257"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteSegmentationMap[crypto] returns a hard integer segmentation map \
+and label metadata."
+}], "GuideText",ExpressionUUID->"b078ad10-34ed-492c-b9c1-ac6325ac16a8"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteSegmentationImage"]], 
+    "paclet:EXRIO/ref/CryptomatteSegmentationImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "c68d827c-fc50-472f-b401-ae7c04f5350a"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteSegmentationImage[crypto] returns a colorized segmentation image."
+}], "GuideText",ExpressionUUID->"add61d8d-074d-45e3-9f11-2471fda4ee8f"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteWinnerCoverage"]], 
+    "paclet:EXRIO/ref/CryptomatteWinnerCoverage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "d9e91cf5-bb67-428d-bc30-22bd0ae9aa99"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteWinnerCoverage[crypto] returns the winning coverage value at \
+each pixel."
+}], "GuideText",ExpressionUUID->"11698353-e03e-496d-bb38-935495ee7c56"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteLabelImage"]], 
+    "paclet:EXRIO/ref/CryptomatteLabelImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "5bb56c01-3e5b-4ce8-95b2-36b48396020d"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteLabelImage[exr] builds a multi-channel label image from the \
+dominant Cryptomatte IDs per pixel."
+}], "GuideText",ExpressionUUID->"8a21c4ed-8590-4d09-909b-a0bc105476fb"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteLabelMask"]], 
+    "paclet:EXRIO/ref/CryptomatteLabelMask"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "ec23a9de-965b-440f-bf3a-0aa7e258569c"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteLabelMask[crypto, label] returns a binary mask for a \
+segmentation label."
+}], "GuideText",ExpressionUUID->"6a99a8d5-1556-4cf9-a4bd-4b9736ed5acd"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteMaskImage"]], 
+    "paclet:EXRIO/ref/CryptomatteMaskImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "4a8ddcfc-b5b2-4471-8ae3-cc709f43074f"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CryptomatteMaskImage[crypto, name] returns a displayable Image for a named \
+soft mask."
+}], "GuideText",ExpressionUUID->"a829bf34-05b7-4eb1-a5c8-1327fd9bd3de"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Differential Geometry & Ecological Cues", "GuideFunctionsSubsection",ExpressionUUID->"bcd4f1f9-0565-4eac-8d25-edd5e31de44a"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeCurvature"]], "paclet:EXRIO/ref/ComputeCurvature"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "b9dba650-44dd-4623-96e6-b47c0d43d070"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ComputeCurvature[pImg, nImg] computes differential geometry passes from \
+position and normal images.\nComputeCurvature[exr] computes curvature passes \
+for an EXR association."
+}], "GuideText",ExpressionUUID->"61972806-de03-48a9-b7f3-47388e1388ad"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeScaleSpaceCurvature"]], 
+    "paclet:EXRIO/ref/ComputeScaleSpaceCurvature"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "85a85944-9248-4165-8725-02e362038e1e"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "computes Koenderink scale-space differential invariants across spatial \
+apertures"
+}], "GuideText",ExpressionUUID->"786880e5-249e-4768-8b93-8a31b554dfae"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["KoenderinkShapeCategory"]], 
+    "paclet:EXRIO/ref/KoenderinkShapeCategory"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "dabe5f27-de4a-4d6b-8e94-3ae2dc26539e"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "classifies continuous Shape Index values into the 9 canonical qualitative \
+shape categories"
+}], "GuideText",ExpressionUUID->"db5d5bc2-f5c8-49b0-806c-76fec6d511ca"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ColorizeShapeIndex"]], "paclet:EXRIO/ref/ColorizeShapeIndex"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "a6602f0f-0438-4522-9d93-af27b5685c60"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "renders a continuous or 9-class discrete Koenderink Shape Index color map \
+Image"
+}], "GuideText",ExpressionUUID->"a35a2e61-b196-4990-873d-bcd72703c0bc"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeEcologicalCues"]], 
+    "paclet:EXRIO/ref/ComputeEcologicalCues"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "d84b8fee-eb8c-43c1-b3c9-b84b1cff8a42"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "derives Gibsonian ecological cue passes (contours, AO, texture gradients, \
+rim sign) from geometry"
+}], "GuideText",ExpressionUUID->"0e496501-038a-4ff7-9155-deb8439ced02"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["SampleEnvironment"]], "paclet:EXRIO/ref/SampleEnvironment"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "983c0387-e9a5-433a-a2fb-bc5700cbdb06"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "SampleEnvironment[nImg, envMap, opts] samples an equirectangular \
+environment map using surface normal vectors."
+}], "GuideText",ExpressionUUID->"11c553c6-9ce9-4e81-a16e-25c6f0d91856"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cameras & Frustums", "GuideFunctionsSubsection",ExpressionUUID->"d14bc0ed-5fa9-48a4-9573-d38fa6ffaac9"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CameraGlyph"]], "paclet:EXRIO/ref/CameraGlyph"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "71a89557-2a64-424a-9155-933b69b0dd15"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CameraGlyph[exr, opts] or CameraGlyph[matrix, opts] returns 3D graphics \
+primitives visualizing the camera frame and viewing frustum."
+}], "GuideText",ExpressionUUID->"38e959bb-1186-4ad7-985a-3ac57ac6de64"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CameraFrustumPlot"]], "paclet:EXRIO/ref/CameraFrustumPlot"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "f691f172-2421-4fb1-aa53-d5b8a8cc8f46"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "CameraFrustumPlot[exrsOrMatrices, opts] creates a 3D graphic visualizing \
+camera coordinate frames and viewing frustums for one or more viewpoints."
+}], "GuideText",ExpressionUUID->"85359387-7ddd-42c8-a174-1a78f05b36f2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Image Quality & Distribution Metrics", "GuideFunctionsSubsection",ExpressionUUID->"85da3e8d-09a9-4a7e-ba37-a91a8869fe84"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["BuiltInImageDistance"]], 
+    "paclet:EXRIO/ref/BuiltInImageDistance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "65c14b21-1549-4e37-8fef-3aff20e18961"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "BuiltInImageDistance[img1, img2, distanceFunction] wraps ImageDistance on \
+resized images."
+}], "GuideText",ExpressionUUID->"e3e1a319-e0ce-4f3d-b9f4-2d971ac09c77"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ConformedPair"]], "paclet:EXRIO/ref/ConformedPair"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "215863fe-0302-44c5-a976-7bf7ffa43210"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ConformedPair[img1, img2] returns same-size grayscale arrays for two images."
+}], "GuideText",ExpressionUUID->"207ff6e4-6fe3-4bcc-bb0f-f57c020f94d3"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["FeatureStatistics"]], "paclet:EXRIO/ref/FeatureStatistics"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "c4387b5b-73f8-4409-b7a1-8caae534d492"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "FeatureStatistics[features] returns mean and covariance of a feature matrix."
+}], "GuideText",ExpressionUUID->"ffbc20a7-ea42-4dc3-b0a1-53bcd36fb8c4"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["FIDFromFeatures"]], "paclet:EXRIO/ref/FIDFromFeatures"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "642a96fe-e048-45d7-b09b-11a5ed0038c2"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "FIDFromFeatures[realFeatures, generatedFeatures] computes a \
+Fr\[EAcute]chet-style distance from feature vectors."
+}], "GuideText",ExpressionUUID->"b1500299-7679-4c69-8d29-9fc035490861"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["GlobalSSIM"]], "paclet:EXRIO/ref/GlobalSSIM"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "e8544d51-e26f-44ac-956d-82008f0130cd"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "GlobalSSIM[img1, img2] gives a global structural similarity measure."
+}], "GuideText",ExpressionUUID->"d7e96824-828b-4d47-abe1-6818879f45e6"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ImageFeatureDataset"]], "paclet:EXRIO/ref/ImageFeatureDataset"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "3adc4e91-8c0d-4c20-8ad4-04c1af384812"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ImageFeatureDataset[images] computes simple feature vectors for images."
+}], "GuideText",ExpressionUUID->"70c20aac-8377-459c-971e-0518dcf7aa19"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ImageProbabilityDataset"]], 
+    "paclet:EXRIO/ref/ImageProbabilityDataset"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "186f686d-55fa-4e7d-a5e1-751d5691e439"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ImageProbabilityDataset[images, classCount] computes demo class \
+probabilities from image brightness."
+}], "GuideText",ExpressionUUID->"918f58a3-8cec-4e49-9532-951e14a212dd"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["InceptionScoreFromProbabilities"]], 
+    "paclet:EXRIO/ref/InceptionScoreFromProbabilities"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "879cd3e8-5963-4bb0-a469-898aeffd17e7"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "InceptionScoreFromProbabilities[probs] computes an inception-style score \
+from class probabilities."
+}], "GuideText",ExpressionUUID->"c0f79dce-c4a9-40e3-9ea0-5a445f5482f8"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["L1Distance"]], "paclet:EXRIO/ref/L1Distance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "4c963cc7-09dc-4eb0-b303-964452a8db05"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "L1Distance[img1, img2] gives the mean absolute difference between two \
+images."
+}], "GuideText",ExpressionUUID->"75c90632-05bc-45cf-9faa-cad15898a418"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["LocalSSIM"]], "paclet:EXRIO/ref/LocalSSIM"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "a45ba33a-7cfe-4172-a7d7-2affac49c963"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "LocalSSIM[img1, img2] gives a local-window SSIM approximation using \
+Gaussian filtering."
+}], "GuideText",ExpressionUUID->"0dd38e67-e787-4547-826a-57a3df5a217c"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MAE"]], "paclet:EXRIO/ref/MAE"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "11557f87-68c4-4bca-bad9-3b0e35b97912"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "MAE[img1, img2] is an alias for L1Distance."
+}], "GuideText",ExpressionUUID->"3017aa66-3561-4efc-a931-d93733f7a6f8"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MeanMetric"]], "paclet:EXRIO/ref/MeanMetric"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "cddf7bad-2b04-438a-8d83-523c4093ead4"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "MeanMetric[metric, imagePairs] averages a metric over image pairs."
+}], "GuideText",ExpressionUUID->"fd647b31-9f29-4d4e-9924-d8774b838f1a"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MSE"]], "paclet:EXRIO/ref/MSE"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "0419465c-d49e-42e5-8a3e-7ceee9cb328a"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "MSE[img1, img2] gives the mean squared error between two images."
+}], "GuideText",ExpressionUUID->"ef6eb594-2668-413a-90ee-5735e7f3b3f9"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PSNR"]], "paclet:EXRIO/ref/PSNR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "143f76b4-02cf-457b-b06e-8628cb356b01"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "PSNR[img1, img2] gives the peak signal-to-noise ratio between two images."
+}], "GuideText",ExpressionUUID->"80a37501-4ac1-4476-96ed-96e7e1fd6af5"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["RegularizedCovariance"]], 
+    "paclet:EXRIO/ref/RegularizedCovariance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "6e50981d-c8ca-4a32-a785-500c360d60ff"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "RegularizedCovariance[matrix, eps] adds eps to the diagonal of a covariance \
+matrix."
+}], "GuideText",ExpressionUUID->"5e1d33b0-ede1-4af9-9623-e3206bd088ac"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["RMSE"]], "paclet:EXRIO/ref/RMSE"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "bdb5adf1-f7f2-4b0a-b723-7a10863578b1"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "RMSE[img1, img2] gives the root mean squared error between two images."
+}], "GuideText",ExpressionUUID->"e858fe00-de25-45a1-a3c2-c980a55d539b"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ToGrayArray"]], "paclet:EXRIO/ref/ToGrayArray"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "ebd89330-da58-4d74-835a-d827a15ad84b"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ToGrayArray[img] converts an image to a normalized grayscale array."
+}], "GuideText",ExpressionUUID->"4775b17b-9e50-4108-b9f0-5192a5f3339f"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ToRGBImage"]], "paclet:EXRIO/ref/ToRGBImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "cde247e1-b5f9-48b8-80ad-faac527b4f26"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "ToRGBImage[img, size] converts an image to RGB and resizes it."
+}], "GuideText",ExpressionUUID->"e6371479-14a5-494d-a039-2246392c21ee"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Constants & Metadata", "GuideFunctionsSubsection",ExpressionUUID->"5423269a-0195-4f27-94d1-6c728495ff81"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["$EcologicalCueNames"]], "paclet:EXRIO/ref/$EcologicalCueNames"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "80bfd609-1b62-4515-8b17-ba651674886b"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "list of derived ecological cue pass names"
+}], "GuideText",ExpressionUUID->"ade6b218-636a-4fb2-8b1e-7a33b51bfe81"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["$EXRIOVersion"]], "paclet:EXRIO/ref/$EXRIOVersion"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "ce7388a7-8115-4469-9dff-2b6ef00f9ea6"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "version string of the loaded EXRIO paclet"
+}], "GuideText",ExpressionUUID->"ddb1726f-7b1e-43e3-af26-2fb57dc7a007"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["$KoenderinkShapeClasses"]], 
+    "paclet:EXRIO/ref/$KoenderinkShapeClasses"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "3f884fe3-fc01-4cde-a7e5-4c6c43c690d5"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "list of the 9 canonical Koenderink qualitative shape categories"
+}], "GuideText",ExpressionUUID->"5e1a6486-38cb-4029-998e-fa626d575bba"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"b32f892e-7f3c-4d53-9ebd-5e5bdb42f2e6"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{900, 830},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"EXRIO",
+Visible->True,
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "", "LinkTrails" -> "", 
+  "ExampleCounter" -> 1, 
+  "Openers" -> {
+   "PrimaryExamplesSection" -> Open, "ExampleSection" -> {"0" -> Open}}, 
+  "NewStyles" -> True, "CitationPopupData" -> {$Failed, ""}, "ShowCitation" -> 
+  False, "RootCaptions" -> "", "HeaderCoreAreaLink" -> {}, 
+  "Metadata" -> {
+   "built" -> "{2026, 11, 16, 11, 40, 46.615132}", 
+    "history" -> {"", "", "", ""}, "context" -> "EXRIO`", "keywords" -> {}, 
+    "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
+     "label" -> "E X R I O Guide", "language" -> "en", "paclet" -> "EXRIO", 
+    "status" -> "None", "summary" -> 
+    "High-performance Wolfram Language paclet for multi-channel OpenEXR I/O, \
+ad-hoc computed passes, Cryptomatte object segmentation, and screen-space \
+differential geometry.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "EXRIO", "titlemodifier" -> "", "metadescription" -> "", "windowtitle" -> 
+    "EXRIO", "type" -> "Guide", "uri" -> "EXRIO/guide/EXRIO"}},
+CacheGraphics->False,
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb"],
+ExpressionUUID->"139dd702-06cb-4db1-b6d3-70dd34ce610b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[573, 21, 2912, 71, 87, "AnchorBarGrid",ExpressionUUID->"66401714-c387-426b-ab04-a40f8845a6b5",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3510, 96, 82, 0, 87, "GuideTitle",ExpressionUUID->"edcf3fd8-46fd-4ff4-ba69-c1cc6974cf90"],
+Cell[3595, 98, 260, 4, 87, "GuideAbstract",ExpressionUUID->"5a1b03bd-abe8-4a0f-8b6a-2b64d964667b"],
+Cell[3858, 104, 93, 0, 87, "GuideDelimiterSubsection",ExpressionUUID->"666d4250-2627-4808-b57b-b2738911eee2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3988, 109, 97, 0, 87, "GuideFunctionsSection",ExpressionUUID->"27b1eceb-5a62-45f5-b5c0-785c080c9c44"],
+Cell[CellGroupData[{
+Cell[4110, 113, 125, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"a6e13269-9f3b-4c2c-9ea3-1062e4a603dd"],
+Cell[4238, 115, 463, 13, 87, "GuideText",ExpressionUUID->"e924834e-e652-4c1a-8e8d-121d6375a5d2"],
+Cell[4704, 130, 433, 13, 87, "GuideText",ExpressionUUID->"fb8e5a2f-2c65-4f85-82c6-896d19496e8f"],
+Cell[5140, 145, 454, 13, 87, "GuideText",ExpressionUUID->"fb30b61f-992b-4bef-aa27-c7372483ee31"],
+Cell[5597, 160, 443, 13, 87, "GuideText",ExpressionUUID->"5a4af5bf-d919-4e36-895b-18932c86b911"],
+Cell[6043, 175, 446, 13, 87, "GuideText",ExpressionUUID->"2eb696bf-1e08-4d12-ba20-c50dd809a512"],
+Cell[6492, 190, 417, 12, 87, "GuideText",ExpressionUUID->"06a60642-8a00-42ab-8b15-8e24e1f15abb"],
+Cell[6912, 204, 455, 13, 87, "GuideText",ExpressionUUID->"ade16639-1091-403e-b426-fc7404085e45"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7404, 222, 117, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"446cf753-a0bc-416e-bbac-b599158e3b45"],
+Cell[7524, 224, 447, 13, 87, "GuideText",ExpressionUUID->"f8d90d51-4a57-4ce5-abec-84656313a8ed"],
+Cell[7974, 239, 456, 13, 87, "GuideText",ExpressionUUID->"1fe916d5-147b-4c8a-83d6-b908138e5a11"],
+Cell[8433, 254, 462, 13, 87, "GuideText",ExpressionUUID->"b53b4447-bc03-40b1-84f1-4a3394329ea8"],
+Cell[8898, 269, 461, 13, 87, "GuideText",ExpressionUUID->"79ce76d9-864e-45aa-8718-a1d39535353d"],
+Cell[9362, 284, 479, 14, 87, "GuideText",ExpressionUUID->"83314274-df89-427e-a4cc-1dd74fbb3bf5"],
+Cell[9844, 300, 496, 14, 87, "GuideText",ExpressionUUID->"1627d0e5-8c24-4a49-8519-a00936effc81"],
+Cell[10343, 316, 488, 14, 87, "GuideText",ExpressionUUID->"b078ad10-34ed-492c-b9c1-ac6325ac16a8"],
+Cell[10834, 332, 472, 13, 87, "GuideText",ExpressionUUID->"add61d8d-074d-45e3-9f11-2471fda4ee8f"],
+Cell[11309, 347, 475, 14, 87, "GuideText",ExpressionUUID->"11698353-e03e-496d-bb38-935495ee7c56"],
+Cell[11787, 363, 490, 14, 87, "GuideText",ExpressionUUID->"8a21c4ed-8590-4d09-909b-a0bc105476fb"],
+Cell[12280, 379, 465, 14, 87, "GuideText",ExpressionUUID->"6a99a8d5-1556-4cf9-a4bd-4b9736ed5acd"],
+Cell[12748, 395, 467, 14, 87, "GuideText",ExpressionUUID->"a829bf34-05b7-4eb1-a5c8-1327fd9bd3de"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13252, 414, 130, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"bcd4f1f9-0565-4eac-8d25-edd5e31de44a"],
+Cell[13385, 416, 543, 14, 87, "GuideText",ExpressionUUID->"61972806-de03-48a9-b7f3-47388e1388ad"],
+Cell[13931, 432, 474, 14, 87, "GuideText",ExpressionUUID->"786880e5-249e-4768-8b93-8a31b554dfae"],
+Cell[14408, 448, 478, 14, 87, "GuideText",ExpressionUUID->"db5d5bc2-f5c8-49b0-806c-76fec6d511ca"],
+Cell[14889, 464, 452, 13, 87, "GuideText",ExpressionUUID->"a35a2e61-b196-4990-873d-bcd72703c0bc"],
+Cell[15344, 479, 481, 14, 87, "GuideText",ExpressionUUID->"0e496501-038a-4ff7-9155-deb8439ced02"],
+Cell[15828, 495, 481, 13, 87, "GuideText",ExpressionUUID->"11c553c6-9ce9-4e81-a16e-25c6f0d91856"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16346, 513, 109, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"d14bc0ed-5fa9-48a4-9573-d38fa6ffaac9"],
+Cell[16458, 515, 491, 13, 87, "GuideText",ExpressionUUID->"38e959bb-1186-4ad7-985a-3ac57ac6de64"],
+Cell[16952, 530, 517, 13, 87, "GuideText",ExpressionUUID->"85359387-7ddd-42c8-a174-1a78f05b36f2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17506, 548, 127, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"85da3e8d-09a9-4a7e-ba37-a91a8869fe84"],
+Cell[17636, 550, 471, 14, 87, "GuideText",ExpressionUUID->"e3e1a319-e0ce-4f3d-b9f4-2d971ac09c77"],
+Cell[18110, 566, 437, 12, 87, "GuideText",ExpressionUUID->"207ff6e4-6fe3-4bcc-bb0f-f57c020f94d3"],
+Cell[18550, 580, 445, 12, 87, "GuideText",ExpressionUUID->"ffbc20a7-ea42-4dc3-b0a1-53bcd36fb8c4"],
+Cell[18998, 594, 479, 13, 87, "GuideText",ExpressionUUID->"b1500299-7679-4c69-8d29-9fc035490861"],
+Cell[19480, 609, 423, 12, 87, "GuideText",ExpressionUUID->"d7e96824-828b-4d47-abe1-6818879f45e6"],
+Cell[19906, 623, 444, 12, 87, "GuideText",ExpressionUUID->"70c20aac-8377-459c-971e-0518dcf7aa19"],
+Cell[20353, 637, 488, 14, 87, "GuideText",ExpressionUUID->"918f58a3-8cec-4e49-9532-951e14a212dd"],
+Cell[20844, 653, 502, 14, 87, "GuideText",ExpressionUUID->"c0f79dce-c4a9-40e3-9ea0-5a445f5482f8"],
+Cell[21349, 669, 434, 13, 87, "GuideText",ExpressionUUID->"75c90632-05bc-45cf-9faa-cad15898a418"],
+Cell[21786, 684, 442, 13, 87, "GuideText",ExpressionUUID->"0dd38e67-e787-4547-826a-57a3df5a217c"],
+Cell[22231, 699, 384, 12, 87, "GuideText",ExpressionUUID->"3017aa66-3561-4efc-a931-d93733f7a6f8"],
+Cell[22618, 713, 421, 12, 87, "GuideText",ExpressionUUID->"fd647b31-9f29-4d4e-9924-d8774b838f1a"],
+Cell[23042, 727, 405, 12, 87, "GuideText",ExpressionUUID->"ef6eb594-2668-413a-90ee-5735e7f3b3f9"],
+Cell[23450, 741, 416, 12, 87, "GuideText",ExpressionUUID->"80a37501-4ac1-4476-96ed-96e7e1fd6af5"],
+Cell[23869, 755, 467, 14, 87, "GuideText",ExpressionUUID->"5e1d33b0-ede1-4af9-9623-e3206bd088ac"],
+Cell[24339, 771, 413, 12, 87, "GuideText",ExpressionUUID->"e858fe00-de25-45a1-a3c2-c980a55d539b"],
+Cell[24755, 785, 424, 12, 87, "GuideText",ExpressionUUID->"4775b17b-9e50-4108-b9f0-5192a5f3339f"],
+Cell[25182, 799, 417, 12, 87, "GuideText",ExpressionUUID->"e6371479-14a5-494d-a039-2246392c21ee"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25636, 816, 111, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"5423269a-0195-4f27-94d1-6c728495ff81"],
+Cell[25750, 818, 414, 12, 87, "GuideText",ExpressionUUID->"ade6b218-636a-4fb2-8b1e-7a33b51bfe81"],
+Cell[26167, 832, 402, 12, 87, "GuideText",ExpressionUUID->"ddb1726f-7b1e-43e3-af26-2fb57dc7a007"],
+Cell[26572, 846, 449, 13, 87, "GuideText",ExpressionUUID->"5e1a6486-38cb-4029-998e-fa626d575bba"]
+}, Open  ]]
+}, Open  ]],
+Cell[27048, 863, 78, 0, 87, "FooterCell",ExpressionUUID->"b32f892e-7f3c-4d53-9ebd-5e5bdb42f2e6"]
+}
+]
+*)
+
+(* End of internal cache information *)

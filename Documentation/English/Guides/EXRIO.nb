@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     18489,        502]
-NotebookOptionsPosition[     13747,        430]
-NotebookOutlinePosition[     14485,        452]
-CellTagsIndexPosition[     14442,        449]
+NotebookDataLength[     30065,        809]
+NotebookOptionsPosition[     22949,        710]
+NotebookOutlinePosition[     23690,        732]
+CellTagsIndexPosition[     23647,        729]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -78,7 +78,8 @@ Cell[TextData[{
    BaseStyle->{"InlineFormula"}]],ExpressionUUID->
   "a1603b5d-7dc8-45e0-88c2-278be316a25d"],
  " \[LongDash] ",
- "WriteEXR function."
+ "exports an EXRData container or pass association to a multi-channel OpenEXR \
+file"
 }], "GuideText",ExpressionUUID->"380026c7-e402-4cd3-91cd-a6c105530a4c"],
 
 Cell[TextData[{
@@ -116,7 +117,8 @@ Cell[TextData[{
    BaseStyle->{"InlineFormula"}]],ExpressionUUID->
   "a469195c-c72f-4ea4-87fa-4735bf3e33ac"],
  " \[LongDash] ",
- "AddComputedPass function."
+ "stores an ad-hoc computed pass under \"Computed\"[name] in an EXRData \
+container"
 }], "GuideText",ExpressionUUID->"36f2aab7-c7ab-4ae2-95c2-66214553eb04"],
 
 Cell[TextData[{
@@ -128,7 +130,7 @@ Cell[TextData[{
    BaseStyle->{"InlineFormula"}]],ExpressionUUID->
   "6c8a4353-cf50-4092-acae-24614ebb2ef7"],
  " \[LongDash] ",
- "PassToImage function."
+ "converts an EXR pass association or array to a Wolfram Image"
 }], "GuideText",ExpressionUUID->"b344236f-95c3-42c6-aca0-bd1b443a9f3c"],
 
 Cell[TextData[{
@@ -341,7 +343,8 @@ Cell[TextData[{
    BaseStyle->{"InlineFormula"}]],ExpressionUUID->
   "f0202761-b639-415e-83ed-e00e2e8e2703"],
  " \[LongDash] ",
- "ComputeScaleSpaceCurvature function."
+ "computes Koenderink scale-space differential invariants across spatial \
+apertures"
 }], "GuideText",ExpressionUUID->"c3bbe6a8-371a-4a80-abf9-dfd211fb7bbf"],
 
 Cell[TextData[{
@@ -354,7 +357,8 @@ Cell[TextData[{
    BaseStyle->{"InlineFormula"}]],ExpressionUUID->
   "8e569039-e30a-4722-89af-2591cf103bd7"],
  " \[LongDash] ",
- "KoenderinkShapeCategory function."
+ "classifies continuous Shape Index values into the 9 canonical qualitative \
+shape categories"
 }], "GuideText",ExpressionUUID->"a36a2330-88a6-4fb7-af7a-258ac0a77d11"],
 
 Cell[TextData[{
@@ -366,7 +370,8 @@ Cell[TextData[{
    BaseStyle->{"InlineFormula"}]],ExpressionUUID->
   "65b04621-f8b2-4588-997e-624ca5316b38"],
  " \[LongDash] ",
- "ColorizeShapeIndex function."
+ "renders a continuous or 9-class discrete Koenderink Shape Index color map \
+Image"
 }], "GuideText",ExpressionUUID->"aef2264e-2c1c-4dee-9f35-0d09858bf510"],
 
 Cell[TextData[{
@@ -379,7 +384,8 @@ Cell[TextData[{
    BaseStyle->{"InlineFormula"}]],ExpressionUUID->
   "0c55b810-9976-4ba5-8ac1-dfa9d18c5d73"],
  " \[LongDash] ",
- "ComputeEcologicalCues function."
+ "derives Gibsonian ecological cue passes (contours, AO, texture gradients, \
+rim sign) from geometry"
 }], "GuideText",ExpressionUUID->"aaea7eb5-a6d4-4933-9c14-3e9e6dbf2c3a"],
 
 Cell[TextData[{
@@ -425,6 +431,280 @@ Cell[TextData[{
  "CameraFrustumPlot[exrsOrMatrices, opts] creates a 3D graphic visualizing \
 camera coordinate frames and viewing frustums for one or more viewpoints."
 }], "GuideText",ExpressionUUID->"cde1058b-ee6b-4562-8414-175205e81401"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Image Quality & Distribution Metrics", "GuideFunctionsSubsection",ExpressionUUID->"3a2a606b-698e-4c6d-a426-60fe55cc0c67"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["BuiltInImageDistance"]], 
+    "paclet:EXRIO/ref/BuiltInImageDistance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "983c4893-766e-4900-b574-d323a6d3418a"],
+ " \[LongDash] ",
+ "BuiltInImageDistance[img1, img2, distanceFunction] wraps ImageDistance on \
+resized images."
+}], "GuideText",ExpressionUUID->"7b58eb9a-799e-4ec3-b2b3-c0f7ec3fc688"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ConformedPair"]], "paclet:EXRIO/ref/ConformedPair"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "566c0f4e-6988-43d6-b9fb-9e40e2b0dc5f"],
+ " \[LongDash] ",
+ "ConformedPair[img1, img2] returns same-size grayscale arrays for two images."
+}], "GuideText",ExpressionUUID->"35e969da-4bf2-4bf5-abe3-2dfb75ba0897"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["FeatureStatistics"]], "paclet:EXRIO/ref/FeatureStatistics"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "833ab1a0-4268-4c84-9d84-73103c3b23f4"],
+ " \[LongDash] ",
+ "FeatureStatistics[features] returns mean and covariance of a feature matrix."
+}], "GuideText",ExpressionUUID->"ea3d9edb-3cf1-48a9-9e11-bdcdd370d61c"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["FIDFromFeatures"]], "paclet:EXRIO/ref/FIDFromFeatures"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "6d96dd9d-d3b4-48cd-96a3-184829759d7c"],
+ " \[LongDash] ",
+ "FIDFromFeatures[realFeatures, generatedFeatures] computes a \
+Fr\[EAcute]chet-style distance from feature vectors."
+}], "GuideText",ExpressionUUID->"5f32073c-98a9-4f42-9462-7295b6ea91db"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["GlobalSSIM"]], "paclet:EXRIO/ref/GlobalSSIM"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "3d03d1fe-c682-4394-9dfa-babf9195de1e"],
+ " \[LongDash] ",
+ "GlobalSSIM[img1, img2] gives a global structural similarity measure."
+}], "GuideText",ExpressionUUID->"ae4eaa6f-432d-4cd4-ac32-7720ce41bf84"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ImageFeatureDataset"]], "paclet:EXRIO/ref/ImageFeatureDataset"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "480b260a-bdf1-4ad4-8ff1-bae27a2fa52f"],
+ " \[LongDash] ",
+ "ImageFeatureDataset[images] computes simple feature vectors for images."
+}], "GuideText",ExpressionUUID->"b5421da6-4f34-44a8-8407-303bbd947a2f"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ImageProbabilityDataset"]], 
+    "paclet:EXRIO/ref/ImageProbabilityDataset"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "bee243ee-daf4-4dd5-9d86-edde29106a42"],
+ " \[LongDash] ",
+ "ImageProbabilityDataset[images, classCount] computes demo class \
+probabilities from image brightness."
+}], "GuideText",ExpressionUUID->"04de461f-e108-4607-acc1-17acc498511d"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["InceptionScoreFromProbabilities"]], 
+    "paclet:EXRIO/ref/InceptionScoreFromProbabilities"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "e6d97cb2-df2c-4b06-a293-01ba722b1616"],
+ " \[LongDash] ",
+ "InceptionScoreFromProbabilities[probs] computes an inception-style score \
+from class probabilities."
+}], "GuideText",ExpressionUUID->"727d7bf7-197a-4b7c-bb0f-6553b2a1a9ca"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["L1Distance"]], "paclet:EXRIO/ref/L1Distance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "c3fac669-eee5-4144-938a-78670c4cfea0"],
+ " \[LongDash] ",
+ "L1Distance[img1, img2] gives the mean absolute difference between two \
+images."
+}], "GuideText",ExpressionUUID->"207763ff-c4d4-4c40-9e7f-dfae228520d2"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["LocalSSIM"]], "paclet:EXRIO/ref/LocalSSIM"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "bbdcf97b-f905-4e8c-95af-a2ee4ed4be40"],
+ " \[LongDash] ",
+ "LocalSSIM[img1, img2] gives a local-window SSIM approximation using \
+Gaussian filtering."
+}], "GuideText",ExpressionUUID->"d00874fe-3184-4a1b-b14c-a70d066fc464"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MAE"]], "paclet:EXRIO/ref/MAE"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "1e8fe042-3045-468c-a133-4b1b169c02f1"],
+ " \[LongDash] ",
+ "MAE[img1, img2] is an alias for L1Distance."
+}], "GuideText",ExpressionUUID->"38a0f302-2107-49da-9371-cf59c151370d"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MeanMetric"]], "paclet:EXRIO/ref/MeanMetric"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "16363141-fdd9-4222-b124-2650281e4fa1"],
+ " \[LongDash] ",
+ "MeanMetric[metric, imagePairs] averages a metric over image pairs."
+}], "GuideText",ExpressionUUID->"b57624ac-acd1-41b9-a099-49855146127d"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MSE"]], "paclet:EXRIO/ref/MSE"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "6bc453d4-f126-490a-9a65-2d8c84c17eef"],
+ " \[LongDash] ",
+ "MSE[img1, img2] gives the mean squared error between two images."
+}], "GuideText",ExpressionUUID->"56296d05-f018-452e-b254-3d5dbd3b97cf"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PSNR"]], "paclet:EXRIO/ref/PSNR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "61c5625b-0e92-4829-8fc8-e2d23e4e0ae5"],
+ " \[LongDash] ",
+ "PSNR[img1, img2] gives the peak signal-to-noise ratio between two images."
+}], "GuideText",ExpressionUUID->"b76fd51f-8e7b-4809-be9a-dea6cf017d76"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["RegularizedCovariance"]], 
+    "paclet:EXRIO/ref/RegularizedCovariance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "2b2cd310-450a-461e-9a5d-175906d590cc"],
+ " \[LongDash] ",
+ "RegularizedCovariance[matrix, eps] adds eps to the diagonal of a covariance \
+matrix."
+}], "GuideText",ExpressionUUID->"39bfd85e-d7d6-44da-8f3e-ee090ef7ae3f"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["RMSE"]], "paclet:EXRIO/ref/RMSE"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "247f282e-d7bb-4b7c-8733-d425dd4616a3"],
+ " \[LongDash] ",
+ "RMSE[img1, img2] gives the root mean squared error between two images."
+}], "GuideText",ExpressionUUID->"bb2ddbe4-efdc-4946-8bd4-ae3c12f236be"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ToGrayArray"]], "paclet:EXRIO/ref/ToGrayArray"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "4912c9e0-ceb4-4371-8729-869185ecddc7"],
+ " \[LongDash] ",
+ "ToGrayArray[img] converts an image to a normalized grayscale array."
+}], "GuideText",ExpressionUUID->"1f2ee76b-264f-44e9-92ec-24aa863bc6e3"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ToRGBImage"]], "paclet:EXRIO/ref/ToRGBImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "406302c3-e5a1-46bf-b34f-47ed66f00fc5"],
+ " \[LongDash] ",
+ "ToRGBImage[img, size] converts an image to RGB and resizes it."
+}], "GuideText",ExpressionUUID->"7c3d47b5-11ab-4792-acdd-08429029405f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Constants & Metadata", "GuideFunctionsSubsection",ExpressionUUID->"dab2680f-10ec-469e-bbe4-3e77dc719805"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["$EcologicalCueNames"]], "paclet:EXRIO/ref/$EcologicalCueNames"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "6afc4e3f-5954-447e-8e77-97ba851ed1f9"],
+ " \[LongDash] ",
+ "list of derived ecological cue pass names"
+}], "GuideText",ExpressionUUID->"3a092ae9-4b1b-490a-8ee6-75faeceada52"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["$EXRIOVersion"]], "paclet:EXRIO/ref/$EXRIOVersion"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "a47a1f28-40a6-4a6a-943c-392269c5fca1"],
+ " \[LongDash] ",
+ "version string of the loaded EXRIO paclet"
+}], "GuideText",ExpressionUUID->"dfd2deb0-98d0-4cbd-baa3-c1a36a667fe4"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["$KoenderinkShapeClasses"]], 
+    "paclet:EXRIO/ref/$KoenderinkShapeClasses"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]],ExpressionUUID->
+  "ff1c306c-cb71-4591-a824-f5a3990808c5"],
+ " \[LongDash] ",
+ "list of the 9 canonical Koenderink qualitative shape categories"
+}], "GuideText",ExpressionUUID->"e3f109a4-1e6a-4866-b08c-1ede423ba7a9"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -436,7 +716,7 @@ TaggingRules-><|
     "High-performance Wolfram Language paclet for multi-channel OpenEXR I/O, \
 ad-hoc computed passes, Cryptomatte object segmentation, and screen-space \
 differential geometry.", "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -452,56 +732,83 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"3d116b63-917c-4eec-8b76-280a08c5ffe3"],
-Cell[681, 24, 116, 2, 70, "Categorization",ExpressionUUID->"53d7d274-1f2a-4405-a07c-166af0930daa"],
-Cell[800, 28, 116, 2, 70, "Categorization",ExpressionUUID->"edc3d634-0443-4bce-bccc-b3443fcf7784"],
-Cell[919, 32, 110, 1, 70, "Categorization",ExpressionUUID->"c92765f9-c38a-4b30-b66c-27426efdd9f8"],
-Cell[1032, 35, 117, 1, 70, "Categorization",ExpressionUUID->"9f861453-7732-4847-9309-f8aca299fe02"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"3d116b63-917c-4eec-8b76-280a08c5ffe3"],
+Cell[681, 24, 116, 2, 87, "Categorization",ExpressionUUID->"53d7d274-1f2a-4405-a07c-166af0930daa"],
+Cell[800, 28, 116, 2, 87, "Categorization",ExpressionUUID->"edc3d634-0443-4bce-bccc-b3443fcf7784"],
+Cell[919, 32, 110, 1, 87, "Categorization",ExpressionUUID->"c92765f9-c38a-4b30-b66c-27426efdd9f8"],
+Cell[1032, 35, 117, 1, 87, "Categorization",ExpressionUUID->"9f861453-7732-4847-9309-f8aca299fe02"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1186, 41, 82, 0, 70, "GuideTitle",ExpressionUUID->"859f1ca1-c791-41b0-a0c7-8845c9ca71e2"],
-Cell[1271, 43, 260, 4, 70, "GuideAbstract",ExpressionUUID->"7df1fe5a-5f87-4979-bb2f-68dd33a3385c"]
+Cell[1186, 41, 82, 0, 87, "GuideTitle",ExpressionUUID->"859f1ca1-c791-41b0-a0c7-8845c9ca71e2"],
+Cell[1271, 43, 260, 4, 87, "GuideAbstract",ExpressionUUID->"7df1fe5a-5f87-4979-bb2f-68dd33a3385c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1568, 52, 97, 0, 70, "GuideFunctionsSection",ExpressionUUID->"e4f9f4fe-5949-4887-879d-c96bf569eeef"],
+Cell[1568, 52, 97, 0, 87, "GuideFunctionsSection",ExpressionUUID->"e4f9f4fe-5949-4887-879d-c96bf569eeef"],
 Cell[CellGroupData[{
-Cell[1690, 56, 125, 0, 70, "GuideFunctionsSubsection",ExpressionUUID->"a5f3d3eb-c881-4958-8b44-9ba8e5018892"],
-Cell[1818, 58, 428, 11, 70, "GuideText",ExpressionUUID->"f598d603-16a1-4e36-88f7-21aad7a911b7"],
-Cell[2249, 71, 334, 10, 70, "GuideText",ExpressionUUID->"380026c7-e402-4cd3-91cd-a6c105530a4c"],
-Cell[2586, 83, 419, 11, 70, "GuideText",ExpressionUUID->"777ff387-cbc7-4cde-b0b1-a72f79658510"],
-Cell[3008, 96, 408, 11, 70, "GuideText",ExpressionUUID->"f16e614c-0503-47b1-b428-9073fb5f5ae3"],
-Cell[3419, 109, 355, 10, 70, "GuideText",ExpressionUUID->"36f2aab7-c7ab-4ae2-95c2-66214553eb04"],
-Cell[3777, 121, 343, 10, 70, "GuideText",ExpressionUUID->"b344236f-95c3-42c6-aca0-bd1b443a9f3c"],
-Cell[4123, 133, 420, 11, 70, "GuideText",ExpressionUUID->"2b242787-7928-4c20-b536-1cc56ade6656"]
+Cell[1690, 56, 125, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"a5f3d3eb-c881-4958-8b44-9ba8e5018892"],
+Cell[1818, 58, 428, 11, 87, "GuideText",ExpressionUUID->"f598d603-16a1-4e36-88f7-21aad7a911b7"],
+Cell[2249, 71, 398, 11, 87, "GuideText",ExpressionUUID->"380026c7-e402-4cd3-91cd-a6c105530a4c"],
+Cell[2650, 84, 419, 11, 87, "GuideText",ExpressionUUID->"777ff387-cbc7-4cde-b0b1-a72f79658510"],
+Cell[3072, 97, 408, 11, 87, "GuideText",ExpressionUUID->"f16e614c-0503-47b1-b428-9073fb5f5ae3"],
+Cell[3483, 110, 411, 11, 87, "GuideText",ExpressionUUID->"36f2aab7-c7ab-4ae2-95c2-66214553eb04"],
+Cell[3897, 123, 382, 10, 87, "GuideText",ExpressionUUID->"b344236f-95c3-42c6-aca0-bd1b443a9f3c"],
+Cell[4282, 135, 420, 11, 87, "GuideText",ExpressionUUID->"2b242787-7928-4c20-b536-1cc56ade6656"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4580, 149, 117, 0, 70, "GuideFunctionsSubsection",ExpressionUUID->"d7a7925c-6496-41d2-b1d3-208f6a07fb85"],
-Cell[4700, 151, 412, 11, 70, "GuideText",ExpressionUUID->"8200e1d5-ba70-4ada-bde3-7706eace657a"],
-Cell[5115, 164, 421, 11, 70, "GuideText",ExpressionUUID->"9d546707-2d92-4c50-865e-e3ac7a0eabe4"],
-Cell[5539, 177, 427, 11, 70, "GuideText",ExpressionUUID->"cb169481-1bbf-44cd-ac06-e6580a10d01e"],
-Cell[5969, 190, 426, 11, 70, "GuideText",ExpressionUUID->"5c5ee0e7-3078-4aed-adf6-1b3306adc973"],
-Cell[6398, 203, 444, 12, 70, "GuideText",ExpressionUUID->"1d4c0803-79b2-4b57-bf51-1e13bc88a1b5"],
-Cell[6845, 217, 461, 12, 70, "GuideText",ExpressionUUID->"09e27f77-dd8c-47d7-8b06-e269607fdff4"],
-Cell[7309, 231, 453, 12, 70, "GuideText",ExpressionUUID->"d1adf25f-d563-44b0-b79b-186dcd6d77fe"],
-Cell[7765, 245, 437, 11, 70, "GuideText",ExpressionUUID->"7fcb3a82-a5e4-4506-a956-bd227b76ba37"],
-Cell[8205, 258, 440, 12, 70, "GuideText",ExpressionUUID->"b84ff5f9-0188-46ad-9801-87a15e1a5d8d"],
-Cell[8648, 272, 455, 12, 70, "GuideText",ExpressionUUID->"136db683-9508-46a5-8962-0286ee8a5c3e"],
-Cell[9106, 286, 430, 12, 70, "GuideText",ExpressionUUID->"3b38bff5-2e8f-4e3c-9a71-6ac5f37000c7"],
-Cell[9539, 300, 432, 12, 70, "GuideText",ExpressionUUID->"1a938aed-abf6-431e-b3f2-83413c7c85e0"]
+Cell[4739, 151, 117, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"d7a7925c-6496-41d2-b1d3-208f6a07fb85"],
+Cell[4859, 153, 412, 11, 87, "GuideText",ExpressionUUID->"8200e1d5-ba70-4ada-bde3-7706eace657a"],
+Cell[5274, 166, 421, 11, 87, "GuideText",ExpressionUUID->"9d546707-2d92-4c50-865e-e3ac7a0eabe4"],
+Cell[5698, 179, 427, 11, 87, "GuideText",ExpressionUUID->"cb169481-1bbf-44cd-ac06-e6580a10d01e"],
+Cell[6128, 192, 426, 11, 87, "GuideText",ExpressionUUID->"5c5ee0e7-3078-4aed-adf6-1b3306adc973"],
+Cell[6557, 205, 444, 12, 87, "GuideText",ExpressionUUID->"1d4c0803-79b2-4b57-bf51-1e13bc88a1b5"],
+Cell[7004, 219, 461, 12, 87, "GuideText",ExpressionUUID->"09e27f77-dd8c-47d7-8b06-e269607fdff4"],
+Cell[7468, 233, 453, 12, 87, "GuideText",ExpressionUUID->"d1adf25f-d563-44b0-b79b-186dcd6d77fe"],
+Cell[7924, 247, 437, 11, 87, "GuideText",ExpressionUUID->"7fcb3a82-a5e4-4506-a956-bd227b76ba37"],
+Cell[8364, 260, 440, 12, 87, "GuideText",ExpressionUUID->"b84ff5f9-0188-46ad-9801-87a15e1a5d8d"],
+Cell[8807, 274, 455, 12, 87, "GuideText",ExpressionUUID->"136db683-9508-46a5-8962-0286ee8a5c3e"],
+Cell[9265, 288, 430, 12, 87, "GuideText",ExpressionUUID->"3b38bff5-2e8f-4e3c-9a71-6ac5f37000c7"],
+Cell[9698, 302, 432, 12, 87, "GuideText",ExpressionUUID->"1a938aed-abf6-431e-b3f2-83413c7c85e0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10008, 317, 130, 0, 70, "GuideFunctionsSubsection",ExpressionUUID->"d0d1865a-ef53-4352-a883-159de4fb84aa"],
-Cell[10141, 319, 508, 12, 70, "GuideText",ExpressionUUID->"d220564b-5dc8-4289-994b-9d1b596b6cb2"],
-Cell[10652, 333, 393, 11, 70, "GuideText",ExpressionUUID->"c3bbe6a8-371a-4a80-abf9-dfd211fb7bbf"],
-Cell[11048, 346, 384, 11, 70, "GuideText",ExpressionUUID->"a36a2330-88a6-4fb7-af7a-258ac0a77d11"],
-Cell[11435, 359, 364, 10, 70, "GuideText",ExpressionUUID->"aef2264e-2c1c-4dee-9f35-0d09858bf510"],
-Cell[11802, 371, 378, 11, 70, "GuideText",ExpressionUUID->"aaea7eb5-a6d4-4933-9c14-3e9e6dbf2c3a"],
-Cell[12183, 384, 446, 11, 70, "GuideText",ExpressionUUID->"24d93483-2970-4b23-9893-ad29767b5ff4"]
+Cell[10167, 319, 130, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"d0d1865a-ef53-4352-a883-159de4fb84aa"],
+Cell[10300, 321, 508, 12, 87, "GuideText",ExpressionUUID->"d220564b-5dc8-4289-994b-9d1b596b6cb2"],
+Cell[10811, 335, 439, 12, 87, "GuideText",ExpressionUUID->"c3bbe6a8-371a-4a80-abf9-dfd211fb7bbf"],
+Cell[11253, 349, 443, 12, 87, "GuideText",ExpressionUUID->"a36a2330-88a6-4fb7-af7a-258ac0a77d11"],
+Cell[11699, 363, 417, 11, 87, "GuideText",ExpressionUUID->"aef2264e-2c1c-4dee-9f35-0d09858bf510"],
+Cell[12119, 376, 446, 12, 87, "GuideText",ExpressionUUID->"aaea7eb5-a6d4-4933-9c14-3e9e6dbf2c3a"],
+Cell[12568, 390, 446, 11, 87, "GuideText",ExpressionUUID->"24d93483-2970-4b23-9893-ad29767b5ff4"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12666, 400, 109, 0, 70, "GuideFunctionsSubsection",ExpressionUUID->"d18a8aa9-f8ee-408d-b0d9-2169db0b3086"],
-Cell[12778, 402, 456, 11, 70, "GuideText",ExpressionUUID->"95cfbf90-6a10-434e-8888-c0ed61e78d16"],
-Cell[13237, 415, 482, 11, 70, "GuideText",ExpressionUUID->"cde1058b-ee6b-4562-8414-175205e81401"]
+Cell[13051, 406, 109, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"d18a8aa9-f8ee-408d-b0d9-2169db0b3086"],
+Cell[13163, 408, 456, 11, 87, "GuideText",ExpressionUUID->"95cfbf90-6a10-434e-8888-c0ed61e78d16"],
+Cell[13622, 421, 482, 11, 87, "GuideText",ExpressionUUID->"cde1058b-ee6b-4562-8414-175205e81401"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14141, 437, 127, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"3a2a606b-698e-4c6d-a426-60fe55cc0c67"],
+Cell[14271, 439, 436, 12, 87, "GuideText",ExpressionUUID->"7b58eb9a-799e-4ec3-b2b3-c0f7ec3fc688"],
+Cell[14710, 453, 402, 10, 87, "GuideText",ExpressionUUID->"35e969da-4bf2-4bf5-abe3-2dfb75ba0897"],
+Cell[15115, 465, 410, 10, 87, "GuideText",ExpressionUUID->"ea3d9edb-3cf1-48a9-9e11-bdcdd370d61c"],
+Cell[15528, 477, 444, 11, 87, "GuideText",ExpressionUUID->"5f32073c-98a9-4f42-9462-7295b6ea91db"],
+Cell[15975, 490, 388, 10, 87, "GuideText",ExpressionUUID->"ae4eaa6f-432d-4cd4-ac32-7720ce41bf84"],
+Cell[16366, 502, 409, 10, 87, "GuideText",ExpressionUUID->"b5421da6-4f34-44a8-8407-303bbd947a2f"],
+Cell[16778, 514, 453, 12, 87, "GuideText",ExpressionUUID->"04de461f-e108-4607-acc1-17acc498511d"],
+Cell[17234, 528, 467, 12, 87, "GuideText",ExpressionUUID->"727d7bf7-197a-4b7c-bb0f-6553b2a1a9ca"],
+Cell[17704, 542, 399, 11, 87, "GuideText",ExpressionUUID->"207763ff-c4d4-4c40-9e7f-dfae228520d2"],
+Cell[18106, 555, 407, 11, 87, "GuideText",ExpressionUUID->"d00874fe-3184-4a1b-b14c-a70d066fc464"],
+Cell[18516, 568, 349, 10, 87, "GuideText",ExpressionUUID->"38a0f302-2107-49da-9371-cf59c151370d"],
+Cell[18868, 580, 386, 10, 87, "GuideText",ExpressionUUID->"b57624ac-acd1-41b9-a099-49855146127d"],
+Cell[19257, 592, 370, 10, 87, "GuideText",ExpressionUUID->"56296d05-f018-452e-b254-3d5dbd3b97cf"],
+Cell[19630, 604, 381, 10, 87, "GuideText",ExpressionUUID->"b76fd51f-8e7b-4809-be9a-dea6cf017d76"],
+Cell[20014, 616, 432, 12, 87, "GuideText",ExpressionUUID->"39bfd85e-d7d6-44da-8f3e-ee090ef7ae3f"],
+Cell[20449, 630, 378, 10, 87, "GuideText",ExpressionUUID->"bb2ddbe4-efdc-4946-8bd4-ae3c12f236be"],
+Cell[20830, 642, 389, 10, 87, "GuideText",ExpressionUUID->"1f2ee76b-264f-44e9-92ec-24aa863bc6e3"],
+Cell[21222, 654, 382, 10, 87, "GuideText",ExpressionUUID->"7c3d47b5-11ab-4792-acdd-08429029405f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21641, 669, 111, 0, 87, "GuideFunctionsSubsection",ExpressionUUID->"dab2680f-10ec-469e-bbe4-3e77dc719805"],
+Cell[21755, 671, 379, 10, 87, "GuideText",ExpressionUUID->"3a092ae9-4b1b-490a-8ee6-75faeceada52"],
+Cell[22137, 683, 367, 10, 87, "GuideText",ExpressionUUID->"dfd2deb0-98d0-4cbd-baa3-c1a36a667fe4"],
+Cell[22507, 695, 414, 11, 87, "GuideText",ExpressionUUID->"e3f109a4-1e6a-4866-b08c-1ede423ba7a9"]
 }, Open  ]]
 }, Open  ]]
 }

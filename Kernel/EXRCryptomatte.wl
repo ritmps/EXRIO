@@ -15,7 +15,7 @@ CryptomatteMaskImage::usage="CryptomatteMaskImage[crypto, name] returns an image
 
 Begin["`Private`"]
 
-isEXRDataQ[expr_] := MatchQ[expr, _[ _Association ]] && MatchQ[Head[expr], Symbol] && (SymbolName[Head[expr]] === "EXRData")
+isEXRDataQ[expr_] := MatchQ[expr, _[ _Association ]] && MatchQ[Head[expr], _Symbol] && (SymbolName[Head[expr]] === "EXRData")
 unwrapEXR[expr_] := If[isEXRDataQ[expr], First[expr], expr]
 wrapEXR[orig_, newAssoc_] := If[isEXRDataQ[orig], Head[orig][newAssoc], newAssoc]
 

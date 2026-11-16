@@ -422,14 +422,24 @@ WriteEXR[file_String, assoc_Association, opts : OptionsPattern[]] := Module[{
 },
   KeyValueMap[
     Function[{name, pass},
-      Module[{raw = Lookup[pass, "Data", None], arr},
+      Module[{raw = Lookup[pass, "Data", None], arr, heck, rman},
         If[MatchQ[raw, _NumericArray] || ArrayQ[raw],
           arr = If[MatchQ[raw, _NumericArray] && NumericArrayType[raw] === "Real32",
             raw,
             NumericArray[Normal[raw], "Real32"]
           ];
           exportAssoc[name] = arr;
-        ]
+        ];
+        If[AssociationQ[pass],
+          heck = Lookup[pass, "Heckbert", None];
+          rman = Lookup[pass, "RenderManLPE", None];
+          If[StringQ[heck] && StringLength[heck] > 0,
+            exrAttrs["lpe_layer_" <> name <> "_heckbert"] = heck;
+          ];
+          If[StringQ[rman] && StringLength[rman] > 0,
+            exrAttrs["lpe_layer_" <> name <> "_renderman"] = rman;
+          ];
+        ];
       ]
     ],
     passes

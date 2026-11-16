@@ -1,0 +1,171 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5854,        162]
+NotebookOptionsPosition[      3795,        119]
+NotebookOutlinePosition[      4400,        139]
+CellTagsIndexPosition[      4357,        136]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"00bf317d-db4f-4c2c-9e5a-fbaafbfce4e3"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"5557f62d-4a53-4491-8536-f9ed1073af90"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"69fd1ac2-dc18-46ec-84c2-d159d4782a47"],
+
+Cell["EXRIO`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"064183b2-36ce-4797-abc5-45d8a299b62f"],
+
+Cell["EXRIO/ref/MAE", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"2a30ea82-ad84-4a33-86dc-52da4088cf6a"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["MAE", "ObjectName",ExpressionUUID->"ed7b891c-7eb7-488f-b816-0e7159feedd4"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"697bcd3c-b145-47a8-b4b2-a3b0e5638eb5"],
+ Cell[BoxData[
+  RowBox[{"MAE", "[", 
+   RowBox[{
+    StyleBox["img1", "TI"], ",", 
+    StyleBox["img2", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "3bd916a5-e4f6-4536-949c-6e5dcb7ef43e"],
+ " \[LineSeparator]is an alias for L1Distance.",
+ "\n"
+}], "Usage",ExpressionUUID->"796ec882-594e-483c-b92c-68b3d2078248"],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"b1468cf5-64f4-48a9-8636-b7b585e3dacd"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"505561d2-2bb5-4e13-a0f8-4f5db73d8b45"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"99258671-f1bf-4c8f-a74f-88b3419cb5be"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"354ab9a8-00ac-48a6-9d12-5d2b46c1acc6"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "6e9a270c-12f1-44e5-ad25-f5ac7631c6b0"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AttachCryptomatte"]], "paclet:EXRIO/ref/AttachCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "e4d061ca-75c3-4dc0-bd51-d83c192ec10d"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["BuiltInImageDistance"]], 
+    "paclet:EXRIO/ref/BuiltInImageDistance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "be5e1493-e2f8-42f9-991f-1ca9a543327e"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CameraFrustumPlot"]], "paclet:EXRIO/ref/CameraFrustumPlot"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "e6c02991-f093-4d2d-aaf4-faa2ea0cc2b3"]
+}], "SeeAlso",ExpressionUUID->"35cf58be-995a-463d-8f73-29245abf6193"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"dccc53d6-c63a-4a84-b1d9-aeb8ec6d0d73"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"060b6e03-3240-4e32-a524-185d95390d7d"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRIO`", "type" -> "Symbol", "paclet" -> "EXRIO", "language" -> 
+    "en", "title" -> "MAE", "windowtitle" -> "MAE", "uri" -> "EXRIO/ref/MAE", 
+    "summary" -> "MAE[img1, img2] is an alias for L1Distance.", "index" -> 
+    True|>|>,
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"00bf317d-db4f-4c2c-9e5a-fbaafbfce4e3"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"5557f62d-4a53-4491-8536-f9ed1073af90"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"69fd1ac2-dc18-46ec-84c2-d159d4782a47"],
+Cell[920, 32, 110, 1, 87, "Categorization",ExpressionUUID->"064183b2-36ce-4797-abc5-45d8a299b62f"],
+Cell[1033, 35, 113, 1, 87, "Categorization",ExpressionUUID->"2a30ea82-ad84-4a33-86dc-52da4088cf6a"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1183, 41, 80, 0, 87, "ObjectName",ExpressionUUID->"ed7b891c-7eb7-488f-b816-0e7159feedd4"],
+Cell[1266, 43, 416, 10, 87, "Usage",ExpressionUUID->"796ec882-594e-483c-b92c-68b3d2078248"],
+Cell[CellGroupData[{
+Cell[1707, 57, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"b1468cf5-64f4-48a9-8636-b7b585e3dacd"],
+Cell[CellGroupData[{
+Cell[1829, 61, 95, 0, 87, "ExampleSection",ExpressionUUID->"505561d2-2bb5-4e13-a0f8-4f5db73d8b45"],
+Cell[1927, 63, 126, 1, 87, "Input",ExpressionUUID->"99258671-f1bf-4c8f-a74f-88b3419cb5be"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2102, 70, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"354ab9a8-00ac-48a6-9d12-5d2b46c1acc6"],
+Cell[2194, 72, 1271, 33, 87, "SeeAlso",ExpressionUUID->"35cf58be-995a-463d-8f73-29245abf6193"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3502, 110, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"dccc53d6-c63a-4a84-b1d9-aeb8ec6d0d73"],
+Cell[3602, 112, 165, 3, 87, "MoreAbout",ExpressionUUID->"060b6e03-3240-4e32-a524-185d95390d7d"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

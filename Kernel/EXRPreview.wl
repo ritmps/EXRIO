@@ -6,7 +6,7 @@ PreviewEXR::usage="PreviewEXR[exr] makes a preview grid for available passes.";
 
 Begin["`Private`"]
 
-isEXRDataQ[expr_] := MatchQ[expr, _[ _Association ]] && MatchQ[Head[expr], Symbol] && (SymbolName[Head[expr]] === "EXRData");
+isEXRDataQ[expr_] := MatchQ[expr, _[ _Association ]] && MatchQ[Head[expr], _Symbol] && (SymbolName[Head[expr]] === "EXRData");
 unwrapEXR[expr_] := If[isEXRDataQ[expr], First[expr], expr];
 
 signedScalarPassQ[name_String]:=MemberQ[{"k1","k2","H","K","ContrastOfCurvature"},name];
@@ -95,6 +95,19 @@ makeLabelPreview[data_,imageSize_]:=Module[{arr},
   ImageResize[Colorize[arr],imageSize]
 ]
 
+(* Linear scene-referred RGB -> Reinhard HDR roll-off (if > 1) + IEC sRGB OETF *)
+linToSrgbArray[x_] := Module[{c = Clip[N[x], {0., 1.}], m},
+  m = UnitStep[c - 0.0031308];
+  Clip[(1. - m) * (12.92 * c) + m * (1.055 * (Clip[c, {1.*^-8, 1.}]^(1./2.4)) - 0.055), {0., 1.}]
+]
+
+makeColorPreview[data_,imageSize_]:=Module[{arr,tonemapped,srgb},
+  arr=Clip[N @ Normal[data],{0.,Infinity}];
+  tonemapped=If[Max[arr]>1.,arr/(1.+arr),arr];
+  srgb=linToSrgbArray[tonemapped];
+  ImageResize[Image[srgb,"Real32",ColorSpace->"RGB"],imageSize]
+]
+
 cryptomattePreviewCells[exr : _Association | _?isEXRDataQ,imageSize_ : 180,maxObjects_ : 6]:=Module[
   {crypto,labelImg,names,maskCells,labelCell={},selectedNames,assoc},
   
@@ -153,13 +166,20 @@ previewImage[name_String,passAssoc_Association,imageSize_: 180]:=Module[{arr},
           makePositivePreview[arr,imageSize],
         ArrayDepth[arr]==2,
           makeDefaultScalarPreview[arr,imageSize],
-        ArrayDepth[arr]==3&&Last[Dimensions[arr]]==3,
+        ArrayDepth[arr]==3&&Last[Dimensions[arr]]==3&&(Lookup[passAssoc,"Type",None]==="Vector3"||StringStartsQ[name,"geometry.N"]),
+          ImageResize[Image[Rescale[Clip[N[arr],{-1.,1.}],{-1.,1.},{0.,1.}],"Real32",ColorSpace->"RGB"],imageSize],
+        ArrayDepth[arr]==3&&Last[Dimensions[arr]]==3&&StringStartsQ[name,"geometry.P"],
           ImageResize[ImageAdjust @ Image[arr,"Real32"],imageSize],
+        ArrayDepth[arr]==3&&Last[Dimensions[arr]]==3,
+          makeColorPreview[arr,imageSize],
         True,
           Style["not previewable",Gray]
       ],
     KeyExistsQ[passAssoc,"Image"]&&MatchQ[passAssoc["Image"],_Image],
-      ImageResize[ImageAdjust[passAssoc["Image"]],imageSize],
+      If[ImageChannels[passAssoc["Image"]]==3,
+        makeColorPreview[ImageData[passAssoc["Image"],"Real32"],imageSize],
+        ImageResize[ImageAdjust[passAssoc["Image"]],imageSize]
+      ],
     True,
       Style["not previewable",Gray]
   ]

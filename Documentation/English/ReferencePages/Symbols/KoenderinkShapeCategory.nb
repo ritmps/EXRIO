@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      7055,        185]
-NotebookOptionsPosition[      4521,        136]
-NotebookOutlinePosition[      5409,        160]
-CellTagsIndexPosition[      5366,        157]
+NotebookDataLength[      8186,        212]
+NotebookOptionsPosition[      5423,        159]
+NotebookOutlinePosition[      6314,        183]
+CellTagsIndexPosition[      6271,        180]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,39 +41,20 @@ Cell[CellGroupData[{
 
 Cell["KoenderinkShapeCategory", "ObjectName",ExpressionUUID->"3a0d6539-a023-4110-846e-a0ea5d75cac8"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["KoenderinkShapeCategory", "UsageSymbol"], " ", 
-  RowBox[{
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"905f40e6-13d8-4a94-9a37-3275d0fe0191"],
+ Cell[BoxData[
+  RowBox[{"KoenderinkShapeCategory", "[", 
    RowBox[{
-    RowBox[{
-     RowBox[{"KoenderinkShapeCategory", "[", 
-      RowBox[{"shapeIndex", ",", " ", "mask"}], "]"}], " ", "classifies", " ",
-      "continuous", " ", "Shape", " ", "Index", " ", "S", " ", 
-     RowBox[{"in", " ", "[", 
-      RowBox[{
-       RowBox[{"-", "1"}], ",", " ", "1"}], "]"}], " ", "into", " ", "the", " ",
-      "9", " ", "canonical", " ", "Koenderink"}], " ", "&"}], " ", "van", " ",
-    "Doorn", " ", 
-   RowBox[{"(", "1992", ")"}], " ", "qualitative", " ", "shape", " ", 
-   "categories", " ", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{"1", " ", "=", " ", 
-       RowBox[{
-        RowBox[{
-         RowBox[{
-          RowBox[{"Spherical", " ", "Cup"}], " ", "..."}], " ", "5"}], " ", "=",
-         " ", 
-        RowBox[{
-         RowBox[{
-          RowBox[{
-           RowBox[{"Symmetric", " ", "Saddle"}], " ", "..."}], " ", "9"}], 
-         " ", "=", " ", 
-         RowBox[{"Spherical", " ", "Cap"}]}]}]}], ";", " ", 
-      RowBox[{"0", " ", "=", " ", "background"}]}], ")"}], "."}]}]}]], "Usage",\
-ExpressionUUID->"d64b1414-d854-4da9-b366-2ff17fdeb738"],
+    StyleBox["shapeIndex", "TI"], ",", 
+    StyleBox["mask", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "25aa0173-12eb-49b8-8467-173dc9a6dd78"],
+ " \[LineSeparator]classifies continuous Shape Index S in [-1, 1] into the 9 \
+canonical Koenderink & van Doorn (1992) qualitative shape categories (1 = \
+Spherical Cup ... 5 = Symmetric Saddle ... 9 = Spherical Cap; 0 = \
+background).",
+ "\n"
+}], "Usage",ExpressionUUID->"0e367839-971f-4749-bb8e-973241dced90"],
 
 Cell[CellGroupData[{
 
@@ -110,27 +91,69 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["See Also", "SeeAlsoSection",ExpressionUUID->"5296c37d-53c6-46b9-b933-bbe50794472f"],
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"d63f690e-22b0-461d-ba6e-5a6e03f9bc1f"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["ComputeCurvature", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ComputeScaleSpaceCurvature", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ColorizeShapeIndex", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ComputeEcologicalCues", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["SampleEnvironment", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ReadEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
-"686a1e7c-0946-4544-be39-109f96e19805"]
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeCurvature"]], "paclet:EXRIO/ref/ComputeCurvature"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "ff53a47c-34e9-4fe8-b219-beead2ea1aad"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeScaleSpaceCurvature"]], 
+    "paclet:EXRIO/ref/ComputeScaleSpaceCurvature"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "6304d765-fd07-4ce1-a5a3-27e3e8bba07d"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ColorizeShapeIndex"]], "paclet:EXRIO/ref/ColorizeShapeIndex"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "1a66953e-e5ec-49ab-ad42-7204a39b93c0"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeEcologicalCues"]], 
+    "paclet:EXRIO/ref/ComputeEcologicalCues"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "991cb1bd-78c2-46d5-b70c-e96ad97d36a8"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["SampleEnvironment"]], "paclet:EXRIO/ref/SampleEnvironment"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "78db9c58-067e-45bc-a255-6d77e1bf7c3e"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "07bb6219-fdd9-4053-adb8-3a3cb28a2174"]
+}], "SeeAlso",ExpressionUUID->"7d2b1f13-6337-45e3-9d7e-4ca8c8e41910"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"d424fc6d-1fc9-4ed5-a237-74e77fd5a26e"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"db041a39-3f47-4f08-b10a-6fa63537bc01"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -144,7 +167,7 @@ TaggingRules-><|
 Index S in [-1, 1] into the 9 canonical Koenderink & van Doorn (1992) \
 qualitative shape categories (1 = Spherical Cup ... 5 = Symmetric Saddle ... \
 9 = Spherical Cap; 0 = background).", "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -160,31 +183,35 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"f2a79fe8-22e6-407c-b36e-a94519bef479"],
-Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"c9897fe7-c947-4bb6-bf47-510215828d81"],
-Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"b6b57e7d-14e1-4d3a-a278-1147d98294d7"],
-Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"b2455da0-2179-44e3-8012-d1d6acad55ae"],
-Cell[1039, 35, 133, 1, 70, "Categorization",ExpressionUUID->"cda4e357-4b83-4356-a750-776af4ce06f7"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"f2a79fe8-22e6-407c-b36e-a94519bef479"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"c9897fe7-c947-4bb6-bf47-510215828d81"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"b6b57e7d-14e1-4d3a-a278-1147d98294d7"],
+Cell[920, 32, 116, 1, 87, "Categorization",ExpressionUUID->"b2455da0-2179-44e3-8012-d1d6acad55ae"],
+Cell[1039, 35, 133, 1, 87, "Categorization",ExpressionUUID->"cda4e357-4b83-4356-a750-776af4ce06f7"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1209, 41, 100, 0, 70, "ObjectName",ExpressionUUID->"3a0d6539-a023-4110-846e-a0ea5d75cac8"],
-Cell[1312, 43, 1205, 32, 70, "Usage",ExpressionUUID->"d64b1414-d854-4da9-b366-2ff17fdeb738"],
+Cell[1209, 41, 100, 0, 87, "ObjectName",ExpressionUUID->"3a0d6539-a023-4110-846e-a0ea5d75cac8"],
+Cell[1312, 43, 631, 13, 87, "Usage",ExpressionUUID->"0e367839-971f-4749-bb8e-973241dced90"],
 Cell[CellGroupData[{
-Cell[2542, 79, 98, 0, 70, "NotesSection",ExpressionUUID->"ee67fe23-cfb6-40b1-88ad-bb2779c1174a"],
-Cell[2643, 81, 124, 0, 70, "NotesText",ExpressionUUID->"e59d9ebf-7024-4ad2-838c-e467d170a09e"]
+Cell[1968, 60, 98, 0, 87, "NotesSection",ExpressionUUID->"ee67fe23-cfb6-40b1-88ad-bb2779c1174a"],
+Cell[2069, 62, 124, 0, 87, "NotesText",ExpressionUUID->"e59d9ebf-7024-4ad2-838c-e467d170a09e"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[2804, 86, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"f6e02389-a237-4859-b22b-0c9b80310dcc"],
+Cell[2230, 67, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"f6e02389-a237-4859-b22b-0c9b80310dcc"],
 Cell[CellGroupData[{
-Cell[2926, 90, 95, 0, 70, "ExampleSection",ExpressionUUID->"d8082f13-b786-41c3-88db-29fd8e2c9d9b"],
-Cell[3024, 92, 126, 1, 70, "Input",ExpressionUUID->"204623f5-84bc-47d7-a30d-1873ba7fc34d"],
-Cell[3153, 95, 174, 3, 70, "ExampleText",ExpressionUUID->"9ccf920c-ecf7-4e62-b747-2395b5f17b64"],
-Cell[3330, 100, 296, 6, 70, "Input",ExpressionUUID->"ec7a041b-c9df-4d48-836c-0fd34cd1991e"]
+Cell[2352, 71, 95, 0, 87, "ExampleSection",ExpressionUUID->"d8082f13-b786-41c3-88db-29fd8e2c9d9b"],
+Cell[2450, 73, 126, 1, 87, "Input",ExpressionUUID->"204623f5-84bc-47d7-a30d-1873ba7fc34d"],
+Cell[2579, 76, 174, 3, 87, "ExampleText",ExpressionUUID->"9ccf920c-ecf7-4e62-b747-2395b5f17b64"],
+Cell[2756, 81, 296, 6, 87, "Input",ExpressionUUID->"ec7a041b-c9df-4d48-836c-0fd34cd1991e"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3675, 112, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"5296c37d-53c6-46b9-b933-bbe50794472f"],
-Cell[3767, 114, 726, 18, 70, "SeeAlsoText",ExpressionUUID->"686a1e7c-0946-4544-be39-109f96e19805"]
+Cell[3101, 93, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"d63f690e-22b0-461d-ba6e-5a6e03f9bc1f"],
+Cell[3193, 95, 1900, 50, 87, "SeeAlso",ExpressionUUID->"7d2b1f13-6337-45e3-9d7e-4ca8c8e41910"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5130, 150, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"d424fc6d-1fc9-4ed5-a237-74e77fd5a26e"],
+Cell[5230, 152, 165, 3, 87, "MoreAbout",ExpressionUUID->"db041a39-3f47-4f08-b10a-6fa63537bc01"]
 }, Open  ]]
 }, Open  ]]
 }

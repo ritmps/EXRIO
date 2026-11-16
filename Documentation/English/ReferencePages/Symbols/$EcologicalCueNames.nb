@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      5421,        143]
-NotebookOptionsPosition[      3109,         97]
-NotebookOutlinePosition[      3781,        118]
-CellTagsIndexPosition[      3738,        115]
+NotebookDataLength[      6772,        178]
+NotebookOptionsPosition[      4227,        128]
+NotebookOutlinePosition[      4902,        149]
+CellTagsIndexPosition[      4859,        146]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,13 +41,14 @@ Cell[CellGroupData[{
 
 Cell["$EcologicalCueNames", "ObjectName",ExpressionUUID->"874c68cf-417f-48c8-8253-c39732651674"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["$EcologicalCueNames", "UsageSymbol"], " ", 
-  RowBox[{
-  "Names", " ", "of", " ", "the", " ", "passes", " ", "produced", " ", "by", " ", 
-   RowBox[{"ComputeEcologicalCues", "."}]}]}]], "Usage",ExpressionUUID->\
-"77f0f654-b7a7-4acc-940f-5f27fc09abaa"],
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"09305550-f411-461c-b227-81343a0ff3a1"],
+ Cell[BoxData[
+ "$EcologicalCueNames"], "InlineFormula",ExpressionUUID->
+  "dde9d413-8f01-4011-bbf8-c753342dee4f"],
+ " \[LineSeparator]Names of the passes produced by ComputeEcologicalCues.",
+ "\n"
+}], "Usage",ExpressionUUID->"edecec3e-babc-4fd3-ac64-3c5a7327e830"],
 
 Cell[CellGroupData[{
 
@@ -77,21 +78,51 @@ Cell[BoxData["$EcologicalCueNames"], "Input",ExpressionUUID->"304a361d-589f-485e
 
 Cell[CellGroupData[{
 
-Cell["See Also", "SeeAlsoSection",ExpressionUUID->"a16837b5-8052-4636-97cf-9ac27a5ee275"],
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"f3a925bf-4031-40c9-8bc7-901862ac2f5a"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["ReadEXR", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["EXRData", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["AddComputedPass", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["PreviewEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
-"54714201-04f1-4c3f-8155-ae1c8be07763"]
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "18659c0a-3ca1-4257-9907-e7cd34031801"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["EXRData"]], "paclet:EXRIO/ref/EXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "91db07a4-1d61-4f34-8ba8-c6e0feb0d4c0"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "e7d019c6-ec96-4555-bd28-a1aeeb8596d4"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PreviewEXR"]], "paclet:EXRIO/ref/PreviewEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "7b5952c3-29f4-4f2c-8c3d-6923c990b678"]
+}], "SeeAlso",ExpressionUUID->"5dd4b74b-cbd1-4d54-9e22-5f6aa010ddd2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"90d5a75e-3642-4f94-b5b6-37df7a23654b"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"372628a5-0188-4ef2-a75e-0fcee7f57c58"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -102,7 +133,7 @@ TaggingRules-><|
     "$EcologicalCueNames", "uri" -> "EXRIO/ref/$EcologicalCueNames", 
     "summary" -> "Names of the passes produced by ComputeEcologicalCues.", 
     "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -118,31 +149,35 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"ed8538e0-1a19-496a-a47d-21e501f14650"],
-Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"86d7c463-a48f-4ebb-adde-9aa7c9dfd208"],
-Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"d6e6c33e-6e71-43fc-8046-128df32d11e1"],
-Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"052df308-434a-484c-b64a-5e0b6df14e99"],
-Cell[1039, 35, 129, 1, 70, "Categorization",ExpressionUUID->"f0469049-af13-4c7c-8740-6933083bf40c"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"ed8538e0-1a19-496a-a47d-21e501f14650"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"86d7c463-a48f-4ebb-adde-9aa7c9dfd208"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"d6e6c33e-6e71-43fc-8046-128df32d11e1"],
+Cell[920, 32, 116, 1, 87, "Categorization",ExpressionUUID->"052df308-434a-484c-b64a-5e0b6df14e99"],
+Cell[1039, 35, 129, 1, 87, "Categorization",ExpressionUUID->"f0469049-af13-4c7c-8740-6933083bf40c"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1205, 41, 96, 0, 70, "ObjectName",ExpressionUUID->"874c68cf-417f-48c8-8253-c39732651674"],
-Cell[1304, 43, 287, 6, 70, "Usage",ExpressionUUID->"77f0f654-b7a7-4acc-940f-5f27fc09abaa"],
+Cell[1205, 41, 96, 0, 87, "ObjectName",ExpressionUUID->"874c68cf-417f-48c8-8253-c39732651674"],
+Cell[1304, 43, 361, 7, 87, "Usage",ExpressionUUID->"edecec3e-babc-4fd3-ac64-3c5a7327e830"],
 Cell[CellGroupData[{
-Cell[1616, 53, 98, 0, 70, "NotesSection",ExpressionUUID->"755e2adc-02c5-4bc4-83ea-b4aabcccb801"],
-Cell[1717, 55, 120, 0, 70, "NotesText",ExpressionUUID->"3dfec0e5-6f26-41f5-a3e6-0ea4e01ebcc3"]
+Cell[1690, 54, 98, 0, 87, "NotesSection",ExpressionUUID->"755e2adc-02c5-4bc4-83ea-b4aabcccb801"],
+Cell[1791, 56, 120, 0, 87, "NotesText",ExpressionUUID->"3dfec0e5-6f26-41f5-a3e6-0ea4e01ebcc3"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1874, 60, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"5d712303-dd1a-4e87-bdba-30282321f158"],
+Cell[1948, 61, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"5d712303-dd1a-4e87-bdba-30282321f158"],
 Cell[CellGroupData[{
-Cell[1996, 64, 95, 0, 70, "ExampleSection",ExpressionUUID->"42a015dc-af62-4f06-9a13-eef78520d4ac"],
-Cell[2094, 66, 126, 1, 70, "Input",ExpressionUUID->"6a0047ed-e457-4015-b273-86462bdeb39c"],
-Cell[2223, 69, 150, 2, 70, "ExampleText",ExpressionUUID->"b4b0554a-bec7-41e3-9e86-468a587524b8"],
-Cell[2376, 73, 100, 0, 70, "Input",ExpressionUUID->"304a361d-589f-485e-8087-3940de84f94f"]
+Cell[2070, 65, 95, 0, 87, "ExampleSection",ExpressionUUID->"42a015dc-af62-4f06-9a13-eef78520d4ac"],
+Cell[2168, 67, 126, 1, 87, "Input",ExpressionUUID->"6a0047ed-e457-4015-b273-86462bdeb39c"],
+Cell[2297, 70, 150, 2, 87, "ExampleText",ExpressionUUID->"b4b0554a-bec7-41e3-9e86-468a587524b8"],
+Cell[2450, 74, 100, 0, 87, "Input",ExpressionUUID->"304a361d-589f-485e-8087-3940de84f94f"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2525, 79, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"a16837b5-8052-4636-97cf-9ac27a5ee275"],
-Cell[2617, 81, 464, 12, 70, "SeeAlsoText",ExpressionUUID->"54714201-04f1-4c3f-8155-ae1c8be07763"]
+Cell[2599, 80, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"f3a925bf-4031-40c9-8bc7-901862ac2f5a"],
+Cell[2691, 82, 1206, 32, 87, "SeeAlso",ExpressionUUID->"5dd4b74b-cbd1-4d54-9e22-5f6aa010ddd2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3934, 119, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"90d5a75e-3642-4f94-b5b6-37df7a23654b"],
+Cell[4034, 121, 165, 3, 87, "MoreAbout",ExpressionUUID->"372628a5-0188-4ef2-a75e-0fcee7f57c58"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      8630,        221]
-NotebookOptionsPosition[      5812,        169]
-NotebookOutlinePosition[      6883,        195]
-CellTagsIndexPosition[      6840,        192]
+NotebookDataLength[      9474,        236]
+NotebookOptionsPosition[      6423,        180]
+NotebookOutlinePosition[      7497,        206]
+CellTagsIndexPosition[      7454,        203]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,48 +41,23 @@ Cell[CellGroupData[{
 
 Cell["ComputeScaleSpaceCurvature", "ObjectName",ExpressionUUID->"1398c0ac-499c-48dd-bbff-c790f428c54a"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["ComputeScaleSpaceCurvature", "UsageSymbol"], " ", 
-  RowBox[{
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"c1ad1e0c-5fa8-4a49-93c3-d7dfe90add85"],
+ Cell[BoxData[
+  RowBox[{"ComputeScaleSpaceCurvature", "[", 
    RowBox[{
-    RowBox[{
-     RowBox[{"ComputeScaleSpaceCurvature", "[", 
-      RowBox[{"exr", ",", " ", "sigma", ",", " ", "opts"}], "]"}], " ", 
-     "computes", " ", "Koenderink", " ", "scale"}], "-", 
-    RowBox[{"space", " ", "/", " ", "local"}], "-", 
-    RowBox[{"jet", " ", "differential", " ", "invariants", " ", 
-     RowBox[{"(", 
-      RowBox[{
-      "ShapeIndex", ",", " ", "LogCurvedness", ",", " ", 
-       "ScaleNormalizedCurvedness", ",", " ", "k1", ",", " ", "k2", ",", " ", 
-       "H", ",", " ", "K", ",", " ", "KoenderinkCategory"}], ")"}], " ", "at",
-      " ", "spatial", " ", "aperture", " ", "sigma", " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"in", " ", "pixels"}], ",", " ", 
-       RowBox[{"or", " ", "list", " ", "of", " ", "scales", " ", 
-        RowBox[{"{", 
-         RowBox[{"s1", ",", " ", "s2", ",", " ", "..."}], "}"}]}]}], 
-      ")"}]}]}], ",", " ", 
-   RowBox[{
-    RowBox[{"using", " ", "either", " ", "\"\<Method\>\""}], " ", "->", " ", 
-    RowBox[{
-     RowBox[{"\"\<WeingartenJet\>\"", " ", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"3", "D", " ", "manifold", " ", "1"}], "-", 
-        RowBox[{"jet", " ", "on", " ", "P", " ", "and", " ", "Nn"}]}], ")"}], 
-      " ", "or", " ", "\"\<Method\>\""}], " ", "->", " ", 
-     RowBox[{"\"\<MongeJet\>\"", " ", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"2", "D", " ", "Gaussian", " ", "2"}], "-", 
-         RowBox[{"jet", " ", 
-          RowBox[{"J", "^", "2"}], "_sigma", " ", "on", " ", "depth", " ", 
-          "Z"}]}], ")"}], "."}]}]}]}]}]}]], "Usage",ExpressionUUID->"108cca8e-\
-c76e-4d65-a6c9-9a8cb9ccb5ad"],
+    StyleBox["exr", "TI"], ",", 
+    StyleBox["sigma", "TI"], ",", 
+    StyleBox["opts", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "3568cbe8-bb54-4ac7-b334-a13d4f2e1ad4"],
+ " \[LineSeparator]computes Koenderink scale-space / local-jet differential \
+invariants (ShapeIndex, LogCurvedness, ScaleNormalizedCurvedness, k1, k2, H, \
+K, KoenderinkCategory) at spatial aperture sigma (in pixels, or list of \
+scales {s1, s2, ...}), using either \"Method\" -> \"WeingartenJet\" (3D \
+manifold 1-jet on P and Nn) or \"Method\" -> \"MongeJet\" (2D Gaussian 2-jet \
+J^2_sigma on depth Z).",
+ "\n"
+}], "Usage",ExpressionUUID->"77b114d0-2647-4997-801d-a7c72407e9d5"],
 
 Cell[CellGroupData[{
 
@@ -91,26 +66,20 @@ Cell["Details and Options", "NotesSection",ExpressionUUID->"21db6919-666a-4b1d-9
 Cell["The following options can be given:", "NotesText",ExpressionUUID->"7716ed86-988a-4ff1-9f7c-54a5b29f0cd2"],
 
 Cell[BoxData[GridBox[{
-   {
-    StyleBox["Option",
-     FontWeight->"Bold"], 
-    StyleBox[
-     RowBox[{"Default", " ", "Value"}],
-     FontWeight->"Bold"]},
-   {
-    StyleBox["Method", "InlineFormula"], 
-    StyleBox["WeingartenJet", "InlineFormula"]},
-   {
-    StyleBox["Mask", "InlineFormula"], 
-    StyleBox["Automatic", "InlineFormula"]},
-   {
-    StyleBox["VisualAngleDegrees", "InlineFormula"], 
-    StyleBox["None", "InlineFormula"]}
-  },
-  GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True, {False}}},
-  
-  GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{0.8}}}]], "TableText",Expr\
-essionUUID->"35367df0-fcce-46f0-8cbf-21fcde0f3be4"]
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "004a8eeb-0574-480f-b7bd-41b17daa13e2"], "Method", Cell[
+    "WeingartenJet", "TableText",ExpressionUUID->
+     "2adf94ae-09f9-457d-9994-584f1eaf9a9f"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "7456afe3-d683-4156-9d47-7cb8ce5a4ebf"], "Mask", Cell[
+    "Automatic", "TableText",ExpressionUUID->
+     "83fdccf6-09ba-4711-8da1-9ec16a108510"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "3e5c6de8-cb9b-42a2-b7ec-6078c517b371"], "VisualAngleDegrees", Cell[
+    "None", "TableText",ExpressionUUID->
+     "1ecac9c7-cb1c-4fba-9a78-ddcfde2a3de7"]}
+  }]], "2ColumnTableMod",ExpressionUUID->"35367df0-fcce-46f0-8cbf-\
+21fcde0f3be4"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -143,27 +112,69 @@ Cell[BoxData[{
 
 Cell[CellGroupData[{
 
-Cell["See Also", "SeeAlsoSection",ExpressionUUID->"0d2046e0-62c5-4c50-9756-54ce6d7f29f2"],
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"a162e7a5-2608-45fc-95b7-7f875f69d640"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["ComputeCurvature", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["KoenderinkShapeCategory", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ColorizeShapeIndex", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ComputeEcologicalCues", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["SampleEnvironment", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ReadEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
-"f5500cb0-c4d6-4ab1-99b0-4a48ee4a9abe"]
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeCurvature"]], "paclet:EXRIO/ref/ComputeCurvature"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "a89d3442-85c3-4166-865c-cf1c728c2bd7"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["KoenderinkShapeCategory"]], 
+    "paclet:EXRIO/ref/KoenderinkShapeCategory"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "654e7a4e-b68d-4849-9a8a-ec2263d0c311"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ColorizeShapeIndex"]], "paclet:EXRIO/ref/ColorizeShapeIndex"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "3721a6b8-0c00-4e4b-a9cc-c220cf678873"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeEcologicalCues"]], 
+    "paclet:EXRIO/ref/ComputeEcologicalCues"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "ffee77d4-e0c9-468f-b6ff-15951a4cc76c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["SampleEnvironment"]], "paclet:EXRIO/ref/SampleEnvironment"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "a666dfb4-5d60-419e-adbc-48b8c1e0df48"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "bb6dde4a-8280-4188-acc7-6a2ad44c6b71"]
+}], "SeeAlso",ExpressionUUID->"1b3a9986-9acf-434b-a05e-31afdeb180f5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"de3bba01-0df3-4640-a4c6-518f42bc597c"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"37731207-e94f-4a0d-82fe-49e047b8611d"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -179,7 +190,7 @@ ScaleNormalizedCurvedness, k1, k2, H, K, KoenderinkCategory) at spatial \
 aperture sigma (in pixels, or list of scales {s1, s2, ...}), using either \
 \"Method\" -> \"WeingartenJet\" (3D manifold 1-jet on P and Nn) or \"Method\" \
 -> \"MongeJet\" (2D Gaussian 2-jet J^2_sigma on depth Z).", "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -195,32 +206,36 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"673d9059-b773-43c0-8260-d034443a42b1"],
-Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"6606a380-0048-40fa-80a3-3d5fc066429d"],
-Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"cae8a64a-be78-4aa1-bfa9-0aa856fd616a"],
-Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"8c0f4892-25e0-49db-80ce-f5185bbc3c91"],
-Cell[1039, 35, 136, 1, 70, "Categorization",ExpressionUUID->"d448de8b-0211-4407-9b87-23491e966ae3"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"673d9059-b773-43c0-8260-d034443a42b1"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"6606a380-0048-40fa-80a3-3d5fc066429d"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"cae8a64a-be78-4aa1-bfa9-0aa856fd616a"],
+Cell[920, 32, 116, 1, 87, "Categorization",ExpressionUUID->"8c0f4892-25e0-49db-80ce-f5185bbc3c91"],
+Cell[1039, 35, 136, 1, 87, "Categorization",ExpressionUUID->"d448de8b-0211-4407-9b87-23491e966ae3"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1212, 41, 103, 0, 70, "ObjectName",ExpressionUUID->"1398c0ac-499c-48dd-bbff-c790f428c54a"],
-Cell[1318, 43, 1750, 41, 70, "Usage",ExpressionUUID->"108cca8e-c76e-4d65-a6c9-9a8cb9ccb5ad"],
+Cell[1212, 41, 103, 0, 87, "ObjectName",ExpressionUUID->"1398c0ac-499c-48dd-bbff-c790f428c54a"],
+Cell[1318, 43, 833, 16, 87, "Usage",ExpressionUUID->"77b114d0-2647-4997-801d-a7c72407e9d5"],
 Cell[CellGroupData[{
-Cell[3093, 88, 98, 0, 70, "NotesSection",ExpressionUUID->"21db6919-666a-4b1d-9ec6-2993dba80ee3"],
-Cell[3194, 90, 111, 0, 70, "NotesText",ExpressionUUID->"7716ed86-988a-4ff1-9f7c-54a5b29f0cd2"],
-Cell[3308, 92, 661, 20, 70, "TableText",ExpressionUUID->"35367df0-fcce-46f0-8cbf-21fcde0f3be4"]
+Cell[2176, 63, 98, 0, 87, "NotesSection",ExpressionUUID->"21db6919-666a-4b1d-9ec6-2993dba80ee3"],
+Cell[2277, 65, 111, 0, 87, "NotesText",ExpressionUUID->"7716ed86-988a-4ff1-9f7c-54a5b29f0cd2"],
+Cell[2391, 67, 716, 14, 87, "2ColumnTableMod",ExpressionUUID->"35367df0-fcce-46f0-8cbf-21fcde0f3be4"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4006, 117, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"244085b9-9de7-4063-9a99-abde07f6d9b1"],
+Cell[3144, 86, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"244085b9-9de7-4063-9a99-abde07f6d9b1"],
 Cell[CellGroupData[{
-Cell[4128, 121, 95, 0, 70, "ExampleSection",ExpressionUUID->"446d6dbb-426f-4c60-9e21-684fda3fd6dd"],
-Cell[4226, 123, 126, 1, 70, "Input",ExpressionUUID->"0c9567ab-d846-47c2-980a-17c06802325e"],
-Cell[4355, 126, 160, 2, 70, "ExampleText",ExpressionUUID->"5897719e-c78a-4ef1-bda2-f0c23c52d9d8"],
-Cell[4518, 130, 402, 9, 70, "Input",ExpressionUUID->"7cdb56bb-b910-4d63-b178-2f0c2c1b0fd5"]
+Cell[3266, 90, 95, 0, 87, "ExampleSection",ExpressionUUID->"446d6dbb-426f-4c60-9e21-684fda3fd6dd"],
+Cell[3364, 92, 126, 1, 87, "Input",ExpressionUUID->"0c9567ab-d846-47c2-980a-17c06802325e"],
+Cell[3493, 95, 160, 2, 87, "ExampleText",ExpressionUUID->"5897719e-c78a-4ef1-bda2-f0c23c52d9d8"],
+Cell[3656, 99, 402, 9, 87, "Input",ExpressionUUID->"7cdb56bb-b910-4d63-b178-2f0c2c1b0fd5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4969, 145, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"0d2046e0-62c5-4c50-9756-54ce6d7f29f2"],
-Cell[5061, 147, 723, 18, 70, "SeeAlsoText",ExpressionUUID->"f5500cb0-c4d6-4ab1-99b0-4a48ee4a9abe"]
+Cell[4107, 114, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"a162e7a5-2608-45fc-95b7-7f875f69d640"],
+Cell[4199, 116, 1894, 50, 87, "SeeAlso",ExpressionUUID->"1b3a9986-9acf-434b-a05e-31afdeb180f5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6130, 171, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"de3bba01-0df3-4640-a4c6-518f42bc597c"],
+Cell[6230, 173, 165, 3, 87, "MoreAbout",ExpressionUUID->"37731207-e94f-4a0d-82fe-49e047b8611d"]
 }, Open  ]]
 }, Open  ]]
 }

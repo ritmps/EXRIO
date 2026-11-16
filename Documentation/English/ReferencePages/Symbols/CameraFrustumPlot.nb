@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      7937,        219]
-NotebookOptionsPosition[      5438,        171]
-NotebookOutlinePosition[      6192,        193]
-CellTagsIndexPosition[      6149,        190]
+NotebookDataLength[     10346,        251]
+NotebookOptionsPosition[      7608,        199]
+NotebookOutlinePosition[      8365,        221]
+CellTagsIndexPosition[      8322,        218]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,17 +41,18 @@ Cell[CellGroupData[{
 
 Cell["CameraFrustumPlot", "ObjectName",ExpressionUUID->"15e634e4-caed-4644-b3bd-eba09d39341a"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["CameraFrustumPlot", "UsageSymbol"], " ", 
-  RowBox[{
-   RowBox[{"CameraFrustumPlot", "[", 
-    RowBox[{"exrsOrMatrices", ",", " ", "opts"}], "]"}], " ", "creates", " ", 
-   "a", " ", "3", "D", " ", "graphic", " ", "visualizing", " ", "camera", " ",
-    "coordinate", " ", "frames", " ", "and", " ", "viewing", " ", "frustums", 
-   " ", "for", " ", "one", " ", "or", " ", "more", " ", 
-   RowBox[{"scenes", "."}]}]}]], "Usage",ExpressionUUID->"ea27e305-9ca2-453d-\
-b1a4-b18b143c1f8e"],
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"e3b40b5c-a495-4435-806c-75ed36150010"],
+ Cell[BoxData[
+  RowBox[{"CameraFrustumPlot", "[", 
+   RowBox[{
+    StyleBox["exrsOrMatrices", "TI"], ",", 
+    StyleBox["opts", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "45f82200-db1f-430c-91d9-860e41ab6877"],
+ " \[LineSeparator]creates a 3D graphic visualizing camera coordinate frames \
+and viewing frustums for one or more scenes.",
+ "\n"
+}], "Usage",ExpressionUUID->"fd52f67e-3573-4633-9418-a0bd33c4a77b"],
 
 Cell[CellGroupData[{
 
@@ -60,69 +61,71 @@ Cell["Details and Options", "NotesSection",ExpressionUUID->"736031f3-ab72-4d36-b
 Cell["The following options can be given:", "NotesText",ExpressionUUID->"53c2d254-85b7-4ded-95f1-56ca218bedf2"],
 
 Cell[BoxData[GridBox[{
-   {
-    StyleBox["Option",
-     FontWeight->"Bold"], 
-    StyleBox[
-     RowBox[{"Default", " ", "Value"}],
-     FontWeight->"Bold"]},
-   {
-    StyleBox["Scale", "InlineFormula"], 
-    StyleBox["0.5", "InlineFormula"]},
-   {
-    StyleBox["FOV", "InlineFormula"], 
-    StyleBox["48.", "InlineFormula"]},
-   {
-    StyleBox["AspectRatio", "InlineFormula"], 
-    StyleBox["1.", "InlineFormula"]},
-   {
-    StyleBox["FrustumOpacity", "InlineFormula"], 
-    StyleBox["0.15", "InlineFormula"]},
-   {
-    StyleBox["ShowAxes", "InlineFormula"], 
-    StyleBox["True", "InlineFormula"]},
-   {
-    StyleBox["ShowFrustum", "InlineFormula"], 
-    StyleBox["True", "InlineFormula"]},
-   {
-    StyleBox["ShowSphere", "InlineFormula"], 
-    StyleBox["True", "InlineFormula"]},
-   {
-    StyleBox["FrameScale", "InlineFormula"], 
-    StyleBox["0.35", "InlineFormula"]},
-   {
-    StyleBox["Color", "InlineFormula"], 
-    StyleBox["Automatic", "InlineFormula"]},
-   {
-    StyleBox["CenterTarget", "InlineFormula"], 
-    StyleBox[
-     RowBox[{"{", 
-      RowBox[{"0", ",", " ", "0", ",", " ", "0"}], "}"}], "InlineFormula"]},
-   {
-    StyleBox["ShowCenter", "InlineFormula"], 
-    StyleBox["True", "InlineFormula"]},
-   {
-    StyleBox["TargetRadius", "InlineFormula"], 
-    StyleBox["0.25", "InlineFormula"]},
-   {
-    StyleBox["Axes", "InlineFormula"], 
-    StyleBox["True", "InlineFormula"]},
-   {
-    StyleBox["AxesLabel", "InlineFormula"], 
-    StyleBox[
-     RowBox[{"{", 
-      RowBox[{"X", ",", " ", "Y", ",", " ", "Z"}], "}"}], "InlineFormula"]},
-   {
-    StyleBox["Boxed", "InlineFormula"], 
-    StyleBox["True", "InlineFormula"]},
-   {
-    StyleBox["ImageSize", "InlineFormula"], 
-    StyleBox["Large", "InlineFormula"]}
-  },
-  GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {False, True, {False}}},
-  
-  GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{0.8}}}]], "TableText",Expr\
-essionUUID->"32b38222-8f90-4542-b3e6-f6d9a698b9a9"]
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "f5df91b2-a41a-4a09-9870-be5fdf7e07cc"], "Scale", Cell[
+    "0.5", "TableText",ExpressionUUID->
+     "3401f5e4-2e71-4321-8650-dbe570898a3f"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "a3dd066e-1b96-4673-b780-502f904f81e1"], "FOV", Cell[
+    "48.", "TableText",ExpressionUUID->
+     "f03c88cf-e728-4961-acd6-b380c392e6c8"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "d350d691-913f-42ab-8fb5-7b8a614c1d04"], "AspectRatio", Cell[
+    "1.", "TableText",ExpressionUUID->"d64c427f-451d-4a3e-9592-b2801efed66c"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "52d1e539-6256-4ddb-a0f5-a6f70a77b47c"], "FrustumOpacity", Cell[
+    "0.15", "TableText",ExpressionUUID->
+     "9124a840-b846-4edc-9783-8695273f893c"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "380ef087-cbb0-499e-b56f-ef41483e8c7e"], "ShowAxes", Cell[
+    "True", "TableText",ExpressionUUID->
+     "9856facc-f8fb-4932-820d-aec87a6a555c"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "68db9bde-2c6a-422b-93eb-135635c40629"], "ShowFrustum", Cell[
+    "True", "TableText",ExpressionUUID->
+     "556a8453-22b1-4e62-b248-ddce129b135a"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "968b2e43-6884-405a-b498-b5f15132a159"], "ShowSphere", Cell[
+    "True", "TableText",ExpressionUUID->
+     "ae69a27c-725b-4cf0-8edb-21dd31e0e005"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "1086cde1-14ff-4f69-b2a9-3700a057ac85"], "FrameScale", Cell[
+    "0.35", "TableText",ExpressionUUID->
+     "8357fc64-ffb9-4bc6-8fd7-5b72da6e0c10"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "2b10b8a3-42e2-408f-969b-1da4500cc8ca"], "Color", Cell[
+    "Automatic", "TableText",ExpressionUUID->
+     "167b5c89-727b-48e5-8342-1326f41dddba"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "3a354e94-798e-4a43-aa40-f726f31f6c42"], "CenterTarget", Cell[
+    "{", "TableText",ExpressionUUID->
+     "15e5f8e0-6a52-4158-996d-567df7461c4f"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "c54f2507-8418-4ff0-99fa-7b252feb6b94"], "ShowCenter", Cell[
+    "True", "TableText",ExpressionUUID->
+     "f106e7df-a5d2-4226-90e0-135a31d06fbb"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "d62c55c3-63e8-4125-8993-d0c7ec6e093e"], "TargetRadius", Cell[
+    "0.25", "TableText",ExpressionUUID->
+     "12b8a7f9-1121-4258-8731-28aeebf08820"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "f547ca29-1b6b-452d-adc4-eba9a659e37c"], "Axes", Cell[
+    "True", "TableText",ExpressionUUID->
+     "e539ff09-d506-4138-81b3-58ed065edea8"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "b21bd104-34ac-4ad3-94b2-357d5fb7b1d9"], "AxesLabel", Cell[
+    "{", "TableText",ExpressionUUID->
+     "544839eb-82d1-4440-af84-48ef6a405111"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "a41a6a86-60d6-4323-aa6d-46a906b19f96"], "Boxed", Cell[
+    "True", "TableText",ExpressionUUID->
+     "c45444fd-bb99-4b6b-ba35-ed713c05cc27"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "ba2992eb-6ca1-4572-9022-679962c69831"], "ImageSize", Cell[
+    "Large", "TableText",ExpressionUUID->
+     "4bba5af9-c7a0-467e-9264-c8b7dbdcb527"]}
+  }]], "2ColumnTableMod",ExpressionUUID->"32b38222-8f90-4542-b3e6-\
+f6d9a698b9a9"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -154,18 +157,43 @@ xpressionUUID->"3737c400-fe10-46bb-ad60-b1e4a95ef348"]
 
 Cell[CellGroupData[{
 
-Cell["See Also", "SeeAlsoSection",ExpressionUUID->"5b25f73f-7319-4575-a787-c5975db62488"],
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"eb2363e7-7585-44a8-a0f8-c91ab42915c5"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["CameraGlyph", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ReadEXR", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["EXRData", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
-"2f596541-ce89-46a5-ac89-cac729fbb92d"]
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CameraGlyph"]], "paclet:EXRIO/ref/CameraGlyph"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "204f8d52-e3d5-4aaa-86e4-54590c803111"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "b7547dd5-531c-4240-b079-7c62b5f12fde"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["EXRData"]], "paclet:EXRIO/ref/EXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "f72c0645-b8f8-48a6-85be-db6aaf507286"]
+}], "SeeAlso",ExpressionUUID->"f05d5570-8ef2-4ec9-a427-018a04a681f1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"552d0e81-78fe-43fd-b3cc-c46ee6ce4961"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"d42cfbef-3b67-4ee4-80a4-6f75ccdfab83"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -177,7 +205,7 @@ TaggingRules-><|
     "CameraFrustumPlot[exrsOrMatrices, opts] creates a 3D graphic visualizing \
 camera coordinate frames and viewing frustums for one or more scenes.", 
     "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -193,32 +221,36 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"cb8aabc2-cd70-46f0-b1cb-d549acbc707f"],
-Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"5a71e7a1-c4eb-4d18-bd8b-5d765f90411e"],
-Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"b6437a6e-1995-4f53-a2cf-6f189ae3b3d4"],
-Cell[920, 32, 114, 1, 70, "Categorization",ExpressionUUID->"3c89e8e8-7667-4e12-8ae2-1d41f53380bc"],
-Cell[1037, 35, 127, 1, 70, "Categorization",ExpressionUUID->"b9645645-d730-45c3-ac56-a685afe90a57"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"cb8aabc2-cd70-46f0-b1cb-d549acbc707f"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"5a71e7a1-c4eb-4d18-bd8b-5d765f90411e"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"b6437a6e-1995-4f53-a2cf-6f189ae3b3d4"],
+Cell[920, 32, 114, 1, 87, "Categorization",ExpressionUUID->"3c89e8e8-7667-4e12-8ae2-1d41f53380bc"],
+Cell[1037, 35, 127, 1, 87, "Categorization",ExpressionUUID->"b9645645-d730-45c3-ac56-a685afe90a57"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1201, 41, 94, 0, 70, "ObjectName",ExpressionUUID->"15e634e4-caed-4644-b3bd-eba09d39341a"],
-Cell[1298, 43, 519, 10, 70, "Usage",ExpressionUUID->"ea27e305-9ca2-453d-b1a4-b18b143c1f8e"],
+Cell[1201, 41, 94, 0, 87, "ObjectName",ExpressionUUID->"15e634e4-caed-4644-b3bd-eba09d39341a"],
+Cell[1298, 43, 517, 11, 87, "Usage",ExpressionUUID->"fd52f67e-3573-4633-9418-a0bd33c4a77b"],
 Cell[CellGroupData[{
-Cell[1842, 57, 98, 0, 70, "NotesSection",ExpressionUUID->"736031f3-ab72-4d36-ba03-409235477e25"],
-Cell[1943, 59, 111, 0, 70, "NotesText",ExpressionUUID->"53c2d254-85b7-4ded-95f1-56ca218bedf2"],
-Cell[2057, 61, 1952, 63, 70, "TableText",ExpressionUUID->"32b38222-8f90-4542-b3e6-f6d9a698b9a9"]
+Cell[1840, 58, 98, 0, 87, "NotesSection",ExpressionUUID->"736031f3-ab72-4d36-ba03-409235477e25"],
+Cell[1941, 60, 111, 0, 87, "NotesText",ExpressionUUID->"53c2d254-85b7-4ded-95f1-56ca218bedf2"],
+Cell[2055, 62, 3272, 65, 87, "2ColumnTableMod",ExpressionUUID->"32b38222-8f90-4542-b3e6-f6d9a698b9a9"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4046, 129, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"c081cba9-19a8-4c87-b433-c4b726f54f62"],
+Cell[5364, 132, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"c081cba9-19a8-4c87-b433-c4b726f54f62"],
 Cell[CellGroupData[{
-Cell[4168, 133, 95, 0, 70, "ExampleSection",ExpressionUUID->"966d9ba5-af39-4b5c-9ea4-e3598aebf66d"],
-Cell[4266, 135, 126, 1, 70, "Input",ExpressionUUID->"978f64f1-babb-4c19-9fe2-6e6014637e9b"],
-Cell[4395, 138, 167, 3, 70, "ExampleText",ExpressionUUID->"699fcf18-948f-422e-9b5f-52e20b431e70"],
-Cell[4565, 143, 352, 7, 70, "Input",ExpressionUUID->"3737c400-fe10-46bb-ad60-b1e4a95ef348"]
+Cell[5486, 136, 95, 0, 87, "ExampleSection",ExpressionUUID->"966d9ba5-af39-4b5c-9ea4-e3598aebf66d"],
+Cell[5584, 138, 126, 1, 87, "Input",ExpressionUUID->"978f64f1-babb-4c19-9fe2-6e6014637e9b"],
+Cell[5713, 141, 167, 3, 87, "ExampleText",ExpressionUUID->"699fcf18-948f-422e-9b5f-52e20b431e70"],
+Cell[5883, 146, 352, 7, 87, "Input",ExpressionUUID->"3737c400-fe10-46bb-ad60-b1e4a95ef348"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4966, 156, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"5b25f73f-7319-4575-a787-c5975db62488"],
-Cell[5058, 158, 352, 9, 70, "SeeAlsoText",ExpressionUUID->"2f596541-ce89-46a5-ac89-cac729fbb92d"]
+Cell[6284, 159, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"eb2363e7-7585-44a8-a0f8-c91ab42915c5"],
+Cell[6376, 161, 902, 24, 87, "SeeAlso",ExpressionUUID->"f05d5570-8ef2-4ec9-a427-018a04a681f1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7315, 190, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"552d0e81-78fe-43fd-b3cc-c46ee6ce4961"],
+Cell[7415, 192, 165, 3, 87, "MoreAbout",ExpressionUUID->"d42cfbef-3b67-4ee4-80a4-6f75ccdfab83"]
 }, Open  ]]
 }, Open  ]]
 }

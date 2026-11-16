@@ -9,7 +9,7 @@ CameraFrustumPlot::usage = "CameraFrustumPlot[exrsOrMatrices, opts] creates a 3D
 Begin["`Private`"]
 
 isEXRDataQ[expr_] :=
-  MatchQ[expr, _[ _Association ]] && MatchQ[Head[expr], Symbol] && (SymbolName[Head[expr]] === "EXRData");
+  MatchQ[expr, _[ _Association ]] && MatchQ[Head[expr], _Symbol] && (SymbolName[Head[expr]] === "EXRData");
 
 unwrapEXR[expr_] :=
   If[isEXRDataQ[expr],

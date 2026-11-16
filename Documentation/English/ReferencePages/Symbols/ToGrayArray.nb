@@ -1,0 +1,170 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5903,        161]
+NotebookOptionsPosition[      3792,        117]
+NotebookOutlinePosition[      4450,        138]
+CellTagsIndexPosition[      4407,        135]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"83b95bf5-97ea-453d-9357-3f984183f824"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"e9b375cd-2791-4b06-a300-6eb2e8e7a5c6"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"c7d1220c-6845-4abb-a015-f697e7ef2ab7"],
+
+Cell["EXRIO`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"1e36469f-c6ee-4630-a607-a077fc8bcb9a"],
+
+Cell["EXRIO/ref/ToGrayArray", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"0527f0ff-bf97-4961-a00c-52c8dfd7c1fb"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ToGrayArray", "ObjectName",ExpressionUUID->"7c6b0667-c38a-49e2-8cbd-47831988aa4c"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"de8383b9-636b-4a4f-afce-2005025b3f9f"],
+ Cell[BoxData[
+  RowBox[{"ToGrayArray", "[", 
+   StyleBox["img", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "08b50901-e410-4a7e-917c-7f3f28e968e2"],
+ " \[LineSeparator]converts an image to a normalized grayscale array.",
+ "\n"
+}], "Usage",ExpressionUUID->"32b8f283-c8ad-43fc-a374-7a08b120d1ca"],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"77db06f9-7cc4-4299-b93d-e0e2e2bfc32e"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"860cb5e9-94ab-459b-a8f1-6d9b01f748ea"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"72160a33-8d44-46b2-a4a0-137c2b2bb3c5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"27b02800-bcb5-4e26-854b-e8a98b5ec579"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "bb362ed9-c0a6-4bc6-a22e-d32210340e3a"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AttachCryptomatte"]], "paclet:EXRIO/ref/AttachCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "703aeb78-5ed2-4d3d-b79c-299713914749"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["BuiltInImageDistance"]], 
+    "paclet:EXRIO/ref/BuiltInImageDistance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "fcfe15c4-df43-458a-877f-4c7bd9cce7ac"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CameraFrustumPlot"]], "paclet:EXRIO/ref/CameraFrustumPlot"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "44ceb230-a171-4eac-9753-4ea581f32c53"]
+}], "SeeAlso",ExpressionUUID->"51402747-cb6d-4f2d-9bd9-b0e86333cfc5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"10425826-0b81-459e-8efd-872ee5509e44"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"1a77e62e-c637-4f69-be8b-2d5dd0ab7be1"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRIO`", "type" -> "Symbol", "paclet" -> "EXRIO", "language" -> 
+    "en", "title" -> "ToGrayArray", "windowtitle" -> "ToGrayArray", "uri" -> 
+    "EXRIO/ref/ToGrayArray", "summary" -> 
+    "ToGrayArray[img] converts an image to a normalized grayscale array.", 
+    "index" -> True|>|>,
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"83b95bf5-97ea-453d-9357-3f984183f824"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"e9b375cd-2791-4b06-a300-6eb2e8e7a5c6"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"c7d1220c-6845-4abb-a015-f697e7ef2ab7"],
+Cell[920, 32, 110, 1, 87, "Categorization",ExpressionUUID->"1e36469f-c6ee-4630-a607-a077fc8bcb9a"],
+Cell[1033, 35, 121, 1, 87, "Categorization",ExpressionUUID->"0527f0ff-bf97-4961-a00c-52c8dfd7c1fb"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1191, 41, 88, 0, 87, "ObjectName",ExpressionUUID->"7c6b0667-c38a-49e2-8cbd-47831988aa4c"],
+Cell[1282, 43, 397, 8, 87, "Usage",ExpressionUUID->"32b8f283-c8ad-43fc-a374-7a08b120d1ca"],
+Cell[CellGroupData[{
+Cell[1704, 55, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"77db06f9-7cc4-4299-b93d-e0e2e2bfc32e"],
+Cell[CellGroupData[{
+Cell[1826, 59, 95, 0, 87, "ExampleSection",ExpressionUUID->"860cb5e9-94ab-459b-a8f1-6d9b01f748ea"],
+Cell[1924, 61, 126, 1, 87, "Input",ExpressionUUID->"72160a33-8d44-46b2-a4a0-137c2b2bb3c5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2099, 68, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"27b02800-bcb5-4e26-854b-e8a98b5ec579"],
+Cell[2191, 70, 1271, 33, 87, "SeeAlso",ExpressionUUID->"51402747-cb6d-4f2d-9bd9-b0e86333cfc5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3499, 108, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"10425826-0b81-459e-8efd-872ee5509e44"],
+Cell[3599, 110, 165, 3, 87, "MoreAbout",ExpressionUUID->"1a77e62e-c637-4f69-be8b-2d5dd0ab7be1"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

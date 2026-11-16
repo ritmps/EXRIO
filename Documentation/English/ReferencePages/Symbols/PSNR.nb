@@ -1,0 +1,196 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      6996,        187]
+NotebookOptionsPosition[      4576,        138]
+NotebookOutlinePosition[      5216,        159]
+CellTagsIndexPosition[      5173,        156]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"43c55646-a12f-4d9a-8cf0-c0c2e5833aa9"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"7d498ecd-419c-49b4-a5f4-268a41282619"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"cd5cd601-2aba-4ce6-92a2-28be43e8ddc6"],
+
+Cell["EXRIO`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"8db39198-1d56-4324-bfdc-fa47cf4cc8cb"],
+
+Cell["EXRIO/ref/PSNR", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"e5f8d42b-b66b-4647-aa62-a334ea9345b2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PSNR", "ObjectName",ExpressionUUID->"c3a31689-1395-4f16-8d3a-fe3c74536454"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"abe250d5-2f93-4188-8d29-b37f14db5c59"],
+ Cell[BoxData[
+  RowBox[{"PSNR", "[", 
+   RowBox[{
+    StyleBox["img1", "TI"], ",", 
+    StyleBox["img2", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "76c51e3a-13c6-44a4-b4d0-33e0b805d06e"],
+ " \[LineSeparator]gives the peak signal-to-noise ratio between two images.",
+ "\n"
+}], "Usage",ExpressionUUID->"a884be1c-0665-4009-a485-bce4db848107"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",ExpressionUUID->"8728f40f-59a2-4240-9279-fb8266a886d4"],
+
+Cell["The following options can be given:", "Notes",ExpressionUUID->"e36b8fa9-664f-4126-844d-cc748b0c26d7"],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "e1519566-54df-430f-a3a4-4d9303b6b471"], "Masking", Cell[
+    "None", "TableText",ExpressionUUID->
+     "17defec6-dbe7-4fa9-9637-e5b7c2a2a09c"]},
+   {Cell["      ", "ModInfo",ExpressionUUID->
+     "2e9e3b4f-4d19-4b39-8ff4-95202ddec404"], "DynamicRange", Cell[
+    "1.", "TableText",ExpressionUUID->
+     "ce951a0e-ce74-4a63-a0e5-a79185eb360b"]}
+  }]], "2ColumnTableMod",ExpressionUUID->"38157120-f197-4bbb-bc4b-\
+76676fcc629b"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"49a268cf-db6c-4098-9397-b7ba1d6fc5bc"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"55c4605f-11d2-40f0-a245-c7160497e1e1"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"706ef2c1-1abf-406f-92ff-115b7cd9fd21"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"820c1221-7eca-4110-a9c9-0e589ab7e30d"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "89b288b5-c147-4a6e-ac6c-7fbc599b62ee"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AttachCryptomatte"]], "paclet:EXRIO/ref/AttachCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "5e5450a4-60a0-4106-81d5-0058fa24cced"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["BuiltInImageDistance"]], 
+    "paclet:EXRIO/ref/BuiltInImageDistance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "485bdbfa-33f0-4c4c-bee7-0e0072575f5c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CameraFrustumPlot"]], "paclet:EXRIO/ref/CameraFrustumPlot"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "e49062b3-5813-4b82-af48-4cf67efd6ba6"]
+}], "SeeAlso",ExpressionUUID->"348f0a31-597b-43e8-8e34-62128acc609f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"e87fc03b-04bc-458f-8c85-ea14a0a2adbe"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"41f26ce3-f1b7-49ee-9ded-25156567553b"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRIO`", "type" -> "Symbol", "paclet" -> "EXRIO", "language" -> 
+    "en", "title" -> "PSNR", "windowtitle" -> "PSNR", "uri" -> 
+    "EXRIO/ref/PSNR", "summary" -> 
+    "PSNR[img1, img2] gives the peak signal-to-noise ratio between two \
+images.", "index" -> True|>|>,
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"43c55646-a12f-4d9a-8cf0-c0c2e5833aa9"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"7d498ecd-419c-49b4-a5f4-268a41282619"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"cd5cd601-2aba-4ce6-92a2-28be43e8ddc6"],
+Cell[920, 32, 110, 1, 87, "Categorization",ExpressionUUID->"8db39198-1d56-4324-bfdc-fa47cf4cc8cb"],
+Cell[1033, 35, 114, 1, 87, "Categorization",ExpressionUUID->"e5f8d42b-b66b-4647-aa62-a334ea9345b2"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1184, 41, 81, 0, 87, "ObjectName",ExpressionUUID->"c3a31689-1395-4f16-8d3a-fe3c74536454"],
+Cell[1268, 43, 446, 10, 87, "Usage",ExpressionUUID->"a884be1c-0665-4009-a485-bce4db848107"],
+Cell[CellGroupData[{
+Cell[1739, 57, 98, 0, 87, "NotesSection",ExpressionUUID->"8728f40f-59a2-4240-9279-fb8266a886d4"],
+Cell[1840, 59, 107, 0, 87, "Notes",ExpressionUUID->"e36b8fa9-664f-4126-844d-cc748b0c26d7"],
+Cell[1950, 61, 501, 10, 87, "2ColumnTableMod",ExpressionUUID->"38157120-f197-4bbb-bc4b-76676fcc629b"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2488, 76, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"49a268cf-db6c-4098-9397-b7ba1d6fc5bc"],
+Cell[CellGroupData[{
+Cell[2610, 80, 95, 0, 87, "ExampleSection",ExpressionUUID->"55c4605f-11d2-40f0-a245-c7160497e1e1"],
+Cell[2708, 82, 126, 1, 87, "Input",ExpressionUUID->"706ef2c1-1abf-406f-92ff-115b7cd9fd21"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2883, 89, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"820c1221-7eca-4110-a9c9-0e589ab7e30d"],
+Cell[2975, 91, 1271, 33, 87, "SeeAlso",ExpressionUUID->"348f0a31-597b-43e8-8e34-62128acc609f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4283, 129, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"e87fc03b-04bc-458f-8c85-ea14a0a2adbe"],
+Cell[4383, 131, 165, 3, 87, "MoreAbout",ExpressionUUID->"41f26ce3-f1b7-49ee-9ded-25156567553b"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

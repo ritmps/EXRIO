@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      5726,        151]
-NotebookOptionsPosition[      3363,        104]
-NotebookOutlinePosition[      4084,        126]
-CellTagsIndexPosition[      4041,        123]
+NotebookDataLength[      6883,        180]
+NotebookOptionsPosition[      4288,        129]
+NotebookOutlinePosition[      5012,        151]
+CellTagsIndexPosition[      4969,        148]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,20 +41,15 @@ Cell[CellGroupData[{
 
 Cell["$KoenderinkShapeClasses", "ObjectName",ExpressionUUID->"614a99a4-de7d-42a6-a1c3-f5dc895afe02"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["$KoenderinkShapeClasses", "UsageSymbol"], " ", 
-  RowBox[{
-   RowBox[{
-    RowBox[{
-    "Canonical", " ", "9", " ", "qualitative", " ", "shape", " ", "classes", " ",
-      "of", " ", "Koenderink"}], " ", "&"}], " ", "van", " ", "Doorn", " ", 
-   RowBox[{"(", "1992", ")"}], " ", "over", " ", "S", " ", 
-   RowBox[{
-    RowBox[{"in", " ", "[", 
-     RowBox[{
-      RowBox[{"-", "1"}], ",", " ", "1"}], "]"}], "."}]}]}]], "Usage",Expressi\
-onUUID->"d1f3afad-47ba-496d-8fa2-76641d419915"],
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"aa07d265-543e-4e35-bad5-fe1ea90a2a76"],
+ Cell[BoxData[
+ "$KoenderinkShapeClasses"], "InlineFormula",ExpressionUUID->
+  "e7645ab9-7b80-4fe2-ab93-8ddafc540c92"],
+ " \[LineSeparator]Canonical 9 qualitative shape classes of Koenderink & van \
+Doorn (1992) over S in [-1, 1].",
+ "\n"
+}], "Usage",ExpressionUUID->"4b575c42-1cfd-4a47-810e-50d814fa858a"],
 
 Cell[CellGroupData[{
 
@@ -84,21 +79,51 @@ Cell[BoxData["$KoenderinkShapeClasses"], "Input",ExpressionUUID->"c581b8e1-41c2-
 
 Cell[CellGroupData[{
 
-Cell["See Also", "SeeAlsoSection",ExpressionUUID->"3e3d0bca-3a3b-45e9-b4af-37c7d84b4a0f"],
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"a76c2232-70fe-46a6-864b-c34772de0e42"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["ReadEXR", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["EXRData", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["AddComputedPass", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["PreviewEXR", "InlineFormula"]}]], "SeeAlsoText",ExpressionUUID->\
-"2f3ddff8-18c3-49ec-8fe5-52dad77d53f4"]
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "4c0224c5-8b33-4172-92e8-15b162a279d9"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["EXRData"]], "paclet:EXRIO/ref/EXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "ac1a2684-7e6e-4ff1-85e1-a376b4e095fa"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "ae781ebe-7aca-4b94-bf01-1f179f3738f0"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PreviewEXR"]], "paclet:EXRIO/ref/PreviewEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "b7dc9d49-b1bb-49fb-8393-12480f189882"]
+}], "SeeAlso",ExpressionUUID->"c65d466a-0367-41dd-b949-e80a518d7a7c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"15b73d34-c457-4976-bdbb-262d5cda8306"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"04b3095e-7b42-473d-9a08-8bfa570ed823"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -110,7 +135,7 @@ TaggingRules-><|
     "summary" -> 
     "Canonical 9 qualitative shape classes of Koenderink & van Doorn (1992) \
 over S in [-1, 1].", "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -126,31 +151,35 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"96208ef0-6693-413d-a903-6d32673545d0"],
-Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"10dd907f-653a-489c-8b6b-43fe7fc6f8ab"],
-Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"0f6ee7e0-08e1-4a60-a2bb-793ef029ab9c"],
-Cell[920, 32, 116, 1, 70, "Categorization",ExpressionUUID->"49c9ea9a-20f8-414c-b243-c89b53b3b931"],
-Cell[1039, 35, 133, 1, 70, "Categorization",ExpressionUUID->"e8866445-7f5d-498b-bcfa-69f122caf9e3"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"96208ef0-6693-413d-a903-6d32673545d0"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"10dd907f-653a-489c-8b6b-43fe7fc6f8ab"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"0f6ee7e0-08e1-4a60-a2bb-793ef029ab9c"],
+Cell[920, 32, 116, 1, 87, "Categorization",ExpressionUUID->"49c9ea9a-20f8-414c-b243-c89b53b3b931"],
+Cell[1039, 35, 133, 1, 87, "Categorization",ExpressionUUID->"e8866445-7f5d-498b-bcfa-69f122caf9e3"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1209, 41, 100, 0, 70, "ObjectName",ExpressionUUID->"614a99a4-de7d-42a6-a1c3-f5dc895afe02"],
-Cell[1312, 43, 521, 13, 70, "Usage",ExpressionUUID->"d1f3afad-47ba-496d-8fa2-76641d419915"],
+Cell[1209, 41, 100, 0, 87, "ObjectName",ExpressionUUID->"614a99a4-de7d-42a6-a1c3-f5dc895afe02"],
+Cell[1312, 43, 402, 8, 87, "Usage",ExpressionUUID->"4b575c42-1cfd-4a47-810e-50d814fa858a"],
 Cell[CellGroupData[{
-Cell[1858, 60, 98, 0, 70, "NotesSection",ExpressionUUID->"cfd42f6c-3375-4d91-a200-2f778dc6f72c"],
-Cell[1959, 62, 124, 0, 70, "NotesText",ExpressionUUID->"c371a5fb-dffa-44bd-b4df-bf1171f4f8a7"]
+Cell[1739, 55, 98, 0, 87, "NotesSection",ExpressionUUID->"cfd42f6c-3375-4d91-a200-2f778dc6f72c"],
+Cell[1840, 57, 124, 0, 87, "NotesText",ExpressionUUID->"c371a5fb-dffa-44bd-b4df-bf1171f4f8a7"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[2120, 67, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"7a59ef0f-620c-4fdb-90af-4aa99ed6a96e"],
+Cell[2001, 62, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"7a59ef0f-620c-4fdb-90af-4aa99ed6a96e"],
 Cell[CellGroupData[{
-Cell[2242, 71, 95, 0, 70, "ExampleSection",ExpressionUUID->"75d6cb73-abec-4cf4-83cd-424d0270c2b9"],
-Cell[2340, 73, 126, 1, 70, "Input",ExpressionUUID->"b50a7ba1-231e-4fca-aec3-e1cc6163e2ea"],
-Cell[2469, 76, 154, 2, 70, "ExampleText",ExpressionUUID->"612333f9-86fb-4cec-80d1-2cc8225dee6d"],
-Cell[2626, 80, 104, 0, 70, "Input",ExpressionUUID->"c581b8e1-41c2-43d7-8702-9a9e89f1c4d7"]
+Cell[2123, 66, 95, 0, 87, "ExampleSection",ExpressionUUID->"75d6cb73-abec-4cf4-83cd-424d0270c2b9"],
+Cell[2221, 68, 126, 1, 87, "Input",ExpressionUUID->"b50a7ba1-231e-4fca-aec3-e1cc6163e2ea"],
+Cell[2350, 71, 154, 2, 87, "ExampleText",ExpressionUUID->"612333f9-86fb-4cec-80d1-2cc8225dee6d"],
+Cell[2507, 75, 104, 0, 87, "Input",ExpressionUUID->"c581b8e1-41c2-43d7-8702-9a9e89f1c4d7"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2779, 86, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"3e3d0bca-3a3b-45e9-b4af-37c7d84b4a0f"],
-Cell[2871, 88, 464, 12, 70, "SeeAlsoText",ExpressionUUID->"2f3ddff8-18c3-49ec-8fe5-52dad77d53f4"]
+Cell[2660, 81, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"a76c2232-70fe-46a6-864b-c34772de0e42"],
+Cell[2752, 83, 1206, 32, 87, "SeeAlso",ExpressionUUID->"c65d466a-0367-41dd-b949-e80a518d7a7c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3995, 120, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"15b73d34-c457-4976-bdbb-262d5cda8306"],
+Cell[4095, 122, 165, 3, 87, "MoreAbout",ExpressionUUID->"04b3095e-7b42-473d-9a08-8bfa570ed823"]
 }, Open  ]]
 }, Open  ]]
 }

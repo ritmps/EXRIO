@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      6113,        162]
-NotebookOptionsPosition[      3784,        116]
-NotebookOutlinePosition[      4472,        137]
-CellTagsIndexPosition[      4429,        134]
+NotebookDataLength[      8166,        216]
+NotebookOptionsPosition[      5604,        166]
+NotebookOutlinePosition[      6295,        187]
+CellTagsIndexPosition[      6252,        184]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,19 +41,19 @@ Cell[CellGroupData[{
 
 Cell["WriteEXR", "ObjectName",ExpressionUUID->"caaa1120-763a-40a0-86f8-39b437b6f9bc"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["WriteEXR", "UsageSymbol"], " ", 
-  RowBox[{
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"f3fbda83-da52-4c0f-81e4-09bfad66db4f"],
+ Cell[BoxData[
+  RowBox[{"WriteEXR", "[", 
    RowBox[{
-    RowBox[{"WriteEXR", "[", 
-     RowBox[{"file", ",", " ", "exr", ",", " ", "opts"}], "]"}], " ", 
-    "exports", " ", "an", " ", "EXRData", " ", "container", " ", "or", " ", 
-    "association", " ", "of", " ", "passes", " ", "to", " ", "a", " ", 
-    "multi"}], "-", 
-   RowBox[{"channel", " ", "OpenEXR", " ", 
-    RowBox[{"file", "."}]}]}]}]], "Usage",ExpressionUUID->"9c2019cc-e154-4d3c-\
-a3f6-08640b9e7198"],
+    StyleBox["file", "TI"], ",", 
+    StyleBox["exr", "TI"], ",", 
+    StyleBox["opts", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "a628d208-81d2-4034-8921-b5e0fd16c1ee"],
+ " \[LineSeparator]exports an EXRData container or association of passes to a \
+multi-channel OpenEXR file.",
+ "\n"
+}], "Usage",ExpressionUUID->"e5094b4d-138c-43ec-9762-c6d49754270a"],
 
 Cell[CellGroupData[{
 
@@ -84,33 +84,83 @@ UID->"e74ce71c-1dac-4791-a435-c9f5ec8314ab"]
 
 Cell[CellGroupData[{
 
-Cell["See Also", "SeeAlsoSection",ExpressionUUID->"e1f415e7-2474-4825-88bc-b83dc28ef239"],
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"4fc40743-4941-4a08-bc93-4b0b3c562a8c"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["ReadEXR", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["PreviewEXR", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["EXRData", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["MakeEXRData", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["AddComputedPass", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["PassToImage", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["AttachCryptomatte", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["ComputeCurvature", "InlineFormula"]}]], "SeeAlsoText",ExpressionUU\
-ID->"41bcabd8-57dc-4573-ae49-212471d32009"]
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "c948ff1c-acca-41e8-82a0-fac04e7434e4"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PreviewEXR"]], "paclet:EXRIO/ref/PreviewEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "eec5f224-b646-4091-bc42-00b2a05c0396"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["EXRData"]], "paclet:EXRIO/ref/EXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "c126abfd-dad9-405f-b09b-aad400461640"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["MakeEXRData"]], "paclet:EXRIO/ref/MakeEXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "4a975ee5-e914-4991-935c-82573d47d98d"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "0bb83ac7-85ef-4870-ab30-be760c20e0df"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PassToImage"]], "paclet:EXRIO/ref/PassToImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "985c0a32-9766-47d1-83fb-d2fc95c3b505"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AttachCryptomatte"]], "paclet:EXRIO/ref/AttachCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "e0272bce-6df7-46f7-9047-389fdff4aa66"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ComputeCurvature"]], "paclet:EXRIO/ref/ComputeCurvature"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "2764c170-1402-4a98-9ff2-9c55b949df12"]
+}], "SeeAlso",ExpressionUUID->"0e133ad7-9c6c-41d9-a9ec-9b5484ffb6b7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"aefabc88-0d95-4189-b67c-76f9b0020187"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"cbd98c51-ca6a-4da6-a129-750516ee6420"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -121,7 +171,7 @@ TaggingRules-><|
     "EXRIO/ref/WriteEXR", "summary" -> 
     "WriteEXR[file, exr, opts] exports an EXRData container or association of \
 passes to a multi-channel OpenEXR file.", "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -137,31 +187,35 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"959e7677-817c-442c-af79-a92e9bfb2483"],
-Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"68458daa-31ea-4f92-a52e-b8329bf0b3d7"],
-Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"5b31a40c-453c-43a0-a1fe-9e47fcf1711c"],
-Cell[920, 32, 110, 1, 70, "Categorization",ExpressionUUID->"5297d2a1-45f5-4884-8a58-100c0603e3cb"],
-Cell[1033, 35, 118, 1, 70, "Categorization",ExpressionUUID->"99798467-6ab9-4cd7-a281-370ebc3634b7"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"959e7677-817c-442c-af79-a92e9bfb2483"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"68458daa-31ea-4f92-a52e-b8329bf0b3d7"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"5b31a40c-453c-43a0-a1fe-9e47fcf1711c"],
+Cell[920, 32, 110, 1, 87, "Categorization",ExpressionUUID->"5297d2a1-45f5-4884-8a58-100c0603e3cb"],
+Cell[1033, 35, 118, 1, 87, "Categorization",ExpressionUUID->"99798467-6ab9-4cd7-a281-370ebc3634b7"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1188, 41, 85, 0, 70, "ObjectName",ExpressionUUID->"caaa1120-763a-40a0-86f8-39b437b6f9bc"],
-Cell[1276, 43, 506, 12, 70, "Usage",ExpressionUUID->"9c2019cc-e154-4d3c-a3f6-08640b9e7198"],
+Cell[1188, 41, 85, 0, 87, "ObjectName",ExpressionUUID->"caaa1120-763a-40a0-86f8-39b437b6f9bc"],
+Cell[1276, 43, 515, 12, 87, "Usage",ExpressionUUID->"e5094b4d-138c-43ec-9762-c6d49754270a"],
 Cell[CellGroupData[{
-Cell[1807, 59, 98, 0, 70, "NotesSection",ExpressionUUID->"933e147e-6816-49e9-b9ec-2e4b61972572"],
-Cell[1908, 61, 109, 0, 70, "NotesText",ExpressionUUID->"a5b331dd-83ab-4f5d-bc33-ff7e6b47b466"]
+Cell[1816, 59, 98, 0, 87, "NotesSection",ExpressionUUID->"933e147e-6816-49e9-b9ec-2e4b61972572"],
+Cell[1917, 61, 109, 0, 87, "NotesText",ExpressionUUID->"a5b331dd-83ab-4f5d-bc33-ff7e6b47b466"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[2054, 66, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"8cdb2d72-47eb-471a-a48c-58943b12789e"],
+Cell[2063, 66, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"8cdb2d72-47eb-471a-a48c-58943b12789e"],
 Cell[CellGroupData[{
-Cell[2176, 70, 95, 0, 70, "ExampleSection",ExpressionUUID->"b9525474-4a64-48ce-bb64-275f6509afe3"],
-Cell[2274, 72, 126, 1, 70, "Input",ExpressionUUID->"caafd4ae-70db-41ce-835f-19cde3dbaddd"],
-Cell[2403, 75, 133, 0, 70, "ExampleText",ExpressionUUID->"14232df7-f281-4db7-aae8-64874c221ae5"],
-Cell[2539, 77, 165, 3, 70, "Input",ExpressionUUID->"e74ce71c-1dac-4791-a435-c9f5ec8314ab"]
+Cell[2185, 70, 95, 0, 87, "ExampleSection",ExpressionUUID->"b9525474-4a64-48ce-bb64-275f6509afe3"],
+Cell[2283, 72, 126, 1, 87, "Input",ExpressionUUID->"caafd4ae-70db-41ce-835f-19cde3dbaddd"],
+Cell[2412, 75, 133, 0, 87, "ExampleText",ExpressionUUID->"14232df7-f281-4db7-aae8-64874c221ae5"],
+Cell[2548, 77, 165, 3, 87, "Input",ExpressionUUID->"e74ce71c-1dac-4791-a435-c9f5ec8314ab"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2753, 86, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"e1f415e7-2474-4825-88bc-b83dc28ef239"],
-Cell[2845, 88, 911, 24, 70, "SeeAlsoText",ExpressionUUID->"41bcabd8-57dc-4573-ae49-212471d32009"]
+Cell[2762, 86, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"4fc40743-4941-4a08-bc93-4b0b3c562a8c"],
+Cell[2854, 88, 2420, 64, 87, "SeeAlso",ExpressionUUID->"0e133ad7-9c6c-41d9-a9ec-9b5484ffb6b7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5311, 157, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"aefabc88-0d95-4189-b67c-76f9b0020187"],
+Cell[5411, 159, 165, 3, 87, "MoreAbout",ExpressionUUID->"cbd98c51-ca6a-4da6-a129-750516ee6420"]
 }, Open  ]]
 }, Open  ]]
 }

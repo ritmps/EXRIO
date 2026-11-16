@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      6503,        170]
-NotebookOptionsPosition[      4162,        123]
-NotebookOutlinePosition[      4862,        145]
-CellTagsIndexPosition[      4819,        142]
+NotebookDataLength[      9317,        248]
+NotebookOptionsPosition[      6743,        197]
+NotebookOutlinePosition[      7446,        219]
+CellTagsIndexPosition[      7403,        216]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,15 +41,17 @@ Cell[CellGroupData[{
 
 Cell["CryptomatteMaskImage", "ObjectName",ExpressionUUID->"1bd13a7a-c2cb-45c2-8288-d1ccba0580e5"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["CryptomatteMaskImage", "UsageSymbol"], " ", 
-  RowBox[{
-   RowBox[{"CryptomatteMaskImage", "[", 
-    RowBox[{"crypto", ",", " ", "name"}], "]"}], " ", "returns", " ", "an", " ",
-    "image", " ", "for", " ", "a", " ", "named", " ", "soft", " ", 
-   RowBox[{"mask", "."}]}]}]], "Usage",ExpressionUUID->"bcb9df04-239b-4898-\
-9478-571877a29023"],
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"e09a6762-b17b-4a20-83c6-ef800c173e85"],
+ Cell[BoxData[
+  RowBox[{"CryptomatteMaskImage", "[", 
+   RowBox[{
+    StyleBox["crypto", "TI"], ",", 
+    StyleBox["name", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "450950d9-4519-4698-bca1-e93cc66008cf"],
+ " \[LineSeparator]returns an image for a named soft mask.",
+ "\n"
+}], "Usage",ExpressionUUID->"932d6077-728e-4957-9225-ca0ddb29c4ab"],
 
 Cell[CellGroupData[{
 
@@ -82,42 +84,114 @@ ionUUID->"a192e653-49b2-42a3-bde2-f8ed3d89bf21"]
 
 Cell[CellGroupData[{
 
-Cell["See Also", "SeeAlsoSection",ExpressionUUID->"377df4ee-3161-4239-8ba4-56da27feef4e"],
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"6e8e78cf-4fae-4cdf-a4c3-51b51db46993"],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox["ReadCryptomatte", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["AttachCryptomatte", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteMask", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteMasks", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteSegmentationMap", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteWinnerCoverage", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteLabelMask", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteSegmentationImage", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteObjectMask", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteObjectMasks", "InlineFormula"], 
-  RowBox[{" ", 
-   RowBox[{"\[DoubleLongRightArrow]", " "}]}], 
-  StyleBox["CryptomatteLabelImage", "InlineFormula"]}]], "SeeAlsoText",Express\
-ionUUID->"f52816b6-2bc1-4160-99bc-6e6b2235722c"]
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadCryptomatte"]], "paclet:EXRIO/ref/ReadCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "de78f4bf-6fe8-4302-83d8-5ae93aa44b4b"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AttachCryptomatte"]], "paclet:EXRIO/ref/AttachCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "381e2fef-9639-4a3c-b772-70ba80c2df9a"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteMask"]], "paclet:EXRIO/ref/CryptomatteMask"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "922b2324-8fcb-4d0e-a7dd-e4df3000f164"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteMasks"]], "paclet:EXRIO/ref/CryptomatteMasks"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "0888c2e7-e403-4a27-b2ab-af7d6f4cb5bb"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteSegmentationMap"]], 
+    "paclet:EXRIO/ref/CryptomatteSegmentationMap"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "48cb9835-d8b7-426f-86c2-16f6229bfb38"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteWinnerCoverage"]], 
+    "paclet:EXRIO/ref/CryptomatteWinnerCoverage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "3e4a6686-b249-4c7b-9518-bcf1f8182f66"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteLabelMask"]], 
+    "paclet:EXRIO/ref/CryptomatteLabelMask"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "040387e7-8e31-4240-ac15-7d37124d32b2"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteSegmentationImage"]], 
+    "paclet:EXRIO/ref/CryptomatteSegmentationImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "2c30f423-211d-48f7-ad47-07f5a073428c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteObjectMask"]], 
+    "paclet:EXRIO/ref/CryptomatteObjectMask"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "3499dc0f-5349-461c-8f51-dcf2a54d32ff"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteObjectMasks"]], 
+    "paclet:EXRIO/ref/CryptomatteObjectMasks"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "cfed0c54-1766-4d6c-9d9d-997a5b6c1108"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CryptomatteLabelImage"]], 
+    "paclet:EXRIO/ref/CryptomatteLabelImage"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "50624a8e-a49e-4021-b0b6-8f0b91015f58"]
+}], "SeeAlso",ExpressionUUID->"7e07bcef-2b13-4c2d-91bc-fbe455252134"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"f18df0f9-bd6a-4aad-832b-b78ba978edc3"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"8dc30ec0-c7d2-47c2-8fc5-9a69e677368e"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -129,7 +203,7 @@ TaggingRules-><|
     "summary" -> 
     "CryptomatteMaskImage[crypto, name] returns an image for a named soft \
 mask.", "index" -> True|>|>,
-FrontEndVersion->"15.0 for Linux x86 (64-bit) (July 3, 2026)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Reference.nb",
 ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
 ]
@@ -145,31 +219,35 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 102, 0, 70, "CategorizationSection",ExpressionUUID->"21015a1e-81e5-4301-8db9-5ee0fad5c8bd"],
-Cell[681, 24, 117, 2, 70, "Categorization",ExpressionUUID->"f9437258-f08d-402e-a23b-3aeebd5c38ec"],
-Cell[801, 28, 116, 2, 70, "Categorization",ExpressionUUID->"d644246e-0869-477d-8d9d-dfe87af1c79f"],
-Cell[920, 32, 119, 1, 70, "Categorization",ExpressionUUID->"a16f772b-ccbe-4e67-ba0e-36e52b19433d"],
-Cell[1042, 35, 130, 1, 70, "Categorization",ExpressionUUID->"cd7f4e0c-447b-418e-beec-46d3204f2819"]
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"21015a1e-81e5-4301-8db9-5ee0fad5c8bd"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"f9437258-f08d-402e-a23b-3aeebd5c38ec"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"d644246e-0869-477d-8d9d-dfe87af1c79f"],
+Cell[920, 32, 119, 1, 87, "Categorization",ExpressionUUID->"a16f772b-ccbe-4e67-ba0e-36e52b19433d"],
+Cell[1042, 35, 130, 1, 87, "Categorization",ExpressionUUID->"cd7f4e0c-447b-418e-beec-46d3204f2819"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1209, 41, 97, 0, 70, "ObjectName",ExpressionUUID->"1bd13a7a-c2cb-45c2-8288-d1ccba0580e5"],
-Cell[1309, 43, 378, 8, 70, "Usage",ExpressionUUID->"bcb9df04-239b-4898-9478-571877a29023"],
+Cell[1209, 41, 97, 0, 87, "ObjectName",ExpressionUUID->"1bd13a7a-c2cb-45c2-8288-d1ccba0580e5"],
+Cell[1309, 43, 447, 10, 87, "Usage",ExpressionUUID->"932d6077-728e-4957-9225-ca0ddb29c4ab"],
 Cell[CellGroupData[{
-Cell[1712, 55, 98, 0, 70, "NotesSection",ExpressionUUID->"bb7fbdc1-7c5c-4587-8dcc-d63ee20e9b6b"],
-Cell[1813, 57, 121, 0, 70, "NotesText",ExpressionUUID->"fcb53a3f-e6f5-465a-b33a-e3edbd3193c8"]
+Cell[1781, 57, 98, 0, 87, "NotesSection",ExpressionUUID->"bb7fbdc1-7c5c-4587-8dcc-d63ee20e9b6b"],
+Cell[1882, 59, 121, 0, 87, "NotesText",ExpressionUUID->"fcb53a3f-e6f5-465a-b33a-e3edbd3193c8"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[1971, 62, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"b4ea258f-54cd-4db2-b4e6-b2eb2e604ab3"],
+Cell[2040, 64, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"b4ea258f-54cd-4db2-b4e6-b2eb2e604ab3"],
 Cell[CellGroupData[{
-Cell[2093, 66, 95, 0, 70, "ExampleSection",ExpressionUUID->"2c5488b2-a04e-48c2-b21d-0303e7c390a4"],
-Cell[2191, 68, 126, 1, 70, "Input",ExpressionUUID->"6b375827-a283-47a0-9c71-a96c6513f10a"],
-Cell[2320, 71, 152, 2, 70, "ExampleText",ExpressionUUID->"38e8f18b-7124-47f0-80cc-91b067f203b9"],
-Cell[2475, 75, 181, 3, 70, "Input",ExpressionUUID->"a192e653-49b2-42a3-bde2-f8ed3d89bf21"]
+Cell[2162, 68, 95, 0, 87, "ExampleSection",ExpressionUUID->"2c5488b2-a04e-48c2-b21d-0303e7c390a4"],
+Cell[2260, 70, 126, 1, 87, "Input",ExpressionUUID->"6b375827-a283-47a0-9c71-a96c6513f10a"],
+Cell[2389, 73, 152, 2, 87, "ExampleText",ExpressionUUID->"38e8f18b-7124-47f0-80cc-91b067f203b9"],
+Cell[2544, 77, 181, 3, 87, "Input",ExpressionUUID->"a192e653-49b2-42a3-bde2-f8ed3d89bf21"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2705, 84, 89, 0, 70, "SeeAlsoSection",ExpressionUUID->"377df4ee-3161-4239-8ba4-56da27feef4e"],
-Cell[2797, 86, 1337, 33, 70, "SeeAlsoText",ExpressionUUID->"f52816b6-2bc1-4160-99bc-6e6b2235722c"]
+Cell[2774, 86, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"6e8e78cf-4fae-4cdf-a4c3-51b51db46993"],
+Cell[2866, 88, 3547, 95, 87, "SeeAlso",ExpressionUUID->"7e07bcef-2b13-4c2d-91bc-fbe455252134"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6450, 188, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"f18df0f9-bd6a-4aad-832b-b78ba978edc3"],
+Cell[6550, 190, 165, 3, 87, "MoreAbout",ExpressionUUID->"8dc30ec0-c7d2-47c2-8fc5-9a69e677368e"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -1,0 +1,172 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      5932,        163]
+NotebookOptionsPosition[      3828,        119]
+NotebookOutlinePosition[      4478,        140]
+CellTagsIndexPosition[      4435,        137]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"18eef596-bd9c-4133-8a63-9c398bf99638"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->
+  "Entity Type",ExpressionUUID->"0b29daae-f606-4d26-afc4-2e19c22c432c"],
+
+Cell["EXRIO", "Categorization",
+ CellLabel->
+  "Paclet Name",ExpressionUUID->"da9696a0-6c42-408e-b2e7-e34da431c2e7"],
+
+Cell["EXRIO`", "Categorization",
+ CellLabel->"Context",ExpressionUUID->"ef75c2a9-ddf6-4e2d-ab84-120db006f00d"],
+
+Cell["EXRIO/ref/ToRGBImage", "Categorization",
+ CellLabel->"URI",ExpressionUUID->"41c270cd-ff0d-48d3-a55a-631863d149c1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ToRGBImage", "ObjectName",ExpressionUUID->"03fc45c6-ad19-469e-b0a8-4602a865eff2"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"a92af25d-5e98-4036-8373-a0677fbb2066"],
+ Cell[BoxData[
+  RowBox[{"ToRGBImage", "[", 
+   RowBox[{
+    StyleBox["img", "TI"], ",", 
+    StyleBox["size", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "66d6c75f-e236-4e5e-9afc-081232dc2e8e"],
+ " \[LineSeparator]converts an image to RGB and resizes it.",
+ "\n"
+}], "Usage",ExpressionUUID->"8e4a88df-0293-4785-9f73-c198618eea95"],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"e98a0b91-f9ef-48f7-8327-b9362a30540a"],
+
+Cell[CellGroupData[{
+
+Cell["Basic Examples", "ExampleSection",ExpressionUUID->"1e46a4ad-2547-4430-bdd5-06ec217ed8f2"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"d46f6dd2-a6e5-40c3-b6b8-bf36407b2bd8"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",ExpressionUUID->"943118a1-54a2-4052-b083-747ff1033bac"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "c2d329a2-1e21-456c-82f2-8ea126437b40"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AttachCryptomatte"]], "paclet:EXRIO/ref/AttachCryptomatte"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "93ce1499-d234-4f26-8e37-31895601c00c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["BuiltInImageDistance"]], 
+    "paclet:EXRIO/ref/BuiltInImageDistance"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "3a47c5a1-3715-494c-83fc-cf3e7caaee26"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CameraFrustumPlot"]], "paclet:EXRIO/ref/CameraFrustumPlot"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineSeeAlsoFunction",ExpressionUUID->
+  "f8f0defa-32b4-4491-9cae-e4d03226cebc"]
+}], "SeeAlso",ExpressionUUID->"6a4231e8-f8a4-4f7a-9f92-f494ed1e10b9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",ExpressionUUID->"0bd47d3e-d117-48aa-80e2-bbda011bdcb0"],
+
+Cell[TextData[ButtonBox["EXRIO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EXRIO/guide/EXRIO"]], "MoreAbout",ExpressionUUID->\
+"e5e4d242-c082-45c7-9a4c-caca99e5f86b"]
+}, Open  ]]
+}, Open  ]]
+},
+TaggingRules-><|
+ "Metadata" -> <|
+   "context" -> "EXRIO`", "type" -> "Symbol", "paclet" -> "EXRIO", "language" -> 
+    "en", "title" -> "ToRGBImage", "windowtitle" -> "ToRGBImage", "uri" -> 
+    "EXRIO/ref/ToRGBImage", "summary" -> 
+    "ToRGBImage[img, size] converts an image to RGB and resizes it.", "index" -> 
+    True|>|>,
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->"Reference.nb",
+ExpressionUUID->"ce83f64e-df1d-4eb2-8a5f-e7b4dbbaf868"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 102, 0, 87, "CategorizationSection",ExpressionUUID->"18eef596-bd9c-4133-8a63-9c398bf99638"],
+Cell[681, 24, 117, 2, 87, "Categorization",ExpressionUUID->"0b29daae-f606-4d26-afc4-2e19c22c432c"],
+Cell[801, 28, 116, 2, 87, "Categorization",ExpressionUUID->"da9696a0-6c42-408e-b2e7-e34da431c2e7"],
+Cell[920, 32, 110, 1, 87, "Categorization",ExpressionUUID->"ef75c2a9-ddf6-4e2d-ab84-120db006f00d"],
+Cell[1033, 35, 120, 1, 87, "Categorization",ExpressionUUID->"41c270cd-ff0d-48d3-a55a-631863d149c1"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1190, 41, 87, 0, 87, "ObjectName",ExpressionUUID->"03fc45c6-ad19-469e-b0a8-4602a865eff2"],
+Cell[1280, 43, 435, 10, 87, "Usage",ExpressionUUID->"8e4a88df-0293-4785-9f73-c198618eea95"],
+Cell[CellGroupData[{
+Cell[1740, 57, 97, 0, 87, "PrimaryExamplesSection",ExpressionUUID->"e98a0b91-f9ef-48f7-8327-b9362a30540a"],
+Cell[CellGroupData[{
+Cell[1862, 61, 95, 0, 87, "ExampleSection",ExpressionUUID->"1e46a4ad-2547-4430-bdd5-06ec217ed8f2"],
+Cell[1960, 63, 126, 1, 87, "Input",ExpressionUUID->"d46f6dd2-a6e5-40c3-b6b8-bf36407b2bd8"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2135, 70, 89, 0, 87, "SeeAlsoSection",ExpressionUUID->"943118a1-54a2-4052-b083-747ff1033bac"],
+Cell[2227, 72, 1271, 33, 87, "SeeAlso",ExpressionUUID->"6a4231e8-f8a4-4f7a-9f92-f494ed1e10b9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3535, 110, 97, 0, 87, "MoreAboutSection",ExpressionUUID->"0bd47d3e-d117-48aa-80e2-bbda011bdcb0"],
+Cell[3635, 112, 165, 3, 87, "MoreAbout",ExpressionUUID->"e5e4d242-c082-45c7-9a4c-caca99e5f86b"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

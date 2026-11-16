@@ -1,0 +1,627 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     23803,        618]
+NotebookOptionsPosition[     19262,        529]
+NotebookOutlinePosition[     21225,        578]
+CellTagsIndexPosition[     21146,        573]
+WindowTitle->$EXRIOVersion
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {GridBox[{
+      {
+       ItemBox[Cell[BoxData[
+         RowBox[{
+          TemplateBox[{12},
+           "Spacer1"], Cell["E X R I O SYMBOL", "PacletNameCell",
+           TextAlignment->Center,ExpressionUUID->
+           "bf028af6-a956-4f2c-84ae-1e553e0b8fc8"], 
+          TemplateBox[{8},
+           "Spacer1"]}]],
+         TextAlignment->Center,ExpressionUUID->
+         "d8540f68-a642-477d-ba4e-acc6d5637122"],
+        Background->LightDarkSwitched[
+          RGBColor[0.490196, 0.576471, 0.690196]],
+        ItemSize->Full], ""}
+     },
+     GridBoxAlignment->{"Rows" -> {{Center}}},
+     GridBoxItemSize->{"Columns" -> {Full, 
+         Scaled[0.02]}, "Rows" -> {{2.5}}}], Cell[TextData[{
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "See Also",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "f0bcd9f6-562b-4c9c-b174-d3bab73cebb7"]
+         }],ExpressionUUID->"a199b39e-d3fd-47fc-8979-905b8c930f73"],
+         StripOnInput->False],{
+        StyleBox["\"ReadEXR\"", "SeeAlsoRelated", StripOnInput -> False] :> 
+         Documentation`HelpLookup["paclet:EXRIO/ref/ReadEXR"], 
+         StyleBox["\"EXRData\"", "SeeAlsoRelated", StripOnInput -> False] :> 
+         Documentation`HelpLookup["paclet:EXRIO/ref/EXRData"], 
+         StyleBox[
+          "\"AddComputedPass\"", "SeeAlsoRelated", StripOnInput -> False] :> 
+         Documentation`HelpLookup["paclet:EXRIO/ref/AddComputedPass"], 
+         StyleBox["\"PreviewEXR\"", "SeeAlsoRelated", StripOnInput -> False] :> 
+         Documentation`HelpLookup["paclet:EXRIO/ref/PreviewEXR"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"SeeAlso"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "3c155d7a-69c7-48dc-8fed-1ea7402758f0"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "Related Guides",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "e37f46ba-7a01-415f-ab63-907d9a2250cc"]
+         }],ExpressionUUID->"e43158d3-1897-4084-bad9-cfc2d8a5b744"],
+         StripOnInput->False],{
+        "\"EXRIO\"" :> Documentation`HelpLookup["paclet:EXRIO/guide/EXRIO"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"MoreAbout"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "2f17a6db-62bc-44cc-bccd-4f86d6c36f9b"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "URL",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "607d7c19-cfa8-4b90-8675-43d1191e75bb"]
+         }],ExpressionUUID->"3d36e877-8e3f-43b7-97d1-4a7339980b66"],
+         StripOnInput->False],{
+        "\"EXRIO/ref/$EXRIOVersion\"" :> None, 
+         "\"Copy Wolfram Documentation Center URL\"" :> 
+         CopyToClipboard["EXRIO/ref/$EXRIOVersion"], Delimiter, 
+         "\"Copy web URL\"" :> 
+         Module[{DocumentationSearch`Private`nb$}, 
+           DocumentationSearch`Private`nb$ = 
+            NotebookPut[
+             Notebook[{
+               Cell[BoxData[
+                 MakeBoxes[
+                  Hyperlink[
+                   "http://reference.wolfram.com/language/EXRIO/ref/$\
+EXRIOVersion.html"], StandardForm]], "Input", TextClipboardType -> 
+                 "PlainText"]}, Visible -> False]]; 
+           SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+           FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+           NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+         "\"Go to web URL\"" :> 
+         FrontEndExecute[{
+           NotebookLocate[{
+             URL[If[TrueQ[False], 
+                 "http://reference.wolfram.com/system-modeler/", 
+                 "http://reference.wolfram.com/language/"] <> 
+               "EXRIO/ref/$EXRIOVersion" <> ".html"], None}]}]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"URLMenu"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "cef1d2ec-35c8-47fe-91a5-bf5d8bc58745"]
+    }], "AnchorBar",
+     CacheGraphics->False,ExpressionUUID->
+     "106d7fba-d38c-4703-85b8-36595c583d76"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"e80f37bc-b3d5-42b9-92fa-ffebe5135621"],
+
+Cell["EXRIO`", "ContextNameCell",ExpressionUUID->"93661e5f-f151-49e7-be1a-5802e7c007f9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {Cell[TextData[{
+     Cell[
+     "$EXRIOVersion", "ObjectName",ExpressionUUID->
+      "6d6db5ea-7a9d-4814-8922-239e7422e43b"],
+     Cell[BoxData[
+      TemplateBox[{8},
+       "Spacer1"]],ExpressionUUID->"3ce82506-3ec1-4530-8cc4-d82733f4d14a"],
+     Cell[BoxData[
+     ""], "ObjectNameTranslation",ExpressionUUID->
+      "a225bca2-59d0-4cef-a633-bd23fd4a4dce"]
+    }],ExpressionUUID->"d00b63a3-dd24-459a-9474-1cbcc772852a"], 
+    "\[SpanFromLeft]"}
+  }]], "ObjectNameGrid",ExpressionUUID->"e039e493-b7b1-4903-ae71-\
+fcf1567f7902"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["$EXRIOVersion"], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "a1d1b63f-0634-45f8-99b6-0008ea0be9c4"],
+     " \[LineSeparator]is the version string of EXRIO."
+    }],ExpressionUUID->"95a0c094-8a40-405a-bfd3-f34226483d7b"]}
+  }]], "Usage",ExpressionUUID->"8ecde0a2-8e90-4e61-9f10-a283722d628c"]
+}, Open  ]],
+
+Cell[TextData[Cell[BoxData[Cell[TextData[{
+  Cell[BoxData[
+   DynamicBox[ToBoxes[
+     If[CurrentValue[
+        EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], 
+      Rotate[
+       Style[
+        Graphics[{
+          Thickness[0.18], 
+          RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+   "53fdb304-22e9-4e56-b2ae-40553686e747"],
+  Cell[BoxData[
+   TemplateBox[{1},
+    "Spacer1"]],ExpressionUUID->"287f6595-950f-4b78-8246-0b3e7e95f4b4"],
+  "Details and Options"
+ }], "NotesFrameText",ExpressionUUID->
+  "d6145bec-fd2d-4e5e-b4d1-67a6021307e0"]],ExpressionUUID->"7fbd3522-2a15-\
+4c31-ade4-152fb7d415f4"]], "NotesSection",
+ ShowGroupOpener->"Thumbnail",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CacheGraphics->False,
+ CellTags->"CloseThisSection",
+ CellID->1606361291,ExpressionUUID->"6527c3bc-f817-41f1-85be-631b8c252ffc"],
+
+Cell[CellGroupData[{
+
+Cell["Details and Options", "NotesSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,ExpressionUUID->"34bfa6a6-0373-4919-8936-6bfab122283b"],
+
+Cell["Details and options for $EXRIOVersion.", "NotesText",ExpressionUUID->"95765822-94d7-4965-adb6-c2a35478c952"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,ExpressionUUID->"6af93f02-dea6-47fb-a8d7-1dad0c59e72c"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "e05329ee-2688-4c88-9b42-7fc089e71185"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"6ca25bbb-9274-4612-8b74-dda79882b4f2"],
+ "Basic Examples"
+}], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,ExpressionUUID->"09d51a33-4c0a-4c66-a182-c7170937e5d7"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"c7fa7e1e-b11d-4f32-9702-8adbff22e186"],
+
+Cell["Check the loaded EXRIO paclet version:", "ExampleText",ExpressionUUID->"b9f09f65-4c77-4eb9-aef3-595a7893b0e7"],
+
+Cell[BoxData["$EXRIOVersion"], "Input",
+ CellLabel->"In[2]:=",ExpressionUUID->"03874434-c895-4629-95ac-c39fe5888218"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "f076db45-7a2c-428a-9f33-99726d73bcbc"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["EXRData"]], "paclet:EXRIO/ref/EXRData"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "fc6e7355-4f1d-47f3-bbda-6af268feb5a4"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "2cb1fc05-1cdc-4b29-9dd5-c804d60185dc"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["PreviewEXR"]], "paclet:EXRIO/ref/PreviewEXR"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "24dc9f6b-1bfe-4cb1-8f65-4e3d129c03b6"]
+}], "SeeAlso",ExpressionUUID->"80bb2f16-e003-4df9-8f1a-6136cd66c1f0"],
+
+Cell[BoxData[
+ TemplateBox[{
+   Cell[
+    TextData["EXRIO"]], "paclet:EXRIO/guide/EXRIO"},
+  "RefLinkPlain",
+  BaseStyle->{"MoreAbout"}]], "MoreAbout",
+ CellID->2097291400,ExpressionUUID->"5a8d5262-a678-4881-8b6e-fd6c8e678469"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "PrimaryExamplesSection"}, Open], 
+      Alternatives[True, Open]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "371621f2-cf37-4538-a094-0ba00d855b4e"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"71aabe1f-7798-4adb-a6fd-b10e8a952d1d"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "cdcc7609-05a6-479e-a8cb-427c64f9def8"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->379977942,ExpressionUUID->"b55fae10-d872-4451-b98d-6744ebd6de0d"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "641624a9-63b3-424f-84e5-68ae31139124"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"5c2b938e-7f52-4af1-8093-1fdae15359aa"],
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(0)", "ExampleCount",ExpressionUUID->
+  "d7853552-2bdc-4e55-9b01-ee0715ce5b74"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellTags->"CloseThisSection",
+ CellID->1820388663,ExpressionUUID->"1854e51b-7803-411a-9041-bed19f95eeb9"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "b6859325-7dd9-4e02-b9be-9b4459b266c0"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"83caad34-ab78-4b78-923b-375b6921cac2"],
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "60ba2c3f-6f9d-473f-97be-31147d12b43c"]
+}], "ExampleSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,ExpressionUUID->"918b67e2-6807-4748-b867-354a877d1af6"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EXRIO`\>\"", "]"}]], "Input",ExpressionUUID->"373ffd5c-5764-49d7-9fcb-2c6d35ed3022"],
+
+Cell["Check the loaded EXRIO paclet version:", "ExampleText",ExpressionUUID->"f932815c-a4e6-4dba-9a86-2264fd860513"],
+
+Cell[BoxData["$EXRIOVersion"], "Input",ExpressionUUID->"7001af57-4695-466b-8239-3de94ad670e5"]
+}, Closed]]
+}, Open  ]],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, 
+       "RelatedFunction.png"]],
+     ImageSizeCache->{62.5, {33.0908203125, 41.9091796875}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"See", " ", "Also"}], "SeeAlsoSection"]},
+      {Cell[TextData[{
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["ReadEXR"]], "paclet:EXRIO/ref/ReadEXR"},
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]], "InlineFormula",
+         FontFamily->"Source Sans Pro",ExpressionUUID->
+         "e7745db9-42a3-46a0-b49a-6221b826d596"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["EXRData"]], "paclet:EXRIO/ref/EXRData"},
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]], "InlineFormula",
+         FontFamily->"Source Sans Pro",ExpressionUUID->
+         "734a3f1c-2887-4b7f-ad54-92dc3476f01f"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["AddComputedPass"]], "paclet:EXRIO/ref/AddComputedPass"},
+          
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]], "InlineFormula",
+         FontFamily->"Source Sans Pro",ExpressionUUID->
+         "3a29986e-f0c8-4d47-b627-4c162269fc26"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["PreviewEXR"]], "paclet:EXRIO/ref/PreviewEXR"},
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]], "InlineFormula",
+         FontFamily->"Source Sans Pro",ExpressionUUID->
+         "76508ab8-67e0-41f4-95de-7747174ce8d7"]
+       }], "SeeAlso",ExpressionUUID->"8ddfc08c-144d-4dba-95c4-009c42dd631d"]}
+     }]}
+  }]], "SeeAlsoSection",ExpressionUUID->"a49b91de-07ee-4127-8050-\
+cd147713bfd4"],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, "RelatedGuide.png"]],
+     ImageSizeCache->{62.5, {33.0908203125, 41.9091796875}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"Related", " ", "Guides"}], "MoreAboutSection"]},
+      {
+       RowBox[{"\[FilledVerySmallSquare]", Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["EXRIO"]], "paclet:EXRIO/guide/EXRIO"},
+          "RefLinkPlain",
+          BaseStyle->{"MoreAbout"}]], "MoreAbout",ExpressionUUID->
+         "f5b8a5a6-35c7-40d6-b220-e82732a2809b"]}]}
+     }]}
+  }]], "MoreAboutSection",ExpressionUUID->"f3ff0f90-d801-44ad-b2b0-\
+aed7160201c6"],
+
+Cell[" ", "FooterCell",ExpressionUUID->"93bb0e00-878f-4ef4-a2c0-405e353ef56f"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{900, 830},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"$EXRIOVersion",
+Visible->True,
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "", "LinkTrails" -> "", 
+  "ExampleCounter" -> 1, 
+  "Openers" -> {
+   "PrimaryExamplesSection" -> Open, "ExampleSection" -> {"0" -> Open}, 
+    "AllOptsTable" -> Closed}, "NewStyles" -> True, 
+  "CitationPopupData" -> $Failed, "ShowCitation" -> False, "HasOptions" -> 
+  True, "RootCaptions" -> "", "HeaderCoreAreaLink" -> {}, 
+  "Metadata" -> {
+   "built" -> "{2026, 11, 16, 11, 44, 50.211895}", 
+    "history" -> {"", "", "", ""}, "context" -> "EXRIO`", "keywords" -> {}, 
+    "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
+     "label" -> "E X R I O Symbol", "language" -> "en", "paclet" -> "EXRIO", 
+    "status" -> "None", "summary" -> 
+    "$EXRIOVersion is the version string of EXRIO. ", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "$EXRIOVersion", "titlemodifier" -> "", 
+    "metadescription" -> "", "windowtitle" -> "$EXRIOVersion", "type" -> 
+    "Symbol", "uri" -> "EXRIO/ref/$EXRIOVersion"}},
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb"],
+ExpressionUUID->"139dd702-06cb-4db1-b6d3-70dd34ce610b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "CloseThisSection"->{
+  Cell[6924, 181, 1386, 33, 87, "NotesSection",ExpressionUUID->"6527c3bc-f817-41f1-85be-631b8c252ffc",
+   CellGroupingRules->{"SectionGrouping", 50},
+   CellTags->"CloseThisSection",
+   CellID->1606361291],
+  Cell[13354, 367, 1267, 32, 87, "ExampleSection",ExpressionUUID->"1854e51b-7803-411a-9041-bed19f95eeb9",
+   CellTags->"CloseThisSection",
+   CellID->1820388663]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"CloseThisSection", 20752, 562}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[581, 21, 5263, 128, 87, "AnchorBarGrid",ExpressionUUID->"e80f37bc-b3d5-42b9-92fa-ffebe5135621",
+ CellID->1],
+Cell[5847, 151, 88, 0, 87, "ContextNameCell",ExpressionUUID->"93661e5f-f151-49e7-be1a-5802e7c007f9"],
+Cell[CellGroupData[{
+Cell[5960, 155, 556, 14, 87, "ObjectNameGrid",ExpressionUUID->"e039e493-b7b1-4903-ae71-fcf1567f7902"],
+Cell[6519, 171, 390, 7, 87, "Usage",ExpressionUUID->"8ecde0a2-8e90-4e61-9f10-a283722d628c"]
+}, Open  ]],
+Cell[6924, 181, 1386, 33, 87, "NotesSection",ExpressionUUID->"6527c3bc-f817-41f1-85be-631b8c252ffc",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellTags->"CloseThisSection",
+ CellID->1606361291],
+Cell[CellGroupData[{
+Cell[8335, 218, 150, 2, 87, "NotesSection",ExpressionUUID->"34bfa6a6-0373-4919-8936-6bfab122283b"],
+Cell[8488, 222, 114, 0, 87, "NotesText",ExpressionUUID->"95765822-94d7-4965-adb6-c2a35478c952"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8639, 227, 149, 2, 87, "PrimaryExamplesSection",ExpressionUUID->"6af93f02-dea6-47fb-a8d7-1dad0c59e72c"],
+Cell[CellGroupData[{
+Cell[8813, 233, 1066, 27, 87, "ExampleSection",ExpressionUUID->"09d51a33-4c0a-4c66-a182-c7170937e5d7"],
+Cell[9882, 262, 149, 2, 87, "Input",ExpressionUUID->"c7fa7e1e-b11d-4f32-9702-8adbff22e186"],
+Cell[10034, 266, 116, 0, 87, "ExampleText",ExpressionUUID->"b9f09f65-4c77-4eb9-aef3-595a7893b0e7"],
+Cell[10153, 268, 117, 1, 87, "Input",ExpressionUUID->"03874434-c895-4629-95ac-c39fe5888218"],
+Cell[10273, 271, 1483, 45, 87, "SeeAlso",ExpressionUUID->"80bb2f16-e003-4df9-8f1a-6136cd66c1f0"],
+Cell[11759, 318, 227, 6, 87, "MoreAbout",ExpressionUUID->"5a8d5262-a678-4881-8b6e-fd6c8e678469",
+ CellID->2097291400]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12035, 330, 1316, 35, 87, "PrimaryExamplesSection",ExpressionUUID->"b55fae10-d872-4451-b98d-6744ebd6de0d",
+ CellID->379977942],
+Cell[13354, 367, 1267, 32, 87, "ExampleSection",ExpressionUUID->"1854e51b-7803-411a-9041-bed19f95eeb9",
+ CellTags->"CloseThisSection",
+ CellID->1820388663],
+Cell[CellGroupData[{
+Cell[14646, 403, 1197, 30, 87, "ExampleSection",ExpressionUUID->"918b67e2-6807-4748-b867-354a877d1af6"],
+Cell[15846, 435, 126, 1, 87, "Input",ExpressionUUID->"373ffd5c-5764-49d7-9fcb-2c6d35ed3022"],
+Cell[15975, 438, 116, 0, 87, "ExampleText",ExpressionUUID->"f932815c-a4e6-4dba-9a86-2264fd860513"],
+Cell[16094, 440, 94, 0, 87, "Input",ExpressionUUID->"7001af57-4695-466b-8239-3de94ad670e5"]
+}, Closed]]
+}, Open  ]],
+Cell[16215, 444, 2247, 61, 87, "SeeAlsoSection",ExpressionUUID->"a49b91de-07ee-4127-8050-cd147713bfd4"],
+Cell[18465, 507, 712, 18, 87, "MoreAboutSection",ExpressionUUID->"f3ff0f90-d801-44ad-b2b0-aed7160201c6"],
+Cell[19180, 527, 78, 0, 87, "FooterCell",ExpressionUUID->"93bb0e00-878f-4ef4-a2c0-405e353ef56f"]
+}
+]
+*)
+
+(* End of internal cache information *)

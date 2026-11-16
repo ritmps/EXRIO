@@ -31,7 +31,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-  MemberQ[exr["Passes"], "beauty"],
+  AssociationQ[exr["Passes"]] && MemberQ[exr["PassNames"], "beauty"],
   True,
   TestID -> "exrio-passes-list-contains-beauty"
 ]
@@ -68,7 +68,7 @@ VerificationTest[
 
 VerificationTest[
   exr3 = exr // EXRIO`AddComputedPass["AlbedoMean" -> (Total[Normal[#["Data", "albedo"]], {3}]/3. &)];
-  {MemberQ[exr3["Passes"], "AlbedoMean"], MatchQ[exr3["AlbedoMean"], _Image], exr3["Type", "AlbedoMean"]},
+  {MemberQ[exr3["PassNames"], "AlbedoMean"], MatchQ[exr3["AlbedoMean"], _Image], exr3["Type", "AlbedoMean"]},
   {True, True, "Scalar"},
   TestID -> "exrio-add-computed-pass-operator"
 ]

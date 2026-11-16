@@ -17,7 +17,8 @@
   exr["Image", "beauty"]             (* -> Wolfram Image *)
   exr["Passes", "beauty", "Image"]   (* -> Wolfram Image *)
   exr["Data", "beauty"]              (* -> NumericArray *)
-  exr["Passes"]                      (* -> List of available pass names *)
+  exr["Passes"]                      (* -> Association of raw EXR passes *)
+  exr["PassNames"]                   (* -> List of all available pass names *)
   ```
 * **Weingarten Curvature Engine (`EXRComputed`)**:
   Calculates exact principal curvatures $(k_1, k_2)$, Mean curvature ($H$), Gaussian curvature ($K$), Koenderink Shape Index ($S \in [-1, 1]$), Curvedness ($C$), and Log-Curvedness ($\ln(1+C)$) from screen-space position ($\mathbf{P}$) and surface normals ($\mathbf{N}_n$).
@@ -94,7 +95,7 @@ EXRData[<|
 ```
 
 * `"Passes"` holds raw AOVs/LPEs extracted from the EXR file; `"Computed"` holds analytically derived passes (keeping raw vs. derived provenance distinct for `WriteEXR`).
-* Accessors (`exr["MyPass"]`, `exr["Data", "MyPass"]`, `exr["Image", "MyPass"]`, `exr["Passes"]`) merge both transparently.
+* Accessors (`exr["MyPass"]`, `exr["Data", "MyPass"]`, `exr["Image", "MyPass"]`, `exr["PassNames"]`) merge both transparently.
 
 ### Adding Ad-Hoc Computed Passes (`AddComputedPass`)
 

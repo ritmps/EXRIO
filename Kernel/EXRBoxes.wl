@@ -86,8 +86,9 @@ queryEXRData[data_Association, "Metadata"] := exrMetadata[data];
 queryEXRData[data_Association, "Cryptomatte"] := exrCryptomatte[data];
 queryEXRData[data_Association, "Computed"] := exrComputed[data];
 queryEXRData[data_Association, "RawPasses"] := exrPasses[data];
-queryEXRData[data_Association, "Passes"] := Keys[exrAllPasses[data]];
-queryEXRData[data_Association, "Properties"] := Union[Keys[data], Keys[exrAllPasses[data]], {"RawPasses", "Properties", "Curvature"}];
+queryEXRData[data_Association, "Passes"] := exrPasses[data];
+queryEXRData[data_Association, "PassNames"] := Keys[exrAllPasses[data]];
+queryEXRData[data_Association, "Properties"] := Union[Keys[data], Keys[exrAllPasses[data]], {"PassNames", "RawPasses", "Properties", "Curvature"}];
 
 queryEXRData[data_Association, "Curvature"] := Module[{comp = exrComputed[data], p = exrPasses[data], curKeys = {"k1", "k2", "H", "K", "ShapeIndex", "Curvedness", "LogCurvedness"}},
   KeyTake[Join[comp, p], Select[curKeys, KeyExistsQ[Join[comp, p], #] &]]

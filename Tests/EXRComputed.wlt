@@ -7,7 +7,7 @@ VerificationTest[
 VerificationTest[
   sample = "/home/flip/renders/ecological_scenes_usd/ecological_scene_201_view_000.exr";
   exr = EXRIO`ReadEXR[sample, "ComputeDerivedPasses" -> True];
-  MemberQ[exr["Passes"], "ShapeIndex"],
+  MemberQ[exr["PassNames"], "ShapeIndex"],
   True,
   TestID -> "exrcomputed-shape-index-exists"
 ]
@@ -19,7 +19,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-  MemberQ[exr["Passes"], "LogCurvedness"],
+  MemberQ[exr["PassNames"], "LogCurvedness"],
   True,
   TestID -> "exrcomputed-logcurvedness-exists"
 ]

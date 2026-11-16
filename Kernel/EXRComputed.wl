@@ -777,7 +777,7 @@ ComputeScaleSpaceCurvature[exr : _Association | _?isEXRDataQ, sigmaIn_?NumericQ,
 
   <|
     "SigmaPixels" -> sigmaPx,
-    "VisualAngleDegrees" -> (2.0 * ArcTan[sigmaPx / (w / (2.0 * Tan[fov * Degree / 2.0]))] / Degree),
+    "VisualAngleDegrees" -> (ArcTan[sigmaPx / (w / (2.0 * Tan[fov * Degree / 2.0]))] / Degree),
     "Method" -> method,
     "ShapeIndex" -> shapeIndex,
     "Curvedness" -> curvedness,

@@ -21,7 +21,7 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.1.17";
+$EXRIOVersion = "2.1.18";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
@@ -490,6 +490,30 @@ writeStandardEXR[outFile_String, channelAssoc_Association, strAttrs_Association]
   writeEXRAttr[stream, "pixelAspectRatio", "float", ByteArray[{0, 0, 128, 63}]];
   writeEXRAttr[stream, "screenWindowCenter", "v2f", ByteArray[{0, 0, 0, 0, 0, 0, 0, 0}]];
   writeEXRAttr[stream, "screenWindowWidth", "float", ByteArray[{0, 0, 128, 63}]];
+
+  (* Optional OpenEXR preview thumbnail from R, G, B[, A] *)
+  If[KeyExistsQ[channelAssoc, "R"] && KeyExistsQ[channelAssoc, "G"] && KeyExistsQ[channelAssoc, "B"],
+    Module[{maxDim = 128, pw, ph, rImg, aImg, rgbData, rgbaBytes, prevBytes},
+      If[width >= height,
+        pw = Min[width, maxDim]; ph = Max[1, Round[height * (pw / N[width])]],
+        ph = Min[height, maxDim]; pw = Max[1, Round[width * (ph / N[height])]]
+      ];
+      rgbData = Transpose[{channelAssoc["R"], channelAssoc["G"], channelAssoc["B"]}, {3, 1, 2}];
+      rgbData = Clip[N[rgbData], {0.0, 1.0}]^(1.0 / 2.2);
+      rImg = ImageResize[Image[rgbData, "Real32"], {pw, ph}];
+      aImg = If[KeyExistsQ[channelAssoc, "A"],
+        ImageResize[Image[Clip[N[channelAssoc["A"]], {0.0, 1.0}], "Real32"], {pw, ph}],
+        Image[ConstantArray[1.0, {ph, pw}], "Real32"]
+      ];
+      rgbaBytes = Flatten[ImageData[SetAlphaChannel[rImg, aImg], "Byte"]];
+      prevBytes = ByteArray[Join[
+        IntegerDigits[pw, 256, 4] // Reverse,
+        IntegerDigits[ph, 256, 4] // Reverse,
+        rgbaBytes
+      ]];
+      writeEXRAttr[stream, "preview", "preview", prevBytes];
+    ]
+  ];
 
   (* Custom string metadata *)
   KeyValueMap[

@@ -21,7 +21,7 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.1.16";
+$EXRIOVersion = "2.1.17";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
@@ -415,14 +415,19 @@ AddComputedPass[exr : _Association | _?isEXRDataQ, name_String, arrayOrFn_, opts
 ];
 
 (* Multi-channel OpenEXR exporter (standard OpenEXR 2.0 scanline format) *)
-writeEXRAttr[stream_, name_String, type_String, payload_ByteArray] := (
-  BinaryWrite[stream, ToCharacterCode[name], "Byte"];
+writeEXRAttr[stream_, name_String, type_String, payload_ByteArray] := Module[{
+  safeName = StringTake[name, UpTo[31]],
+  nameBytes, typeBytes
+},
+  nameBytes = ToCharacterCode[safeName, "UTF-8"];
+  typeBytes = ToCharacterCode[type, "UTF-8"];
+  BinaryWrite[stream, nameBytes, "Byte"];
   BinaryWrite[stream, 0, "Byte"];
-  BinaryWrite[stream, ToCharacterCode[type], "Byte"];
+  BinaryWrite[stream, typeBytes, "Byte"];
   BinaryWrite[stream, 0, "Byte"];
   BinaryWrite[stream, Length[payload], "Integer32", ByteOrdering -> -1];
   BinaryWrite[stream, payload];
-);
+];
 
 int32Bytes[vals_List] := ByteArray[Flatten[IntegerDigits[#, 256, 4] // Reverse & /@ vals]];
 
@@ -439,11 +444,11 @@ writeStandardEXR[outFile_String, channelAssoc_Association, strAttrs_Association]
   {height, width} = Dimensions[firstArr];
   numChans = Length[names];
 
-  (* Build chlist attribute payload *)
+  (* Build chlist attribute payload (channel names <= 31 bytes for OpenEXR 2.0 compatibility) *)
   chlistBytes = ByteArray[Flatten[{
     Table[
       {
-        ToCharacterCode[cname], 0,
+        ToCharacterCode[StringTake[cname, UpTo[31]], "UTF-8"], 0,
         {2, 0, 0, 0}, (* pixelType = FLOAT (2) *)
         {0, 0, 0, 0}, (* pLinear=0, reserved 3 bytes *)
         {1, 0, 0, 0}, (* xSampling = 1 *)
@@ -490,7 +495,7 @@ writeStandardEXR[outFile_String, channelAssoc_Association, strAttrs_Association]
   KeyValueMap[
     Function[{k, v},
       If[StringQ[k] && StringQ[v],
-        writeEXRAttr[stream, k, "string", ByteArray[ToCharacterCode[v]]]
+        writeEXRAttr[stream, k, "string", ByteArray[ToCharacterCode[v, "UTF-8"]]]
       ]
     ],
     strAttrs
@@ -526,9 +531,10 @@ WriteEXR[file_String, exr_?isEXRDataQ, opts : OptionsPattern[]] :=
 WriteEXR[file_String, assoc_Association, opts : OptionsPattern[]] := Module[{
   passes = Lookup[assoc, "Passes", <||>],
   meta = Lookup[assoc, "Metadata", <||>],
-  modelInfo, exrAttrs = <||>,
+  modelInfo, exrAttrs = <||>, layerSpecs,
   channelAssoc = <||>, outFile = ExpandFileName[file], outDir
 },
+  layerSpecs = {};
   KeyValueMap[
     Function[{name, pass},
       Module[{raw = Lookup[pass, "Data", None], passType = Lookup[pass, "Type", Automatic], arr, dims, nCh, heck, rman},
@@ -563,16 +569,16 @@ WriteEXR[file_String, assoc_Association, opts : OptionsPattern[]] := Module[{
         If[AssociationQ[pass],
           heck = Lookup[pass, "Heckbert", None];
           rman = Lookup[pass, "RenderManLPE", None];
-          If[StringQ[heck] && StringLength[heck] > 0,
-            exrAttrs["lpe_layer_" <> name <> "_heckbert"] = heck;
-          ];
-          If[StringQ[rman] && StringLength[rman] > 0,
-            exrAttrs["lpe_layer_" <> name <> "_renderman"] = rman;
+          If[(StringQ[heck] && StringLength[heck] > 0) || (StringQ[rman] && StringLength[rman] > 0),
+            AppendTo[layerSpecs, name <> ": heckbert=" <> ToString[Replace[heck, Except[_String] -> ""]] <> ", renderman=" <> ToString[Replace[rman, Except[_String] -> ""]]];
           ];
         ];
       ]
     ],
     passes
+  ];
+  If[Length[layerSpecs] > 0,
+    exrAttrs["lpe_layers"] = StringRiffle[layerSpecs, "; "];
   ];
   If[AssociationQ[meta],
     If[StringQ[Lookup[meta, "Provenance", None]],

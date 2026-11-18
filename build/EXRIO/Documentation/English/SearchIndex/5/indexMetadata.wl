@@ -1,6 +1,6 @@
 <|"IndexedPaths" -> None, "Driver" -> "Lucene", 
- "CreationDate" -> DateObject[{2026, 11, 16, 17, 53, 
-    50.429692`8.455261291230338}, "Instant", "Gregorian", -5.], 
+ "CreationDate" -> DateObject[{2026, 11, 17, 22, 4, 
+    29.992953`8.22959420821235}, "Instant", "Gregorian", -5.], 
  "Version" -> 5, "Synonyms" -> None, "Method" -> "BM25", 
  "Language" -> "English", "ContentFieldOptions" -> 
   <|"Title" -> <|"Stored" -> True, "Weight" -> 2|>, 
@@ -62,7 +62,8 @@
       0.8333333333333334, "Service Connection" -> 0.8333333333333334, 
      "Text Content" -> 0.8333333333333334, "Incremental Object" -> 
       0.8333333333333334, "Question Interface" -> 0.8333333333333334, 
-     "Comparison Method" -> 0.8333333333333334, "Character Name" -> 0.75, 
+     "Comparison Method" -> 0.8333333333333334, "Material Model" -> 
+      0.8333333333333334, "Character Name" -> 0.75, 
      "MathLink C Function" -> 0.75, "UnityLink C# Function" -> 0.75, 
      "System Program" -> 0.6666666666666666, "Program" -> 0.6666666666666666, 
      "File" -> 0.6666666666666666, "Embedding Format" -> 0.6666666666666666, 

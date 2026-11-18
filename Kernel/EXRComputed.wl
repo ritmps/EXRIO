@@ -30,7 +30,7 @@ safeNormalizeField[arr_] := Module[{f = Developer`ToPackedArray[N[arr]], mag, va
   out
 ];
 
-safeDivide[num_, den_] := Module[{valid = UnitStep[Abs[den] - 10^-8]},
+safeDivide[num_, den_] := Module[{valid = UnitStep[Abs[den] - 10^-16]},
   (num * valid) / (den + (1.0 - valid))
 ];
 
@@ -102,8 +102,12 @@ computeCurvatureCore[p_, n_, dpdu_, dpdv_, mask_] :=
     k = detW * mask;
 
     diffK = k1 - k2;
-    validK = UnitStep[diffK - 10^-8];
-    shapeIndex = -(2.0 / Pi) * ArcTan[(k1 + k2) * validK / (diffK + (1.0 - validK))] * mask;
+    validK = UnitStep[Abs[k1] + Abs[k2] - 10^-8];
+    shapeIndex = -(2.0 / Pi) * MapThread[
+      If[#3 > 0.5, ArcTan[#1, #2], 0.0] &,
+      {diffK, k1 + k2, validK},
+      2
+    ] * mask;
     curvedness = Sqrt[0.5 * (k1^2 + k2^2)] * mask;
     contrast = diffK * mask;
 
@@ -764,8 +768,8 @@ ComputeScaleSpaceCurvature[exr : _Association | _?isEXRDataQ, sigmaIn_?NumericQ,
   gaussK = detW;
 
   shapeIndex = MapThread[
-    If[#1 > 10^-7, -(2.0 / Pi) * ArcTan[#2 / #1], 0.0] &,
-    {k1 - k2, k1 + k2},
+    If[Abs[#1] + Abs[#2] > 10^-8, -(2.0 / Pi) * ArcTan[#1 - #2, #1 + #2], 0.0] &,
+    {k1, k2},
     2
   ] * mask;
 

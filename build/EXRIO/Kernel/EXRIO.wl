@@ -21,7 +21,7 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.1.14";
+$EXRIOVersion = "2.1.18";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
@@ -189,12 +189,18 @@ colorCandidates[name_String] := {
 };
 
 lpeCandidates[group_String, sub_String] := {
+  {group <> "." <> sub, {"R", "G", "B"}},
+  {group, sub <> "." <> # & /@ {"R", "G", "B"}},
   {group, sub <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}},
   {group <> "." <> sub, {"Channel1", "Channel2", "Channel3"}},
   {"lighting", sub <> "." <> group <> "." <> # & /@ {"r", "g", "b"}}
 };
 
 geomCandidates[name_String] := {
+  {"geometry." <> name, {"X", "Y", "Z"}},
+  {"geometry." <> name, {"R", "G", "B"}},
+  {name, {"X", "Y", "Z"}},
+  {name, {"R", "G", "B"}},
   {"geometry", name <> "." <> # & /@ {"Channel1", "Channel2", "Channel3"}},
   {"geometry." <> name, {"Channel1", "Channel2", "Channel3"}},
   {name, {"Channel1", "Channel2", "Channel3"}},
@@ -408,7 +414,139 @@ AddComputedPass[exr : _Association | _?isEXRDataQ, name_String, arrayOrFn_, opts
   wrapEXR[exr, assoc]
 ];
 
-(* Multi-channel OpenEXR exporter *)
+(* Multi-channel OpenEXR exporter (standard OpenEXR 2.0 scanline format) *)
+writeEXRAttr[stream_, name_String, type_String, payload_ByteArray] := Module[{
+  safeName = StringTake[name, UpTo[31]],
+  nameBytes, typeBytes
+},
+  nameBytes = ToCharacterCode[safeName, "UTF-8"];
+  typeBytes = ToCharacterCode[type, "UTF-8"];
+  BinaryWrite[stream, nameBytes, "Byte"];
+  BinaryWrite[stream, 0, "Byte"];
+  BinaryWrite[stream, typeBytes, "Byte"];
+  BinaryWrite[stream, 0, "Byte"];
+  BinaryWrite[stream, Length[payload], "Integer32", ByteOrdering -> -1];
+  BinaryWrite[stream, payload];
+];
+
+int32Bytes[vals_List] := ByteArray[Flatten[IntegerDigits[#, 256, 4] // Reverse & /@ vals]];
+
+writeStandardEXR[outFile_String, channelAssoc_Association, strAttrs_Association] := Module[{
+  names = Sort[Keys[channelAssoc]],
+  firstArr, height, width, numChans,
+  chlistStream, chlistBytes,
+  dwBytes, zeroBytes4 = {0, 0, 0, 0},
+  stream, offsetTablePos, dataStartPos, pixelDataSize, stride, offsets,
+  chanCube, y
+},
+  If[names === {}, Return[$Failed]];
+  firstArr = channelAssoc[First[names]];
+  {height, width} = Dimensions[firstArr];
+  numChans = Length[names];
+
+  (* Build chlist attribute payload (channel names <= 31 bytes for OpenEXR 2.0 compatibility) *)
+  chlistBytes = ByteArray[Flatten[{
+    Table[
+      {
+        ToCharacterCode[StringTake[cname, UpTo[31]], "UTF-8"], 0,
+        {2, 0, 0, 0}, (* pixelType = FLOAT (2) *)
+        {0, 0, 0, 0}, (* pLinear=0, reserved 3 bytes *)
+        {1, 0, 0, 0}, (* xSampling = 1 *)
+        {1, 0, 0, 0}  (* ySampling = 1 *)
+      },
+      {cname, names}
+    ],
+    0
+  }]];
+
+  (* Pack {numChans, height, width} -> {height, numChans, width} Real32 *)
+  chanCube = Developer`ToPackedArray[
+    Transpose[Developer`ToPackedArray[N[channelAssoc /@ names], Real], {2, 1, 3}],
+    Real
+  ];
+
+  stream = OpenWrite[outFile, BinaryFormat -> True];
+  If[stream === $Failed, Return[$Failed]];
+
+  (* Magic (0x01312f76) + Version 2 (single-part scanline) *)
+  BinaryWrite[stream, {118, 47, 49, 1, 2, 0, 0, 0}, "Byte"];
+
+  (* Required OpenEXR header attributes *)
+  writeEXRAttr[stream, "channels", "chlist", chlistBytes];
+  writeEXRAttr[stream, "compression", "compression", ByteArray[{0}]]; (* NO_COMPRESSION *)
+
+  (* dataWindow & displayWindow: box2i {0, 0, width-1, height-1} *)
+  dwBytes = Module[{tmp = OpenWrite[BinaryFormat -> True]},
+    Close[tmp];
+    ByteArray @ Flatten[
+      Function[v, IntegerDigits[BitAnd[v, 4294967295], 256, 4] // Reverse] /@ {0, 0, width - 1, height - 1}
+    ]
+  ];
+  writeEXRAttr[stream, "dataWindow", "box2i", dwBytes];
+  writeEXRAttr[stream, "displayWindow", "box2i", dwBytes];
+  writeEXRAttr[stream, "lineOrder", "lineOrder", ByteArray[{0}]]; (* INCREASING_Y *)
+
+  (* pixelAspectRatio = 1.0f, screenWindowCenter = {0,0}, screenWindowWidth = 1.0f *)
+  writeEXRAttr[stream, "pixelAspectRatio", "float", ByteArray[{0, 0, 128, 63}]];
+  writeEXRAttr[stream, "screenWindowCenter", "v2f", ByteArray[{0, 0, 0, 0, 0, 0, 0, 0}]];
+  writeEXRAttr[stream, "screenWindowWidth", "float", ByteArray[{0, 0, 128, 63}]];
+
+  (* Optional OpenEXR preview thumbnail from R, G, B[, A] *)
+  If[KeyExistsQ[channelAssoc, "R"] && KeyExistsQ[channelAssoc, "G"] && KeyExistsQ[channelAssoc, "B"],
+    Module[{maxDim = 128, pw, ph, rImg, aImg, rgbData, rgbaBytes, prevBytes},
+      If[width >= height,
+        pw = Min[width, maxDim]; ph = Max[1, Round[height * (pw / N[width])]],
+        ph = Min[height, maxDim]; pw = Max[1, Round[width * (ph / N[height])]]
+      ];
+      rgbData = Transpose[{channelAssoc["R"], channelAssoc["G"], channelAssoc["B"]}, {3, 1, 2}];
+      rgbData = Clip[N[rgbData], {0.0, 1.0}]^(1.0 / 2.2);
+      rImg = ImageResize[Image[rgbData, "Real32"], {pw, ph}];
+      aImg = If[KeyExistsQ[channelAssoc, "A"],
+        ImageResize[Image[Clip[N[channelAssoc["A"]], {0.0, 1.0}], "Real32"], {pw, ph}],
+        Image[ConstantArray[1.0, {ph, pw}], "Real32"]
+      ];
+      rgbaBytes = Flatten[ImageData[SetAlphaChannel[rImg, aImg], "Byte"]];
+      prevBytes = ByteArray[Join[
+        IntegerDigits[pw, 256, 4] // Reverse,
+        IntegerDigits[ph, 256, 4] // Reverse,
+        rgbaBytes
+      ]];
+      writeEXRAttr[stream, "preview", "preview", prevBytes];
+    ]
+  ];
+
+  (* Custom string metadata *)
+  KeyValueMap[
+    Function[{k, v},
+      If[StringQ[k] && StringQ[v],
+        writeEXRAttr[stream, k, "string", ByteArray[ToCharacterCode[v, "UTF-8"]]]
+      ]
+    ],
+    strAttrs
+  ];
+
+  (* End of header *)
+  BinaryWrite[stream, 0, "Byte"];
+
+  (* Scanline offset table *)
+  offsetTablePos = StreamPosition[stream];
+  pixelDataSize = numChans * width * 4;
+  stride = 8 + pixelDataSize;
+  dataStartPos = offsetTablePos + height * 8;
+  offsets = Table[dataStartPos + (y - 1) * stride, {y, 1, height}];
+  BinaryWrite[stream, offsets, "Integer64", ByteOrdering -> -1];
+
+  (* Scanline blocks *)
+  Do[
+    BinaryWrite[stream, {y - 1, pixelDataSize}, "Integer32", ByteOrdering -> -1];
+    BinaryWrite[stream, Flatten[chanCube[[y]]], "Real32", ByteOrdering -> -1],
+    {y, 1, height}
+  ];
+
+  Close[stream];
+  outFile
+];
+
 Options[WriteEXR] = {};
 
 WriteEXR[file_String, exr_?isEXRDataQ, opts : OptionsPattern[]] :=
@@ -417,32 +555,54 @@ WriteEXR[file_String, exr_?isEXRDataQ, opts : OptionsPattern[]] :=
 WriteEXR[file_String, assoc_Association, opts : OptionsPattern[]] := Module[{
   passes = Lookup[assoc, "Passes", <||>],
   meta = Lookup[assoc, "Metadata", <||>],
-  modelInfo, exrAttrs = <||>,
-  exportAssoc = <||>, outFile = ExpandFileName[file], outDir
+  modelInfo, exrAttrs = <||>, layerSpecs,
+  channelAssoc = <||>, outFile = ExpandFileName[file], outDir
 },
+  layerSpecs = {};
   KeyValueMap[
     Function[{name, pass},
-      Module[{raw = Lookup[pass, "Data", None], arr, heck, rman},
+      Module[{raw = Lookup[pass, "Data", None], passType = Lookup[pass, "Type", Automatic], arr, dims, nCh, heck, rman},
         If[MatchQ[raw, _NumericArray] || ArrayQ[raw],
-          arr = If[MatchQ[raw, _NumericArray] && NumericArrayType[raw] === "Real32",
-            raw,
-            NumericArray[Normal[raw], "Real32"]
-          ];
-          exportAssoc[name] = arr;
+          arr = N[Normal[raw]];
+          dims = Dimensions[arr];
+          Which[
+            Length[dims] == 2,
+              channelAssoc[name] = arr,
+            Length[dims] == 3,
+              nCh = dims[[3]];
+              Which[
+                name === "beauty",
+                  If[nCh >= 1, channelAssoc["R"] = arr[[All, All, 1]]];
+                  If[nCh >= 2, channelAssoc["G"] = arr[[All, All, 2]]];
+                  If[nCh >= 3, channelAssoc["B"] = arr[[All, All, 3]]];
+                  If[nCh >= 4, channelAssoc["A"] = arr[[All, All, 4]]],
+                passType === "Vector3" || name === "geometry.Nn" || name === "Nn",
+                  If[nCh >= 1, channelAssoc[name <> ".X"] = arr[[All, All, 1]]];
+                  If[nCh >= 2, channelAssoc[name <> ".Y"] = arr[[All, All, 2]]];
+                  If[nCh >= 3, channelAssoc[name <> ".Z"] = arr[[All, All, 3]]],
+                nCh == 1,
+                  channelAssoc[name] = arr[[All, All, 1]],
+                True,
+                  If[nCh >= 1, channelAssoc[name <> ".R"] = arr[[All, All, 1]]];
+                  If[nCh >= 2, channelAssoc[name <> ".G"] = arr[[All, All, 2]]];
+                  If[nCh >= 3, channelAssoc[name <> ".B"] = arr[[All, All, 3]]];
+                  If[nCh >= 4, channelAssoc[name <> ".A"] = arr[[All, All, 4]]]
+              ]
+          ]
         ];
         If[AssociationQ[pass],
           heck = Lookup[pass, "Heckbert", None];
           rman = Lookup[pass, "RenderManLPE", None];
-          If[StringQ[heck] && StringLength[heck] > 0,
-            exrAttrs["lpe_layer_" <> name <> "_heckbert"] = heck;
-          ];
-          If[StringQ[rman] && StringLength[rman] > 0,
-            exrAttrs["lpe_layer_" <> name <> "_renderman"] = rman;
+          If[(StringQ[heck] && StringLength[heck] > 0) || (StringQ[rman] && StringLength[rman] > 0),
+            AppendTo[layerSpecs, name <> ": heckbert=" <> ToString[Replace[heck, Except[_String] -> ""]] <> ", renderman=" <> ToString[Replace[rman, Except[_String] -> ""]]];
           ];
         ];
       ]
     ],
     passes
+  ];
+  If[Length[layerSpecs] > 0,
+    exrAttrs["lpe_layers"] = StringRiffle[layerSpecs, "; "];
   ];
   If[AssociationQ[meta],
     If[StringQ[Lookup[meta, "Provenance", None]],
@@ -468,10 +628,7 @@ WriteEXR[file_String, assoc_Association, opts : OptionsPattern[]] := Module[{
   If[StringLength[outDir] > 0 && !DirectoryQ[outDir],
     CreateDirectory[outDir, CreateIntermediateDirectories -> True]
   ];
-  If[Length[exrAttrs] > 0,
-    Export[outFile, exportAssoc, "OpenEXR", "Attributes" -> exrAttrs],
-    Export[outFile, exportAssoc, "OpenEXR"]
-  ]
+  writeStandardEXR[outFile, channelAssoc, exrAttrs]
 ];
 
 End[];

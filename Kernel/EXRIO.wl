@@ -21,7 +21,7 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.1.19";
+$EXRIOVersion = "2.1.20";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
@@ -216,6 +216,16 @@ $KnownPassSpecs = <|
   "recon_beauty" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["recon_beauty"]|>,
   "specular" -> <|"Type" -> "Color", "Candidates" -> colorCandidates["specular"]|>,
   "diffuse.direct" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["diffuse", "direct"]|>,
+  "diffuse.direct.unoccluded" -> <|"Type" -> "Color", "Candidates" -> Join[
+    {
+      {"lighting", {"direct.diffuse.unoccluded.r", "direct.diffuse.unoccluded.g", "direct.diffuse.unoccluded.b"}},
+      {"diffuse.direct.unoccluded", {"R", "G", "B"}},
+      {"diffuse.direct.unoccluded", {"r", "g", "b"}},
+      {"diffuse_direct_unocc", {"R", "G", "B"}},
+      {"diffuse_direct_unocc", {"r", "g", "b"}}
+    },
+    lpeCandidates["diffuse", "direct.unoccluded"]
+  ]|>,
   "diffuse.indirect" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["diffuse", "indirect"]|>,
   "specular.direct" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["specular", "direct"]|>,
   "specular.indirect" -> <|"Type" -> "Color", "Candidates" -> lpeCandidates["specular", "indirect"]|>,
@@ -288,6 +298,20 @@ addDerivedPasses[exr : _Association | _?isEXRDataQ, envMap_] := Module[{
     albArr = N @ Normal[passes["albedo", "Data"]];
     irradArr = Clip[diffArr / (0.02 + Ramp[albArr - 0.02]), {0., 15.}];
     computed["DiffuseIrradiance"] = <|"Type" -> "Color", "Data" -> NumericArray[irradArr, "Real32"]|>;
+  ];
+
+  (* Exact Raytraced Cast-Shadow Visibility: V* = L_dir / L_dir_unocc (blended to 1.0 where unoccluded N.L == 0) *)
+  If[KeyExistsQ[passes, "diffuse.direct"] && KeyExistsQ[passes, "diffuse.direct.unoccluded"],
+    Module[{ddirArr, unoccArr, lumDir, lumUnocc, ratio, litWeight, visArr},
+      ddirArr = N @ Normal[passes["diffuse.direct", "Data"]];
+      unoccArr = N @ Normal[passes["diffuse.direct.unoccluded", "Data"]];
+      lumDir = 0.2126 * ddirArr[[All, All, 1]] + 0.7152 * ddirArr[[All, All, 2]] + 0.0722 * ddirArr[[All, All, 3]];
+      lumUnocc = 0.2126 * unoccArr[[All, All, 1]] + 0.7152 * unoccArr[[All, All, 2]] + 0.0722 * unoccArr[[All, All, 3]];
+      ratio = Clip[lumDir / (1.0*^-4 + Ramp[lumUnocc - 1.0*^-4]), {0.0, 1.0}];
+      litWeight = Clip[lumUnocc / 0.01, {0.0, 1.0}];
+      visArr = Clip[litWeight * ratio + (1.0 - litWeight), {0.0, 1.0}];
+      computed["ShadowVisibility"] = <|"Type" -> "Scalar", "Data" -> NumericArray[visArr, "Real32"]|>;
+    ]
   ];
 
   (* Scale-free Ordinal Depth in [0, 1] *)

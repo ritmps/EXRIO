@@ -21,7 +21,7 @@ BeginPackage["EXRIO`", {
 }];
 
 $EXRIOVersion::usage = "$EXRIOVersion is the version string of EXRIO.";
-$EXRIOVersion = "2.1.20";
+$EXRIOVersion = "2.1.21";
 
 ReadEXR::usage = "ReadEXR[file, opts] imports a multi-channel OpenEXR file into a structured EXRData container with differential geometry and metadata.";
 WriteEXR::usage = "WriteEXR[file, exr, opts] exports an EXRData container or association of passes to a multi-channel OpenEXR file.";
@@ -300,9 +300,9 @@ addDerivedPasses[exr : _Association | _?isEXRDataQ, envMap_] := Module[{
     computed["DiffuseIrradiance"] = <|"Type" -> "Color", "Data" -> NumericArray[irradArr, "Real32"]|>;
   ];
 
-  (* Exact Raytraced Cast-Shadow Visibility: V* = L_dir / L_dir_unocc (blended to 1.0 where unoccluded N.L == 0) *)
+  (* Exact Raytraced Cast-Shadow Visibility & Demodulated Unoccluded Direct Irradiance *)
   If[KeyExistsQ[passes, "diffuse.direct"] && KeyExistsQ[passes, "diffuse.direct.unoccluded"],
-    Module[{ddirArr, unoccArr, lumDir, lumUnocc, ratio, litWeight, visArr},
+    Module[{ddirArr, unoccArr, lumDir, lumUnocc, ratio, litWeight, visArr, albForUnocc, unoccIrradArr},
       ddirArr = N @ Normal[passes["diffuse.direct", "Data"]];
       unoccArr = N @ Normal[passes["diffuse.direct.unoccluded", "Data"]];
       lumDir = 0.2126 * ddirArr[[All, All, 1]] + 0.7152 * ddirArr[[All, All, 2]] + 0.0722 * ddirArr[[All, All, 3]];
@@ -311,6 +311,11 @@ addDerivedPasses[exr : _Association | _?isEXRDataQ, envMap_] := Module[{
       litWeight = Clip[lumUnocc / 0.01, {0.0, 1.0}];
       visArr = Clip[litWeight * ratio + (1.0 - litWeight), {0.0, 1.0}];
       computed["ShadowVisibility"] = <|"Type" -> "Scalar", "Data" -> NumericArray[visArr, "Real32"]|>;
+      If[KeyExistsQ[passes, "albedo"],
+        albForUnocc = N @ Normal[passes["albedo", "Data"]];
+        unoccIrradArr = Clip[unoccArr / (0.02 + Ramp[albForUnocc - 0.02]), {0., 15.}];
+        computed["UnoccludedDirectIrradiance"] = <|"Type" -> "Color", "Data" -> NumericArray[unoccIrradArr, "Real32"]|>;
+      ];
     ]
   ];
 

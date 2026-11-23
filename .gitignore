@@ -5,3 +5,5 @@
 *.swp
 *~
 .agent-scratch/
+build/
+*.paclet
